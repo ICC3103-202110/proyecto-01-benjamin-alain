@@ -53,20 +53,26 @@ class Won:
                 if(self.player1 > self.player2 and
                 self.player1 > self.player3 and 
                 self.player1 > self.player4):
-                    print("Ganador jugador 1")
                     return "Ganador jugador 1"
                 elif(self.player2 > self.player1 and
                 self.player2 > self.player3 and 
                 self.player2 > self.player4):
-                    print("Ganador jugador 2")
                     return "Ganador jugador 2"
                 elif(self.player3 > self.player1 and
                 self.player3 > self.player2 and 
                 self.player3 > self.player4):
-                    print("Ganador jugador 3")
                     return "Ganador jugador 3"
                 elif(self.player4 > self.player1 and
                 self.player4 > self.player3 and 
                 self.player4 > self.player2):
-                    print("Ganador jugador 4")
                     return "Ganador jugador 4"
+            elif(TotalPlayer == 3):
+                if(self.player1 > self.player2 and 
+                self.player1 > self.player3):
+                    return "Ganador jugador 1"
+                elif(self.player2 > self.player1 and 
+                self.player2 > self.player3):
+                    return "Ganador jugador 2"
+                elif(self.player3 > self.player2 and 
+                self.player3 > self.player1):
+                    return "Ganador jugador 1"

@@ -9,3 +9,7 @@ class IEspecialAtack(ABC):
     @abstractmethod
     def counter(self):
         pass
+
+    @abstractmethod
+    def action(self):
+        pass

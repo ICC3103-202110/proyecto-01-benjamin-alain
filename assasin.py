@@ -31,3 +31,6 @@ class murder(IEspecialAtack):
         newcoins = coin-3
         return newcoins
     
+    def action(self):
+        return "assassinate"
+    

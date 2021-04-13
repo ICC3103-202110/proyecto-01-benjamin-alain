@@ -1,6 +1,6 @@
 from IEespecial import IEspecialAtack
 
-class Tax(IEspecialAtack):
+class Exchange(IEspecialAtack):
 
     def __init__(self,name):
         self.__name = name
@@ -14,11 +14,7 @@ class Tax(IEspecialAtack):
             self.__name = "AMBASSADOR"
         else:
             self.__name = value
-    
-
-    
-    
-    
+ 
     
     def efect(self,Deck,Card):       #card es una lista de las carats que tiene el jugador #Descke s el mazo
     l=[]
@@ -96,23 +92,13 @@ class Tax(IEspecialAtack):
     
     
     
+    def counter(self, extorsion):
+        if(extorsion == True):
+            extorsion = False
+        print("se bloquea la extorsion")
+        return extorsion
     
-    
-    
-    
-    
-    def counter(self,Steal):
-        #el counter es bloquear robar del capitan
-        if(Steal == True):
-            Steal = False
-        print("se bloquea el capitan")
-        return Steal
-    
-    
-    
-    
-    
-    
+        
     
     def action(self):
-        return "taxes"
+        return "Exchange"

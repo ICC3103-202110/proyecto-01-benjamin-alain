@@ -13,7 +13,7 @@ class murder(IEspecialAtack):
         if value == "":
             self.__name = "ASSASIN"
         else:
-            self.__name = value
+            self.__name = "ASSASIN"
     
     def efect(self, playerlist):
         def ShowPlayers(playerlist):

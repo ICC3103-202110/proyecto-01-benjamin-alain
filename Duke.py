@@ -13,7 +13,7 @@ class Tax(IEspecialAtack):
         if value == "":
             self.__name = "DUKE"
         else:
-            self.__name = value
+            self.__name = "DUKE"
     
     def efect(self,coins):
         x = coins + 3

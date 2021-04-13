@@ -1,9 +1,11 @@
 class gambler:
 
-    def __init__(self, coins,cards):
-        self.coins = coins
-        self.cards = cards
-    
+    def __init__(self, name, coins,cards):
+        self.__coins = coins
+        self.__cards = cards
+        self.__name = name
+        self.__HandDeck = []
+
     @property
     def cards(self):
         return self.__cards
@@ -12,8 +14,15 @@ class gambler:
         if value < 0:
             self.__cards = 0
         else:
-            self.__cards = value
-     
+           self.__cards = value
+
+    @property
+    def name(self):
+        return self.__name
+    @name.setter 
+    def name(self,value):
+        self.__name = value
+        
     @property
     def coins(self):
         return self.__coins
@@ -23,3 +32,10 @@ class gambler:
             self.__coins = 0
         else:
             self.__coins = value
+        
+    @property
+    def HandDeck(self):
+        return self.__HandDeck
+    @HandDeck.setter
+    def HandDeck(self, value):
+        self.__HandDeck = value

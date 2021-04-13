@@ -7,7 +7,7 @@ playerlist = []
 
 def CreatePlayer(n):
     x = 1
-    while (x<n):
+    while (x<=n):
         name = input("your name: ")
         coin = 2
         card = int(input("your cards: "))
@@ -19,10 +19,11 @@ def main():
     #pruebas
     y = PlayerMenu(1)
     z = PlayerMenu(2)
-    w = PlayerMenu(3)
+    w = PlayerMenu(5)
     print(y.menusplayers())
     print(z.menusplayers())
-    print(w.menusplayers())
+    if (w.menusplayers() == 0):
+        print("hola")
     x = murder("")
     coin = 6
     coin = (x.MoneyLess(coin))

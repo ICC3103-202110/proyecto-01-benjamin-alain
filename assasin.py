@@ -21,8 +21,11 @@ class murder(IEspecialAtack):
             for (i, _) in enumerate(playerlist):
                 print(i+1,") nombre: ",playerlist[i].name,"| card: ",playerlist[i].cards)
         ShowPlayers(playerlist)
-        return int(input('Who do you want to select?'))
-
+        '''
+        x = int(input('Who do you want to select?: '))
+        playerlist[x].HandDeck.pop(0)
+        '''
+        return int(input('Who do you want to select?: '))
     def counter(self):
         pass
 

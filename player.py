@@ -36,3 +36,6 @@ class gambler:
     @property
     def HandDeck(self):
         return self.__HandDeck
+    @HandDeck.setter
+    def HandDeck(self, value):
+        self.__HandDeck = value

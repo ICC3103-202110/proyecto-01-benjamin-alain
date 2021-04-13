@@ -42,10 +42,18 @@ class PlayerMenu:
             print((tabulate(countermenu,headers=Headers,showindex=True,tablefmt='grid')))
             z = int(input("seleccione el numero del contraataque: "))
             return z
+        elif(self.options == 5):
+            HEADERS = ["numero", "opcion"]
+            counteroptions = [["desafio"],["CONTRATAQUES"]]
+            print((tabulate(counteroptions,headers=HEADERS,showindex=True,tablefmt='grid')))   
+            r =  int(input("seleccione el numero de las opciones: "))
+            return r        
         
     def playersMiniMenu(self, deck, player):
         if (self.options == 4):
             HEADERS = ["",player.name]
+            #ejemplo
             lista = ["duque","capitan"]
             minimenu = [["coins",player.coins],["cards",lista]]
             print(tabulate(minimenu,headers=HEADERS,tablefmt='grid'))
+            return ""

@@ -19,9 +19,12 @@ class Tax(IEspecialAtack):
         x = coins + 3
         return x
     
-    def counter(self):
+    def counter(self,foreign_aid):
         #el counter es bloquear ayuda extranjera
-        return 0
+        if(foreign_aid == True):
+            foreign_aid = False
+        print("se bloquea la ayuda externa")
+        return foreign_aid
     
     def action(self):
         return "taxes"

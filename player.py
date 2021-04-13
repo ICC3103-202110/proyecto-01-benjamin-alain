@@ -4,6 +4,7 @@ class gambler:
         self.__coins = coins
         self.__cards = cards
         self.__name = name
+        self.__HandDeck = []
 
     @property
     def cards(self):
@@ -31,3 +32,7 @@ class gambler:
             self.__coins = 0
         else:
             self.__coins = value
+        
+    @property
+    def HandDeck(self):
+        return self.__HandDeck

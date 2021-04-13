@@ -3,8 +3,10 @@ from player import gambler
 from assasin import murder
 from Duke import Tax
 from Menu import PlayerMenu
+from random import shuffle
+from Captain import Steal
 playerlist = []
-
+deck = []
 def CreatePlayer(n):
     x = 1
     while (x<=n):
@@ -15,8 +17,21 @@ def CreatePlayer(n):
         x += 1
     return playerlist
 
+def Deck():
+    y = 1
+    while(y<=3):
+        deck.append(Tax("Duke"))
+        deck.append(murder("asesino"))
+        deck.append(Steal("capitan"))
+        y += 1
+    shuffle(deck)
+    return deck
+
 def main():
     #pruebas
+    x = Deck()
+    for i in range(len(x)):
+        print(x[i].name)
     y = PlayerMenu(1)
     z = PlayerMenu(2)
     w = PlayerMenu(5)

@@ -24,6 +24,7 @@ class murder(IEspecialAtack):
         '''
         x = int(input('Who do you want to select?: '))
         playerlist[x].HandDeck.pop(0)
+        Assesination = True
         '''
         return int(input('Who do you want to select?: '))
     def counter(self):

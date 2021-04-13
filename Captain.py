@@ -15,24 +15,24 @@ class Steal(IEspecialAtack):
         else:
             self.__name = "Captain"
     
-    def efect(self, playerlist, extorsion):
+    def efect(self, playerlist, extortion):
         def ShowPlayers(playerlist):
             print("actual player in the game")
             for (i, _) in enumerate(playerlist):
                 print(i+1,") nombre: ",playerlist[i].name,"| card: ",playerlist[i].cards)
         ShowPlayers(playerlist)
-        if(extorsion == True):
+        if(extortion == True):
             y = int(input("seleccione al jugador que quiera quitar monedas"))
             return y
         else:
             y = "se ha bloqueado la extorsion"
             return y
     
-    def counter(self, extorsion):
-        if(extorsion == True):
-            extorsion = False
+    def counter(self, extortion):
+        if(extortion == True):
+            extortion = False
         print("se bloquea la extorsion")
-        return extorsion
+        return extortion
     
     def action(self):
         return "steal"

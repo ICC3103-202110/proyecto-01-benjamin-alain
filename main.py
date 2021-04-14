@@ -1,6 +1,6 @@
 from Winner import Won
 from player import gambler
-from Assasin import murder
+from assasin import murder
 from Duke import Tax
 from Captain import Steal
 from Contessa import Block
@@ -24,7 +24,7 @@ def CreatePlayer1(n):
 
 def main():
     #pruebas
-    x = Deck()
+    x = starting_deck()
     for i in range(len(x)):
         print(x[i].name)
     y = PlayerMenu(1)

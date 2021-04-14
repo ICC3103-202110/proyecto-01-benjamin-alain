@@ -1,6 +1,7 @@
 from IEespecial import IEspecialAtack
 
-class Steal(IEspecialAtack):
+
+class Block(IEspecialAtack):
 
     def __init__(self, name):
         self.__name = name

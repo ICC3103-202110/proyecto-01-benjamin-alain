@@ -1,22 +1,32 @@
 from Winner import Won
 from player import gambler
-from assasin import murder
+from Assasin import murder
 from Duke import Tax
+from Captain import Steal
+from Contessa import Block
+from Ambassador import Exchange
 from Menu import PlayerMenu
+from random import shuffle
+from Deck import Deck_cards
 playerlist = []
+deck = []
 
-def CreatePlayer(n):
+def CreatePlayer1(n):
     x = 1
     while (x<=n):
         name = input("your name: ")
         coin = 2
-        card = int(input("your cards: "))
+        card = 2
         playerlist.append(gambler(name,coin,card))
         x += 1
     return playerlist
 
+
 def main():
     #pruebas
+    x = Deck()
+    for i in range(len(x)):
+        print(x[i].name)
     y = PlayerMenu(1)
     z = PlayerMenu(2)
     w = PlayerMenu(5)

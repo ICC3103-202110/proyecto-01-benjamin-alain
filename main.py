@@ -11,6 +11,7 @@ from Deck import Deck_cards
 playerlist = []
 deck = []
 
+
 def CreatePlayer1(n):
     x = 1
     while (x<=n):
@@ -25,10 +26,12 @@ def CreatePlayer1(n):
 def main():
     #pruebas
     l=[]
+    deck_list=[]
     objeto=Deck_cards("Name_card_object")
     x = objeto.first_round(l)
     for i in range(len(x)):
-        print(x[i].name)
+        deck_list.append(x[i].name)
+    print(deck_list)
     y = PlayerMenu(1)
     z = PlayerMenu(2)
     w = PlayerMenu(5)
@@ -40,11 +43,20 @@ def main():
     coin = 6
     coin = (x.MoneyLess(coin))
     print(coin)
-    List = CreatePlayer(3)
+    List = CreatePlayer1(3)
     print(x.efect(List))
     q = PlayerMenu(4)
     print(q.playersMiniMenu("nada",List[0]))
     #luego se selecciona a quien quitarle la influencia carta
 
-if __name__ == '__main__':
-    main()
+
+print("Welcome to COUP!")
+print("\n")
+Players_num = int(input("how many players are going to play?  "))
+
+if Players_num == 3:
+    print("wichipirichi")
+    if __name__ == '__main__':
+        main()
+
+

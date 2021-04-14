@@ -29,12 +29,12 @@ class murder(IEspecialAtack):
         return int(input('Who do you want to select?: '))
     def counter(self):
         pass
-
+    '''
     def MoneyLess(self, coin):
         print("pay 3 coins and eliminate a influence (show card): ")
         newcoins = coin-3
         return newcoins
-    
+    '''
     def action(self):
         return "assassinate"
     

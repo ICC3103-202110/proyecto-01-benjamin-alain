@@ -21,9 +21,25 @@ JAND3 = []
 JAND4 = []
 ALLDeck = []
 
+def MoneyLess(coin,n):
+    print("pay 3 coins and eliminate a influence (show card): ")
+    newcoins = coin-n
+    return newcoins
+
+def CreatePlayer1(n, hand):
+    x = 1
+    while (x<=n):
+        name = input("your name: ")
+        coin = 2
+        card = hand[x-1]
+        playerlist.append(gambler(name,coin,card))
+        x += 1
+    return playerlist
+
 def Game(n):
     l=[]
     deck_list=[]
+    incognita = ["??","??"]
     objeto=Deck_cards("Name_card_object")
     x = objeto.first_round(l)
 
@@ -44,50 +60,48 @@ def Game(n):
     elif(n == 4):
         for i in range(len(handplayer4[1])):
             deck_list.append(handplayer4[1][i].name)
-    print(deck_list)
-    print(JAND1)
-    print(JAND2)
-    print(JAND3)
-    if(n == 4):
-        print(JAND4)
-    y = PlayerMenu(1)
-    z = PlayerMenu(2)
-    w = PlayerMenu(5)
-    print(y.menusplayers())
-    print(z.menusplayers())
-    if (w.menusplayers() == 0):
-        print("hola")
-    x = murder("")
-    coin = 6
-    coin = (x.MoneyLess(coin))
-    print(coin)
+
     ALLDeck.append(JAND1)
     ALLDeck.append(JAND2)
     ALLDeck.append(JAND3)
-    List = CreatePlayer1(3,ALLDeck)
+    if(n == 4):
+        ALLDeck.append(JAND4)
+    ALLDeck.append(incognita)
+    List = CreatePlayer1(n,ALLDeck)
+    part1 = PlayerMenu(1)
+    option1 = part1.menusplayers()
+    if(option1 == 1):
+        part2 = PlayerMenu(2)
+        option2 = part2.menusplayers()
+        if(option2 == 1):
+            print("se a seleccionado el ingreso")
+        elif(option2 == 2):
+            print("se a seleccionado la ayuda externa")
+        elif(option2 == 3 ):
+            print("se a seleccionado el golpe")
+    elif(option1 == 2):
+        pass
+    elif(option1 == 3):
+        q = PlayerMenu(4)
+        if(playerlist[0].name == "a"):
+            print(q.playersMiniMenu(JAND1,List[0]))
+        elif(playerlist[1].name == "b"):
+            print(q.playersMiniMenu(JAND2,List[1]))
+    elif(option1 == 4):
+        descripcion = PlayerMenu(6).menusplayers()
+        print(descripcion)
+    else:
+        print("ingrese un numero valido")
 
-    print(x.efect(List))
-    q = PlayerMenu(4)
-    print(q.playersMiniMenu(JAND1,List[0]))
-    print(q.playersMiniMenu(JAND2,List[1]))
+
+    '''
     print(q.playersMiniMenu(JAND3,List[2]))
-    #print(q.playersMiniMenu(JAND1,List[3]))
+    if(n == 4):
+        print(q.playersMiniMenu(JAND4,List[3]))
+    '''
     #luego se selecciona a quien quitarle la influencia carta
 
-def MoneyLess(coin,n):
-    print("pay 3 coins and eliminate a influence (show card): ")
-    newcoins = coin-n
-    return newcoins
 
-def CreatePlayer1(n, hand):
-    x = 1
-    while (x<=n):
-        name = input("your name: ")
-        coin = 2
-        card = hand[x-1]
-        playerlist.append(gambler(name,coin,card))
-        x += 1
-    return playerlist
 
 
 def main():

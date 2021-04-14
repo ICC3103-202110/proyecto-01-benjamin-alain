@@ -28,4 +28,6 @@ class Deck_cards:
         playerdeck.append(General[1])
         General.pop(0)
         General.pop(0)
+        shuffle(General)
+        shuffle(playerdeck)
         return playerdeck, General

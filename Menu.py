@@ -1,4 +1,5 @@
 from tabulate import tabulate
+
 class PlayerMenu:
     def __init__(self,options):
         self.__options = options
@@ -25,7 +26,7 @@ class PlayerMenu:
             return x
         elif (self.options == 2):
             Headers = ["numero", "Acciones"]
-            playermenu = [["ingreseo"],["ayuda externa"],["golpe"],
+            playermenu = [["ingreso"],["ayuda externa"],["golpe"],
                             ["Impuestos (duke)"],["Asesinato (asesino)"],
                             ["Extorsión (Capitán)"],["Cambio (Embajador)"]]
             print(tabulate(playermenu,headers=Headers,showindex=True,tablefmt='grid'))
@@ -37,6 +38,7 @@ class PlayerMenu:
             countermenu = [["Bloquear ayuda extranjera (Duque)"],
                             ["Bloquear asesinato (Condesa)"],
                             ["Bloquear extorsión (Embajador/Capitán)"]]
+
             print((tabulate(countermenu,headers=Headers,showindex=True,tablefmt='grid')))
             z = int(input("seleccione el numero del contraataque: "))
             return z
@@ -47,6 +49,21 @@ class PlayerMenu:
             r =  int(input("seleccione el numero de las opciones: "))
             return r        
         
+        elif(self.options == 6):
+            descp= [["Caracter","Action","Effect","Counteraction"],
+                    ["No special card needed", "Income", "Take 1 coin","NONE"],
+                    ["No special card needed","Forein Aid", "Take 2 coin","NONE"],
+                    ["No special card needed","Coup","Pay 7 coins","NONE"],
+                    ["Duke","Tax","Take 3 coins","Blocks Foreign Aid"],
+                    ["Assassin","Assassinate","Pay 3 coins","NONE"],
+                    ["Ambassador","Exchange","Exchange cards with Court Deck","Blocks stealling"],
+                    ["Captain","Steal","Take 2 coins from another player","Blocks stealling"],
+                    ["Contessa","NONE","NONE","Blocks assassination"]
+                    ]
+
+            print(tabulate(descp, headers='firstrow'))
+            return ""
+        
     def playersMiniMenu(self, deck, player):
         if (self.options == 4):
             HEADERS = ["",player.name]
@@ -54,4 +71,4 @@ class PlayerMenu:
             lista = deck
             minimenu = [["coins",player.coins],["cards",lista]]
             print(tabulate(minimenu,headers=HEADERS,tablefmt='grid'))
-            return "" 
+            return ""

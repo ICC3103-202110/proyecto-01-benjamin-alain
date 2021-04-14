@@ -24,8 +24,9 @@ def CreatePlayer1(n):
 
 def main():
     #pruebas
+    l=[]
     objeto=Deck_cards("Name_card_object")
-    x = objeto.first_round()
+    x = objeto.first_round(l)
     for i in range(len(x)):
         print(x[i].name)
     y = PlayerMenu(1)

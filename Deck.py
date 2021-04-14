@@ -1,9 +1,9 @@
 from Duke import Tax
-from Assassin import murder
+from Assasin import murder
 from Captain import Steal
 from Contessa import Block
 from Ambassador import Exchange
-import random
+from random import shuffle
 
 class Deck_cards:
 

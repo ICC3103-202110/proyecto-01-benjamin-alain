@@ -1,5 +1,4 @@
 from tabulate import tabulate
-
 class PlayerMenu:
     def __init__(self,options):
         self.__options = options
@@ -38,7 +37,6 @@ class PlayerMenu:
             countermenu = [["Bloquear ayuda extranjera (Duque)"],
                             ["Bloquear asesinato (Condesa)"],
                             ["Bloquear extorsión (Embajador/Capitán)"]]
-
             print((tabulate(countermenu,headers=Headers,showindex=True,tablefmt='grid')))
             z = int(input("seleccione el numero del contraataque: "))
             return z
@@ -53,7 +51,7 @@ class PlayerMenu:
         if (self.options == 4):
             HEADERS = ["",player.name]
             #ejemplo
-            lista = ["duque","capitan"]
+            lista = deck
             minimenu = [["coins",player.coins],["cards",lista]]
             print(tabulate(minimenu,headers=HEADERS,tablefmt='grid'))
-            return ""
+            return "" 

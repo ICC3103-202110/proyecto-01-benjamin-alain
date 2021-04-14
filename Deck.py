@@ -22,3 +22,10 @@ class Deck_cards:
             y += 1
         shuffle(starting_deck)
         return starting_deck
+    
+    def hand(self,playerdeck,General):
+        playerdeck.append(General[0])
+        playerdeck.append(General[1])
+        General.pop(0)
+        General.pop(0)
+        return playerdeck, General

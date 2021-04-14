@@ -53,7 +53,7 @@ class PlayerMenu:
         if (self.options == 4):
             HEADERS = ["",player.name]
             #ejemplo
-            lista = ["duque","capitan"]
+            lista = deck
             minimenu = [["coins",player.coins],["cards",lista]]
             print(tabulate(minimenu,headers=HEADERS,tablefmt='grid'))
             return ""

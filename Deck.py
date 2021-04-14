@@ -1,3 +1,10 @@
+from Duke import Tax
+from Assassin import murder
+from Captain import Steal
+from Contessa import Block
+from Ambassador import Exchange
+import random
+
 class Deck_cards:
 
     def __init__(self,name):
@@ -13,5 +20,5 @@ class Deck_cards:
             starting_deck.append(Block("Contessa"))
             starting_deck.append(Exchange("Ambassador"))
             y += 1
-        shuffle (starting_deck)
+        shuffle(starting_deck)
         return starting_deck

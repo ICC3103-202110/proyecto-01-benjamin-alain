@@ -28,7 +28,8 @@ class PlayerMenu:
             Headers = ["numero", "Acciones"]
             playermenu = [["ingreso"],["ayuda externa"],["golpe"],
                             ["Impuestos (duke)"],["Asesinato (asesino)"],
-                            ["Extorsión (Capitán)"],["Cambio (Embajador)"]]
+                            ["Extorsión (Capitán)"],["Cambio (Embajador)"],
+                            ["volver"]]
             print(tabulate(playermenu,headers=Headers,showindex=True,tablefmt='grid'))
             y = int(input("seleccione el numero: "))
             return y
@@ -70,5 +71,13 @@ class PlayerMenu:
             #ejemplo
             lista = deck
             minimenu = [["coins",player.coins],["cards",lista]]
+            print(tabulate(minimenu,headers=HEADERS,tablefmt='grid'))
+            return ""
+    def secondMiniMenu(self,deck,player,coin):
+        if(self.options == 7):
+            HEADERS = ["",player]
+            #ejemplo
+            lista = deck
+            minimenu = [["coins",coin],["cards",lista]]
             print(tabulate(minimenu,headers=HEADERS,tablefmt='grid'))
             return ""

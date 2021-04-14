@@ -38,7 +38,10 @@ def CreatePlayer1(n, hand):
 
 def Game(n):
     l=[]
+    ListPlayer = []
     deck_list=[]
+    PersonalDeck = []
+    CoinList = []
     incognita = ["??","??"]
     objeto=Deck_cards("Name_card_object")
     x = objeto.first_round(l)
@@ -61,37 +64,79 @@ def Game(n):
         for i in range(len(handplayer4[1])):
             deck_list.append(handplayer4[1][i].name)
 
+
     ALLDeck.append(JAND1)
     ALLDeck.append(JAND2)
     ALLDeck.append(JAND3)
     if(n == 4):
         ALLDeck.append(JAND4)
+
     ALLDeck.append(incognita)
-    List = CreatePlayer1(n,ALLDeck)
-    part1 = PlayerMenu(1)
-    option1 = part1.menusplayers()
-    if(option1 == 1):
-        part2 = PlayerMenu(2)
-        option2 = part2.menusplayers()
-        if(option2 == 1):
-            print("se a seleccionado el ingreso")
-        elif(option2 == 2):
-            print("se a seleccionado la ayuda externa")
-        elif(option2 == 3 ):
-            print("se a seleccionado el golpe")
-    elif(option1 == 2):
-        pass
-    elif(option1 == 3):
-        q = PlayerMenu(4)
-        if(playerlist[0].name == "a"):
-            print(q.playersMiniMenu(JAND1,List[0]))
-        elif(playerlist[1].name == "b"):
-            print(q.playersMiniMenu(JAND2,List[1]))
-    elif(option1 == 4):
-        descripcion = PlayerMenu(6).menusplayers()
-        print(descripcion)
-    else:
-        print("ingrese un numero valido")
+    List = CreatePlayer1(n,ALLDeck)  
+    PersonalDeck = ALLDeck
+    if (n == 3):
+        PersonalDeck.pop(3)
+    if(n == 4):
+        PersonalDeck.pop(4)
+    for i in range(len(List)):
+        ListPlayer.append(List[i].name)
+        CoinList.append(List[i].coins)
+    while(True):
+        NAMES = ListPlayer[0]
+        SuperHand = PersonalDeck[0]
+        personalCoin = CoinList[0]
+        print("le toca a:  ", NAMES)
+        part1 = PlayerMenu(1)
+        option1 = part1.menusplayers()
+        if(option1 == 1):
+            part2 = PlayerMenu(2)
+            option2 = part2.menusplayers()
+            while(True):
+                if(option2 == 0):
+                    print("se a seleccionado el ingreso")
+                elif(option2 == 1):
+                    print("se a seleccionado la ayuda externa")
+                elif(option2 == 2 ):
+                    print("se a seleccionado el golpe")
+                elif(option2 == 3):
+                    print("se a seleccionado el Impuestos")
+                elif(option2 == 4):
+                    print("se a seleccionado el Asesinato")
+                elif(option2 == 5):
+                    print("se a seleccionado la Extorsión")
+                elif(option2 == 6):
+                    print("se a seleccionado el Cambio")
+                elif(option2 == 7):
+                    print("volviendo al menu anterior")
+                    break
+                else:
+                    print("seleccione un numero valido")
+
+        elif(option1 == 2):
+            pass
+        elif(option1 == 3):
+            q = PlayerMenu(7)
+            print(NAMES)
+            if(ListPlayer[0] == NAMES):
+                print(q.secondMiniMenu(SuperHand,NAMES,personalCoin))
+                ListPlayer.pop(0)
+                ListPlayer.append(NAMES)
+                PersonalDeck.pop(0)
+                PersonalDeck.append(SuperHand)
+                CoinList.pop(0)
+                CoinList.append(personalCoin)
+                NAMES = ListPlayer[0]
+                SuperHand = PersonalDeck[0]
+                personalCoin = CoinList[0]
+        elif(option1 == 4):
+            descripcion = PlayerMenu(6).menusplayers()
+            print(descripcion)
+            while(True):
+                print("0 para volver")
+                x == (input())
+                break
+        else:
+            print("ingrese un numero valido")
 
 
     '''

@@ -22,7 +22,6 @@ JAND4 = []
 ALLDeck = []
 
 def MoneyLess(coin,n):
-    print("pay 3 coins and eliminate a influence (show card): ")
     newcoins = coin-n
     return newcoins
 
@@ -86,6 +85,7 @@ def Game(n):
         personalCoin = CoinList[0]
         print("le toca a:  ", NAMES)
         part1 = PlayerMenu(1)
+        obj = PlayerMenu(8)
         option1 = part1.menusplayers()
         if(option1 == 1):
             part2 = PlayerMenu(2)
@@ -93,7 +93,7 @@ def Game(n):
             while(True):
                 if(option2 == 0):
                     print("se a seleccionado el ingreso")
-                    personalCoin += 1
+                    personalCoin += 7
                     ingresolog = [NAMES+" obtiene una moneda por ingreso"]
                     log.append(ingresolog)
                     ListPlayer.pop(0)
@@ -122,19 +122,26 @@ def Game(n):
                     personalCoin = CoinList[0]
                     break
                 elif(option2 == 2 or personalCoin >= 10):
-                    print("se a seleccionado el golpe")
+                    print("se a seleccionado el golpe\n")
                     x = 0
+                    if(personalCoin < 7):
+                        print("no tienes las monedas suficientes para hacer esta accion")
+                        break
                     personalCoin -= 7
-                    if(n == 3):
-                        while(x<2):
-                            print(x,ListPlayer[x])
-                            x += 1
-                    if(n == 4):
-                        while(x<3):
-                            print(x,ListPlayer[x])
-                            x += 1
+                    obj.objetive(n,ListPlayer,PersonalDeck)
+                    print("")
                     elecction = int(input("escoja la victima del golpe: "))
-                    print(PersonalDeck)
+                    ingresolog = [NAMES+", a golpeado a, "+ListPlayer[elecction]]
+                    log.append(ingresolog)
+                    ListPlayer.pop(0)
+                    ListPlayer.append(NAMES)
+                    PersonalDeck.pop(0)
+                    PersonalDeck.append(SuperHand)
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
+                    NAMES = ListPlayer[0]
+                    SuperHand = PersonalDeck[0]
+                    personalCoin = CoinList[0]
                     break
                 elif(option2 == 3):
                     print("se a seleccionado el Impuestos")

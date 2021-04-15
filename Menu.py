@@ -64,6 +64,7 @@ class PlayerMenu:
 
             print(tabulate(descp, headers='firstrow'))
             return ""
+
         
     def playersMiniMenu(self, deck, player):
         if (self.options == 4):
@@ -80,4 +81,16 @@ class PlayerMenu:
             lista = deck
             minimenu = [["coins",coin],["cards",lista]]
             print(tabulate(minimenu,headers=HEADERS,tablefmt='grid'))
+            return ""
+    def objetive(self,n,OtherList,Otherdeck):
+        if(self.options == 8):
+            x = 0
+            L = []
+            while(x<n):
+                fila = [x,OtherList[x],Otherdeck[x]]
+                L.append(fila)
+                x += 1
+            L.pop(0)
+            for i in range(len(L)):
+                print(L[i])
             return ""

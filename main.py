@@ -119,13 +119,13 @@ def Game(n):
                     break
                 elif(option2 == 1):
                     print("se a seleccionado la ayuda extranjera")
-                    personalCoin += 2 #agregar contrataque (duke)
                     ingresolog = [NAMES+" obtiene 2 moneda por ayuda extranjera"]
                     log.append(ingresolog)
                     ListPlayer.pop(0)
                     ListPlayer.append(NAMES)
                     PersonalDeck.pop(0)
                     PersonalDeck.append(SuperHand)
+                    personalCoin += 2 #agregar contrataque (duke)
                     CoinList.pop(0)
                     CoinList.append(personalCoin)
                     NAMES = ListPlayer[0]
@@ -207,16 +207,21 @@ def Game(n):
                     personalCoin = CoinList[0]
                     break
                 elif(option2 == 5):
-                    #arreglar esto
+
                     print("se a seleccionado la Extorsión")
-                    personalCoin += 2
                     Captain = Steal("Capitan")
                     extor = True
                     CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)
                     print(CAPTAIN)
                     elecction = int(input("escoja la victima del robo: "))
                     victimPlayer = ListPlayer[elecction]
-                    victimCoins = CoinList[elecction]-2
+                    victimCoinss = CoinList[elecction]
+                    if (victimCoinss < 2):
+                        victimCoins = CoinList[elecction]-1
+                    elif(victimCoinss == 0):
+                        print("no puede robar a esta persona")
+                    else:
+                        victimCoins = CoinList[elecction]-2
                     CoinList.insert(elecction,victimCoins)
                     ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
                     log.append(ingresolog)
@@ -224,8 +229,13 @@ def Game(n):
                     ListPlayer.append(NAMES)
                     PersonalDeck.pop(0)
                     PersonalDeck.append(SuperHand)
-                    CoinList.pop(0)
+                    personalCoin += 2 
+                    print(personalCoin)
                     CoinList.append(personalCoin)
+                    CoinList.pop(0)
+                    print(CoinList)
+                    CoinList.pop(n-1)
+                    print(CoinList)
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]

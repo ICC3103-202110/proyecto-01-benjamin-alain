@@ -89,16 +89,12 @@ class Exchange(IEspecialAtack):
                 for u in range(len(l)):
                     print(u,l[u])        
                 r=int(input("Choose the number of the second card yo wanna pick: "))
-        
-    
     
     def counter(self, extorsion):
         if(extorsion == True):
             extorsion = False
         print("se bloquea la extorsion")
         return extorsion
-    
-        
-    
+
     def action(self):
         return "Exchange"

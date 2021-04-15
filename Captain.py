@@ -15,18 +15,26 @@ class Steal(IEspecialAtack):
         else:
             self.__name = "Captain"
     
-    def efect(self, playerlist, extortion):
+    def efect(self, playerlist,optionnum,CoinList,n):
         def ShowPlayers(playerlist):
             print("actual player in the game")
             for (i, _) in enumerate(playerlist):
                 print(i+1,") nombre: ",playerlist[i].name,"| card: ",playerlist[i].cards)
-        ShowPlayers(playerlist)
-        if(extortion == True):
-            y = int(input("seleccione al jugador que quiera quitar monedas"))
-            return y
-        else:
-            y = "se ha bloqueado la extorsion"
-            return y
+        def objetives(playerlist,CoinList,n):
+            x = 0
+            L = []
+            while(x<n):
+                fila = [str(x)+". Jugador: "+playerlist[x]+"| monedas: "+str(CoinList[x])]
+                L.append(fila)
+                x += 1
+            L.pop(0)
+            for i in range(len(L)):
+                print(L[i])          
+        if (optionnum == 0):
+            ShowPlayers(playerlist)
+        elif(optionnum == 1):
+            objetives(playerlist,CoinList,n)
+        return ""
     
     def counter(self, extortion):
         if(extortion == True):

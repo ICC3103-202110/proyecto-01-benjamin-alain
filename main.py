@@ -58,10 +58,11 @@ def Game(n):
             JAND4.append(handplayer4[0][i].name)
     if(n == 3):
         for i in range(len(handplayer3[1])):
-            deck_list.append(handplayer3[1][i].name)
+            deck_list.append(handplayer3[1][i].name) #son las cartas del mazo
     elif(n == 4):
         for i in range(len(handplayer4[1])):
             deck_list.append(handplayer4[1][i].name)
+
     ALLDeck.append(JAND1)
     ALLDeck.append(JAND2)
     ALLDeck.append(JAND3)
@@ -80,6 +81,7 @@ def Game(n):
     LOG = []
     log = []
     while(True):
+        print(deck_list)
         NAMES = ListPlayer[0]
         SuperHand = PersonalDeck[0]
         personalCoin = CoinList[0]
@@ -105,6 +107,7 @@ def Game(n):
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
+                    print()
                     break
                 elif(option2 == 1):
                     print("se a seleccionado la ayuda extranjera")
@@ -123,7 +126,6 @@ def Game(n):
                     break
                 elif(option2 == 2 or personalCoin >= 10):
                     print("se a seleccionado el golpe\n")
-                    x = 0
                     if(personalCoin < 7):
                         print("no tienes las monedas suficientes para hacer esta accion")
                         break
@@ -166,8 +168,45 @@ def Game(n):
                     break
                 elif(option2 == 5):
                     print("se a seleccionado la Extorsión")
+                    personalCoin += 2
+                    Captain = Steal("Capitan")
+                    extor = True
+                    CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)
+                    print(CAPTAIN)
+                    elecction = int(input("escoja la victima del robo: "))
+                    victimPlayer = ListPlayer[elecction]
+                    victimCoins = CoinList[elecction]
+                    ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
+                    log.append(ingresolog)
+                    ListPlayer.pop(0)
+                    ListPlayer.append(NAMES)
+                    PersonalDeck.pop(0)
+                    PersonalDeck.append(SuperHand)
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
+                    NAMES = ListPlayer[0]
+                    SuperHand = PersonalDeck[0]
+                    personalCoin = CoinList[0]
+                    shuffle(deck_list)
+                    break
+                    
                 elif(option2 == 6):
                     print("se a seleccionado el Cambio")
+                    Ambassador = Exchange("Emabajador")
+                    AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
+                    ingresolog = [NAMES + " utiliza la accion "+Ambassador.action()+" cambiando cartas"]
+                    log.append(ingresolog)
+                    ListPlayer.pop(0)
+                    ListPlayer.append(NAMES)
+                    PersonalDeck.pop(0)
+                    PersonalDeck.append(SuperHand)
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
+                    NAMES = ListPlayer[0]
+                    SuperHand = PersonalDeck[0]
+                    personalCoin = CoinList[0]
+                    shuffle(deck_list)
+                    break
                 elif(option2 == 7):
                     print("volviendo al menu anterior")
                     break
@@ -190,6 +229,7 @@ def Game(n):
                 print(q.secondMiniMenu(incognita,ListPlayer[2],CoinList[2]))
                 if(n == 4):
                     print(q.secondMiniMenu(incognita,ListPlayer[3],CoinList[3]))
+                print("cantidad de cartas en el mazo ",len(deck_list))
                 while(True):
                     print("presione cualquier tecla para volver")
                     x = input()

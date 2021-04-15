@@ -15,18 +15,18 @@ class murder(IEspecialAtack):
         else:
             self.__name = "ASSASIN"
     
-    def efect(self, playerlist):
-        def ShowPlayers(playerlist):
-            print("actual player in the game")
-            for (i, _) in enumerate(playerlist):
-                print(i+1,") nombre: ",playerlist[i].name,"| card: ",playerlist[i].cards)
-        ShowPlayers(playerlist)
-        '''
-        x = int(input('Who do you want to select?: '))
-        playerlist[x].HandDeck.pop(0)
-        Assesination = True
-        '''
-        return int(input('Who do you want to select?: '))
+    def efect(self, playerlist,CoinList, cards,n):
+        L = []
+        x = 0
+        while(x<n):
+            fila = [str(x)+". Jugador: "+playerlist[x]+"| monedas: "+str(CoinList[x])+"| cartas"+str(cards[x])]
+            L.append(fila)
+            x += 1
+        L.pop(0)
+        for i in range(len(L)):
+            print(L[i]) 
+        return ""
+        
     def counter(self):
         pass
     '''

@@ -1,4 +1,5 @@
 from IEespecial import IEspecialAtack
+from random import shuffle,random
 
 class Exchange(IEspecialAtack):
 
@@ -37,7 +38,9 @@ class Exchange(IEspecialAtack):
                 for i in range (len(l)):
                     print(i,l[i])  
                 t=int(input("Choose the number of the card yo wanna pick: "))  
-
+                
+            shuffle(Deck)
+        
 
         if len(Card) == 2:       
             l.append(Card[0])
@@ -56,31 +59,31 @@ class Exchange(IEspecialAtack):
                 l.remove(Card[t])
             elif t == 2:
                 Card[0]=l[2]
-                l.remove(Deck[t])
+                l.remove(Deck[t-2])
             elif t == 3:
                 Card[0]=l[3]
-                l.remove(Deck[t])
+                l.remove(Deck[t-2])
             else:
                 print("This number is not allowed, TRY AGAIN")
                 print("\n")
                 for i in range (len(l)):
                     print(i,l[i])  
                 t=int(input("Choose the number of the first card yo wanna pick: ")) 
-            
-            
+    
+    
             for u in range(len(l)):
                 print(u,l[u])       
             r=int(input("Choose the number of the second card yo wanna pick: "))
 
             if r == 0:
                 Card[1]=l[0]
-                l.remove(Card[t])
+                
             elif r == 1:
                 Card[1]=l[1]
-                l.remove(Card[t])
+                
             elif r == 2:
                 Card[1]=l[2]
-                l.remove(Deck[t])
+        
 
             else:
                 print("This number is not allowed, TRY AGAIN")
@@ -89,6 +92,12 @@ class Exchange(IEspecialAtack):
                 for u in range(len(l)):
                     print(u,l[u])        
                 r=int(input("Choose the number of the second card yo wanna pick: "))
+        
+            
+            shuffle(Deck)   
+                 
+        print("Your new card(s) are: ", Card)
+        return Card
     
     def counter(self, extorsion):
         if(extorsion == True):

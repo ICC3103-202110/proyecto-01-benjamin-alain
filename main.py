@@ -25,6 +25,10 @@ def MoneyLess(coin,n):
     newcoins = coin-n
     return newcoins
 
+def remplazo(CardName):
+    unknow2 = ["??",CardName]
+    return unknow2
+
 def CreatePlayer1(n, hand):
     x = 1
     while (x<=n):
@@ -78,6 +82,11 @@ def Game(n):
     for i in range(len(List)):
         ListPlayer.append(List[i].name)
         CoinList.append(List[i].coins)
+    unknow = []
+    print(PersonalDeck)
+    for i in range(len(PersonalDeck)):
+        unknow.append(incognita)
+    print(unknow)
     LOG = []
     log = []
     while(True):
@@ -124,6 +133,7 @@ def Game(n):
                     personalCoin = CoinList[0]
                     break
                 elif(option2 == 2 or personalCoin >= 10):
+                    #terminar esto
                     print("se a seleccionado el golpe\n")
                     if(personalCoin < 7):
                         print("no tienes las monedas suficientes para hacer esta accion")
@@ -163,9 +173,41 @@ def Game(n):
                     break
                 elif(option2 == 4):
                     print("se a seleccionado el Asesinato")
-                    personalCoin -= 3
+                    personalCoin -= 3 
+                    print(personalCoin)
+                    Assassin = murder("Asesino")
+                    ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n)  
+                    elecction = int(input("escoja la victima del asesinato: "))
+                    print(elecction)    
+                    MurderVictim = ListPlayer[elecction]
+                    print(MurderVictim)
+                    print("solo puede mirar "+MurderVictim)
+                    for i in range(len(PersonalDeck[elecction])):
+                        print(i,PersonalDeck[elecction][i])
+                    victimelection = int(input("jugador, "+MurderVictim+ " elija su carta "))     
+                    Over = (PersonalDeck[elecction][victimelection])
+                    print(Over)
+                    print(remplazo(Over))
+                    unknow.pop(elecction)
+                    print(unknow)
+                    unknow.insert(elecction,(remplazo(Over)))
+                    print(unknow)
+                    PersonalDeck.pop(elecction)
+                    #PersonalDeck.insert(elecction,remplazo(Over))
+                    ingresolog = [NAMES+ ", utiliza la accion "+Assassin.action()+" contra "+MurderVictim]
+                    log.append(ingresolog)
+                    ListPlayer.pop(0)
+                    ListPlayer.append(NAMES)
+                    PersonalDeck.pop(0)
+                    PersonalDeck.append(SuperHand)
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
+                    NAMES = ListPlayer[0]
+                    SuperHand = PersonalDeck[0]
+                    personalCoin = CoinList[0]
                     break
                 elif(option2 == 5):
+                    #arreglar esto
                     print("se a seleccionado la Extorsión")
                     personalCoin += 2
                     Captain = Steal("Capitan")
@@ -206,6 +248,7 @@ def Game(n):
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
                     shuffle(deck_list)
+                    shuffle(deck_list)
                     break
                 elif(option2 == 7):
                     print("volviendo al menu anterior")
@@ -225,10 +268,10 @@ def Game(n):
             print(NAMES)
             if(ListPlayer[0] == NAMES):
                 print(q.secondMiniMenu(SuperHand,NAMES,personalCoin))
-                print(q.secondMiniMenu(incognita,ListPlayer[1],CoinList[1]))
-                print(q.secondMiniMenu(incognita,ListPlayer[2],CoinList[2]))
+                print(q.secondMiniMenu(unknow[1],ListPlayer[1],CoinList[1]))
+                print(q.secondMiniMenu(unknow[2],ListPlayer[2],CoinList[2]))
                 if(n == 4):
-                    print(q.secondMiniMenu(incognita,ListPlayer[3],CoinList[3]))
+                    print(q.secondMiniMenu(unknow[3],ListPlayer[3],CoinList[3]))
                 print("cantidad de cartas en el mazo ",len(deck_list))
                 while(True):
                     print("presione cualquier tecla para volver")

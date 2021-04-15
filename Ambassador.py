@@ -50,16 +50,16 @@ class Exchange(IEspecialAtack):
 
             if t == 0:
                 Card[0]=l[0]
-                l.remove(Card[0])
+                l.remove(Card[t])
             elif t == 1:
                 Card[0]=l[1]
-                l.remove(Card[1])
+                l.remove(Card[t])
             elif t == 2:
                 Card[0]=l[2]
-                l.remove(Deck[0])
+                l.remove(Deck[t])
             elif t == 3:
                 Card[0]=l[3]
-                l.remove(Deck[1])
+                l.remove(Deck[t])
             else:
                 print("This number is not allowed, TRY AGAIN")
                 print("\n")
@@ -74,13 +74,13 @@ class Exchange(IEspecialAtack):
 
             if r == 0:
                 Card[1]=l[0]
-                l.remove(Card[0])
+                l.remove(Card[t])
             elif r == 1:
                 Card[1]=l[1]
-                l.remove(Card[1])
+                l.remove(Card[t])
             elif r == 2:
                 Card[1]=l[2]
-                l.remove(Deck[0])
+                l.remove(Deck[t])
 
             else:
                 print("This number is not allowed, TRY AGAIN")

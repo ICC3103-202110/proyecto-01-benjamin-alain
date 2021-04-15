@@ -81,7 +81,6 @@ def Game(n):
     LOG = []
     log = []
     while(True):
-        print(deck_list)
         NAMES = ListPlayer[0]
         SuperHand = PersonalDeck[0]
         personalCoin = CoinList[0]
@@ -95,7 +94,7 @@ def Game(n):
             while(True):
                 if(option2 == 0):
                     print("se a seleccionado el ingreso")
-                    personalCoin += 7
+                    personalCoin += 1
                     ingresolog = [NAMES+" obtiene una moneda por ingreso"]
                     log.append(ingresolog)
                     ListPlayer.pop(0)
@@ -175,7 +174,8 @@ def Game(n):
                     print(CAPTAIN)
                     elecction = int(input("escoja la victima del robo: "))
                     victimPlayer = ListPlayer[elecction]
-                    victimCoins = CoinList[elecction]
+                    victimCoins = CoinList[elecction]-2
+                    CoinList.insert(elecction,victimCoins)
                     ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
                     log.append(ingresolog)
                     ListPlayer.pop(0)

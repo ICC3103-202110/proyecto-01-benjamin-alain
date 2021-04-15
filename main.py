@@ -63,14 +63,11 @@ def Game(n):
     elif(n == 4):
         for i in range(len(handplayer4[1])):
             deck_list.append(handplayer4[1][i].name)
-
-
     ALLDeck.append(JAND1)
     ALLDeck.append(JAND2)
     ALLDeck.append(JAND3)
     if(n == 4):
         ALLDeck.append(JAND4)
-
     ALLDeck.append(incognita)
     List = CreatePlayer1(n,ALLDeck)  
     PersonalDeck = ALLDeck
@@ -81,6 +78,8 @@ def Game(n):
     for i in range(len(List)):
         ListPlayer.append(List[i].name)
         CoinList.append(List[i].coins)
+    LOG = []
+    log = []
     while(True):
         NAMES = ListPlayer[0]
         SuperHand = PersonalDeck[0]
@@ -94,14 +93,70 @@ def Game(n):
             while(True):
                 if(option2 == 0):
                     print("se a seleccionado el ingreso")
+                    personalCoin += 1
+                    ingresolog = [NAMES+" obtiene una moneda por ingreso"]
+                    log.append(ingresolog)
+                    ListPlayer.pop(0)
+                    ListPlayer.append(NAMES)
+                    PersonalDeck.pop(0)
+                    PersonalDeck.append(SuperHand)
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
+                    NAMES = ListPlayer[0]
+                    SuperHand = PersonalDeck[0]
+                    personalCoin = CoinList[0]
+                    break
                 elif(option2 == 1):
-                    print("se a seleccionado la ayuda externa")
-                elif(option2 == 2 ):
+                    print("se a seleccionado la ayuda extranjera")
+                    personalCoin += 2 #agregar contrataque (duke)
+                    ingresolog = [NAMES+" obtiene 2 moneda por ayuda extranjera"]
+                    log.append(ingresolog)
+                    ListPlayer.pop(0)
+                    ListPlayer.append(NAMES)
+                    PersonalDeck.pop(0)
+                    PersonalDeck.append(SuperHand)
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
+                    NAMES = ListPlayer[0]
+                    SuperHand = PersonalDeck[0]
+                    personalCoin = CoinList[0]
+                    break
+                elif(option2 == 2 or personalCoin >= 10):
                     print("se a seleccionado el golpe")
+                    x = 0
+                    personalCoin -= 7
+                    if(n == 3):
+                        while(x<2):
+                            print(x,ListPlayer[x])
+                            x += 1
+                    if(n == 4):
+                        while(x<3):
+                            print(x,ListPlayer[x])
+                            x += 1
+                    elecction = int(input("escoja la victima del golpe: "))
+                    print(PersonalDeck)
+                    break
                 elif(option2 == 3):
                     print("se a seleccionado el Impuestos")
+                    duke = Tax("Duke")
+                    DUKE = duke.efect(personalCoin)
+                    personalCoin = DUKE
+                    ingresolog = [NAMES +" utiliza la accion "+ duke.action() +" ganado 3 monedas"]
+                    log.append(ingresolog)
+                    ListPlayer.pop(0)
+                    ListPlayer.append(NAMES)
+                    PersonalDeck.pop(0)
+                    PersonalDeck.append(SuperHand)
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
+                    NAMES = ListPlayer[0]
+                    SuperHand = PersonalDeck[0]
+                    personalCoin = CoinList[0]
+                    break
                 elif(option2 == 4):
                     print("se a seleccionado el Asesinato")
+                    personalCoin -= 3
+                    break
                 elif(option2 == 5):
                     print("se a seleccionado la Extorsión")
                 elif(option2 == 6):
@@ -111,23 +166,27 @@ def Game(n):
                     break
                 else:
                     print("seleccione un numero valido")
-
         elif(option1 == 2):
-            pass
+                print("historial\n")
+                for history in range(len(log)):
+                    print(log[history])
+                while(True):
+                    print("presione cualquier tecla para volver")
+                    x = input()
+                    break
         elif(option1 == 3):
             q = PlayerMenu(7)
             print(NAMES)
             if(ListPlayer[0] == NAMES):
                 print(q.secondMiniMenu(SuperHand,NAMES,personalCoin))
-                ListPlayer.pop(0)
-                ListPlayer.append(NAMES)
-                PersonalDeck.pop(0)
-                PersonalDeck.append(SuperHand)
-                CoinList.pop(0)
-                CoinList.append(personalCoin)
-                NAMES = ListPlayer[0]
-                SuperHand = PersonalDeck[0]
-                personalCoin = CoinList[0]
+                print(q.secondMiniMenu(incognita,ListPlayer[1],CoinList[1]))
+                print(q.secondMiniMenu(incognita,ListPlayer[2],CoinList[2]))
+                if(n == 4):
+                    print(q.secondMiniMenu(incognita,ListPlayer[3],CoinList[3]))
+                while(True):
+                    print("presione cualquier tecla para volver")
+                    x = input()
+                    break
         elif(option1 == 4):
             descripcion = PlayerMenu(6).menusplayers()
             print(descripcion)
@@ -135,6 +194,7 @@ def Game(n):
                 print("0 para volver")
                 x == (input())
                 break
+            
         else:
             print("ingrese un numero valido")
 

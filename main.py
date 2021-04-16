@@ -159,10 +159,10 @@ def Game(n):
                             if(count == 3):
                                 break
                         print("el jugador "+ListPlayer[count]+" quiere contratacar")
-                        ingresolog = ["el jugador "+ListPlayer[count]+"contraataco al jugador: "+ NAMES+" perdiendo sus monedas"]
+                        ingresolog = ["el jugador "+ListPlayer[count]+" contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
                         log.append(ingresolog)
-                        ListPlayer.pop(0)
-                        ListPlayer.append(NAMES)
+                        #ListPlayer.pop(0)
+                        #ListPlayer.append(NAMES)
                         PersonalDeck.pop(0)
                         print("personalCoin",personalCoin)
                         PersonalDeck.append(SuperHand)
@@ -171,7 +171,7 @@ def Game(n):
                         print("personalCoin",personalCoin)
                         CoinList.pop(0)
                         print("Coinlist",CoinList)
-                        CoinList.append(personalCoin)
+                        CoinList.insert(0,personalCoin)
                         print("Coinlist",CoinList)
                         git = unknow[0]
                         unknow.pop(0)
@@ -180,6 +180,8 @@ def Game(n):
                         SuperHand = PersonalDeck[0]
                         personalCoin = CoinList[0]
                         break
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
                     ListPlayer.pop(0)
                     ListPlayer.append(NAMES)
                     PersonalDeck.pop(0)
@@ -297,7 +299,7 @@ def Game(n):
                     print(PersonalDeck)
                     break
                 elif(option2 == 5):
-                    print("se a seleccionado la ExtorsiÃ³n")
+                    print("se a seleccionado la Extorsion")
                     Captain = Steal("Capitan")
                     extor = True
                     CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)

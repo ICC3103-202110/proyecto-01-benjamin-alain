@@ -66,12 +66,12 @@ def Game(n):
     elif(n == 4):
         for i in range(len(handplayer4[1])):
             deck_list.append(handplayer4[1][i].name)
-
     ALLDeck.append(JAND1)
     ALLDeck.append(JAND2)
     ALLDeck.append(JAND3)
     if(n == 4):
         ALLDeck.append(JAND4)
+    print(ALLDeck)
     ALLDeck.append(incognita)
     List = CreatePlayer1(n,ALLDeck)  
     PersonalDeck = ALLDeck
@@ -113,6 +113,9 @@ def Game(n):
                     PersonalDeck.append(SuperHand)
                     CoinList.pop(0)
                     CoinList.append(personalCoin)
+                    git = unknow[0]
+                    unknow.pop(0)
+                    unknow.append(git)
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
@@ -129,6 +132,9 @@ def Game(n):
                     personalCoin += 2 #agregar contrataque (duke)
                     CoinList.pop(0)
                     CoinList.append(personalCoin)
+                    git = unknow[0]
+                    unknow.pop(0)
+                    unknow.append(git)
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
@@ -139,21 +145,43 @@ def Game(n):
                     if(personalCoin < 7):
                         print("no tienes las monedas suficientes para hacer esta accion")
                         break
+                    respaldo = []
+                    print("se a seleccionado el Asesinato")
                     personalCoin -= 7
-                    obj.objetive(n,ListPlayer,PersonalDeck)
-                    print("")
-                    elecction = int(input("escoja la victima del golpe: "))
-                    ingresolog = [NAMES+", a golpeado a, "+ListPlayer[elecction]]
-                    log.append(ingresolog)
-                    ListPlayer.pop(0)
-                    ListPlayer.append(NAMES)
-                    PersonalDeck.pop(0)
-                    PersonalDeck.append(SuperHand)
+                    #print(personalCoin)
+                    Assassin = murder("Asesino")
                     CoinList.pop(0)
                     CoinList.append(personalCoin)
-                    NAMES = ListPlayer[0]
-                    SuperHand = PersonalDeck[0]
-                    personalCoin = CoinList[0]
+                    ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n)  
+                    elecction = int(input("escoja la victima del asesinato: "))
+                    #print(elecction)    
+                    MurderVictim = ListPlayer[elecction]
+                    ingresolog = [NAMES+"utilizo la accion Golpe contra "+MurderVictim]
+                    log.append(ingresolog)
+                    #print(MurderVictim)
+                    print("solo puede mirar "+MurderVictim)
+                    for i in range(len(PersonalDeck[elecction])):
+                        print(i,PersonalDeck[elecction][i])
+                        respaldo.append(PersonalDeck[elecction][i])
+                    victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar ")) 
+                    respaldo2 = respaldo[victimelection]    
+                    var = (remplazo(respaldo2))
+                    unknow.pop(elecction)
+                    print(unknow)
+                    unknow.insert(elecction,var)
+                    print(unknow)
+                    unknow.pop(0)
+                    print(unknow)
+                    unknow.append(remplazo("??"))
+                    print(unknow)
+                    ListPlayer.pop(0)
+                    print(ListPlayer)
+                    ListPlayer.append(NAMES)
+                    print(ListPlayer)
+                    PersonalDeck.pop(0)
+                    print(PersonalDeck)
+                    PersonalDeck.append(SuperHand)
+                    print(PersonalDeck)
                     break
                 elif(option2 == 3):
                     print("se a seleccionado el Impuestos")
@@ -168,44 +196,54 @@ def Game(n):
                     PersonalDeck.append(SuperHand)
                     CoinList.pop(0)
                     CoinList.append(personalCoin)
+                    git = unknow[0]
+                    unknow.pop(0)
+                    unknow.append(git)
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
                     break
                 elif(option2 == 4):
+                    respaldo = []
                     print("se a seleccionado el Asesinato")
+                    if(personalCoin < 3):
+                        print("no puede ejecutar esta accion")
+                        break
                     personalCoin -= 3 
-                    print(personalCoin)
+                    #print(personalCoin)
                     Assassin = murder("Asesino")
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
                     ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n)  
                     elecction = int(input("escoja la victima del asesinato: "))
-                    print(elecction)    
+                    #print(elecction)    
                     MurderVictim = ListPlayer[elecction]
-                    print(MurderVictim)
+                    ingresolog = [NAMES+"utilizo la accion"+Assassin.action()+"contra "+MurderVictim]
+                    log.append(ingresolog)
+                    #print(MurderVictim)
                     print("solo puede mirar "+MurderVictim)
                     for i in range(len(PersonalDeck[elecction])):
                         print(i,PersonalDeck[elecction][i])
-                    victimelection = int(input("jugador, "+MurderVictim+ " elija su carta "))     
-                    Over = (PersonalDeck[elecction][victimelection])
-                    print(Over)
-                    print(remplazo(Over))
+                        respaldo.append(PersonalDeck[elecction][i])
+                    victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar ")) 
+                    respaldo2 = respaldo[victimelection]    
+                    var = (remplazo(respaldo2))
                     unknow.pop(elecction)
                     print(unknow)
-                    unknow.insert(elecction,(remplazo(Over)))
+                    unknow.insert(elecction,var)
                     print(unknow)
-                    PersonalDeck.pop(elecction)
-                    #PersonalDeck.insert(elecction,remplazo(Over))
-                    ingresolog = [NAMES+ ", utiliza la accion "+Assassin.action()+" contra "+MurderVictim]
-                    log.append(ingresolog)
+                    unknow.pop(0)
+                    print(unknow)
+                    unknow.append(remplazo("??"))
+                    print(unknow)
                     ListPlayer.pop(0)
+                    print(ListPlayer)
                     ListPlayer.append(NAMES)
+                    print(ListPlayer)
                     PersonalDeck.pop(0)
+                    print(PersonalDeck)
                     PersonalDeck.append(SuperHand)
-                    CoinList.pop(0)
-                    CoinList.append(personalCoin)
-                    NAMES = ListPlayer[0]
-                    SuperHand = PersonalDeck[0]
-                    personalCoin = CoinList[0]
+                    print(PersonalDeck)
                     break
                 elif(option2 == 5):
                     print("se a seleccionado la Extorsión")
@@ -220,6 +258,7 @@ def Game(n):
                         victimCoins = CoinList[elecction]-1
                     elif(victimCoinss == 0):
                         print("no puede robar a esta persona")
+                        break
                     else:
                         victimCoins = CoinList[elecction]-2
                     ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
@@ -239,6 +278,9 @@ def Game(n):
                     #print(CoinList)
                     CoinList.pop(elecction)
                     #print(CoinList)
+                    git = unknow[0]
+                    unknow.pop(0)
+                    unknow.append(git)
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
@@ -257,6 +299,9 @@ def Game(n):
                     PersonalDeck.append(SuperHand)
                     CoinList.pop(0)
                     CoinList.append(personalCoin)
+                    git = unknow[0]
+                    unknow.pop(0)
+                    unknow.append(git)
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]

@@ -152,11 +152,13 @@ def Game(n):
                             print(4,"nadie quiere contraatacar: ")
                             count = int(input("que jugador desea contratacar: "))
                             if(count == 4):
+                                print("aqui")
                                 break
                         else:
                             print(3,"nadie quiere contraatacar: ")
                             count = int(input("que jugador desea contratacar: "))
                             if(count == 3):
+                                print("aqui")
                                 break
                         print("el jugador "+ListPlayer[count]+" quiere contratacar")
                         ingresolog = ["el jugador "+ListPlayer[count]+" contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
@@ -299,12 +301,68 @@ def Game(n):
                     print(PersonalDeck)
                     break
                 elif(option2 == 5):
+                    counters = False
                     print("se a seleccionado la Extorsion")
                     Captain = Steal("Capitan")
                     extor = True
                     CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)
                     print(CAPTAIN)
                     elecction = int(input("escoja la victima del robo: "))
+                    print("pero antes quien desea contraatacar?: ")
+                    while(True):
+                        print(1,ListPlayer[1])
+                        print(2,ListPlayer[2])
+                        if(n == 4):
+                            print(3,ListPlayer[3])
+                            print(4,"nadie quiere contraatacar: ")
+                            count = int(input("que jugador desea contratacar: "))
+                            if(count == 4):
+                                print("aqui")
+                                break
+                        else:
+                            print(3,"nadie quiere contraatacar: ")
+                            count = int(input("que jugador desea contratacar: "))
+                            if(count == 3):
+                                print("aqui")
+                                break
+                        counters = True
+                        print("el jugador "+ListPlayer[count]+" quiere contratacar")
+                        ingresolog = ["el jugador "+ListPlayer[count]+" contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
+                        log.append(ingresolog)
+                        #ListPlayer.pop(0)
+                        #ListPlayer.append(NAMES)
+                        PersonalDeck.pop(0)
+                        #print("personalCoin",personalCoin)
+                        PersonalDeck.append(SuperHand)
+                        #print(PersonalDeck)
+                        personalCoin += 0 
+                        #print("personalCoin",personalCoin)
+                        CoinList.pop(0)
+                        #print("Coinlist",CoinList)
+                        CoinList.insert(0,personalCoin)
+                        #print("Coinlist",CoinList)
+                        git = unknow[0]
+                        unknow.pop(0)
+                        unknow.append(git)
+                        NAMES = ListPlayer[0]
+                        SuperHand = PersonalDeck[0]
+                        personalCoin = CoinList[0]
+                        break
+                    if(counters == True):
+                        #print("funciona mierda")
+                        CoinList.pop(0)
+                        CoinList.append(personalCoin)
+                        ListPlayer.pop(0)
+                        ListPlayer.append(NAMES)
+                        PersonalDeck.pop(0)
+                        PersonalDeck.append(SuperHand)
+                        git = unknow[0]
+                        unknow.pop(0)
+                        unknow.append(git)
+                        NAMES = ListPlayer[0]
+                        SuperHand = PersonalDeck[0]
+                        personalCoin = CoinList[0]
+                        break
                     victimPlayer = ListPlayer[elecction]
                     victimCoinss = CoinList[elecction]
                     if (victimCoinss < 2):
@@ -322,15 +380,15 @@ def Game(n):
                     PersonalDeck.append(SuperHand)
                     personalCoin += 2 
                     #print(victimCoins)
-                    #print(CoinList)
+                    print(CoinList)
                     CoinList.insert(elecction,victimCoins)
-                    #print(CoinList)
+                    print(CoinList)
                     CoinList.pop(0)
-                    #print(CoinList)
+                    print(CoinList)
                     CoinList.append(personalCoin)
-                    #print(CoinList)
+                    print(CoinList)
                     CoinList.pop(elecction)
-                    #print(CoinList)
+                    print(CoinList)
                     git = unknow[0]
                     unknow.pop(0)
                     unknow.append(git)

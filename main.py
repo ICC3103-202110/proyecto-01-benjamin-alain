@@ -8,6 +8,7 @@ from Ambassador import Exchange
 from Menu import PlayerMenu
 from random import shuffle
 from Deck import Deck_cards
+from Extra import Ex
 
 playerlist = []
 deck = []
@@ -28,6 +29,13 @@ def MoneyLess(coin,n):
 def remplazo(CardName):
     unknow2 = ["??",CardName]
     return unknow2
+
+'''
+def remplazo(CardName,NameCard): # seria poner el NameCard como ?? y cuanto 
+    unknow2 = [NameCard,CardName]
+    return unknow2
+
+'''
 
 def CreatePlayer1(n, hand):
     x = 1
@@ -71,14 +79,8 @@ def Game(n):
     ALLDeck.append(JAND3)
     if(n == 4):
         ALLDeck.append(JAND4)
-    print(ALLDeck)
-    ALLDeck.append(incognita)
     List = CreatePlayer1(n,ALLDeck)  
     PersonalDeck = ALLDeck
-    if (n == 3):
-        PersonalDeck.pop(3)
-    if(n == 4):
-        PersonalDeck.pop(4)
     for i in range(len(List)):
         ListPlayer.append(List[i].name)
         CoinList.append(List[i].coins)
@@ -89,10 +91,26 @@ def Game(n):
     #print(unknow)
     LOG = []
     log = []
+    GlobalList3 = []
+    GlobalList4 = []
+    turns = 0
+    GlobalTurns = 0
+    GlobalList3.append(ListPlayer)
+    GlobalList3.append(PersonalDeck)
+    GlobalList3.append(CoinList)
+    log.append("turno numero: "+str(turns))
     while(True):
+        GlobalList = []
+        GlobalList.append(ListPlayer)
+        GlobalList.append(PersonalDeck)
+        GlobalList.append(CoinList)
+        print(GlobalList[0][0])
         NAMES = ListPlayer[0]
+        #print(ListPlayer)
         SuperHand = PersonalDeck[0]
+        #print(PersonalDeck)
         personalCoin = CoinList[0]
+        #print(CoinList)
         print("\n")
         print("le toca a:  ", NAMES)
         part1 = PlayerMenu(1)
@@ -125,13 +143,47 @@ def Game(n):
                     print("se a seleccionado la ayuda extranjera")
                     ingresolog = [NAMES+" obtiene 2 moneda por ayuda extranjera"]
                     log.append(ingresolog)
+                    personalCoin += 2
+                    while(True):
+                        print(1,ListPlayer[1])
+                        print(2,ListPlayer[2])
+                        if(n == 4):
+                            print(3,ListPlayer[3])
+                            print(4,"nadie quiere contraatacar: ")
+                            count = int(input("que jugador desea contratacar: "))
+                            if(count == 4):
+                                break
+                        else:
+                            print(3,"nadie quiere contraatacar: ")
+                            count = int(input("que jugador desea contratacar: "))
+                            if(count == 3):
+                                break
+                        print("el jugador "+ListPlayer[count]+" quiere contratacar")
+                        ingresolog = ["el jugador "+ListPlayer[count]+"contraataco al jugador: "+ NAMES+" perdiendo sus monedas"]
+                        log.append(ingresolog)
+                        ListPlayer.pop(0)
+                        ListPlayer.append(NAMES)
+                        PersonalDeck.pop(0)
+                        print("personalCoin",personalCoin)
+                        PersonalDeck.append(SuperHand)
+                        print(PersonalDeck)
+                        personalCoin = personalCoin-2 
+                        print("personalCoin",personalCoin)
+                        CoinList.pop(0)
+                        print("Coinlist",CoinList)
+                        CoinList.append(personalCoin)
+                        print("Coinlist",CoinList)
+                        git = unknow[0]
+                        unknow.pop(0)
+                        unknow.append(git)
+                        NAMES = ListPlayer[0]
+                        SuperHand = PersonalDeck[0]
+                        personalCoin = CoinList[0]
+                        break
                     ListPlayer.pop(0)
                     ListPlayer.append(NAMES)
                     PersonalDeck.pop(0)
                     PersonalDeck.append(SuperHand)
-                    personalCoin += 2 #agregar contrataque (duke)
-                    CoinList.pop(0)
-                    CoinList.append(personalCoin)
                     git = unknow[0]
                     unknow.pop(0)
                     unknow.append(git)
@@ -146,7 +198,6 @@ def Game(n):
                         print("no tienes las monedas suficientes para hacer esta accion")
                         break
                     respaldo = []
-                    print("se a seleccionado el Asesinato")
                     personalCoin -= 7
                     #print(personalCoin)
                     Assassin = murder("Asesino")
@@ -207,14 +258,14 @@ def Game(n):
                     respaldo = []
                     print("se a seleccionado el Asesinato")
                     if(personalCoin < 3):
-                        print("no puede ejecutar esta accion")
+                        print("no tienes monedas suficiente para ejecutar esta accion")
                         break
                     personalCoin -= 3 
                     #print(personalCoin)
                     Assassin = murder("Asesino")
+                    ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n)  
                     CoinList.pop(0)
                     CoinList.append(personalCoin)
-                    ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n)  
                     elecction = int(input("escoja la victima del asesinato: "))
                     #print(elecction)    
                     MurderVictim = ListPlayer[elecction]
@@ -246,7 +297,7 @@ def Game(n):
                     print(PersonalDeck)
                     break
                 elif(option2 == 5):
-                    print("se a seleccionado la Extorsión")
+                    print("se a seleccionado la ExtorsiÃ³n")
                     Captain = Steal("Capitan")
                     extor = True
                     CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)
@@ -285,8 +336,7 @@ def Game(n):
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
                     shuffle(deck_list)
-                    break
-                    
+                    break                
                 elif(option2 == 6):
                     print("se a seleccionado el Cambio")
                     Ambassador = Exchange("Emabajador")
@@ -341,8 +391,7 @@ def Game(n):
             while(True):
                 print("0 para volver")
                 x == (input())
-                break
-            
+                break         
         else:
             print("ingrese un numero valido")
 
@@ -353,8 +402,6 @@ def Game(n):
         print(q.playersMiniMenu(JAND4,List[3]))
     '''
     #luego se selecciona a quien quitarle la influencia carta
-
-
 
 
 def main():

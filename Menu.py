@@ -48,7 +48,7 @@ class PlayerMenu:
             counteroptions = [["desafio"],["CONTRATAQUES"]]
             print((tabulate(counteroptions,headers=HEADERS,showindex=True,tablefmt='grid')))   
             r =  int(input("seleccione el numero de las opciones: "))
-            return r        
+            return ""        
         
         elif(self.options == 6):
             descp= [["Caracter","Action","Effect","Counteraction"],
@@ -93,4 +93,8 @@ class PlayerMenu:
             L.pop(0)
             for i in range(len(L)):
                 print(L[i])
+            return ""
+    def MiniMenu(self,gloval):
+        if(self.options == 9):
+            print(tabulate(gloval,tablefmt='grid'))
             return ""

@@ -32,6 +32,7 @@ def remplazo(CardName):
 def CreatePlayer1(n, hand):
     x = 1
     while (x<=n):
+        print("\n")
         name = input("your name: ")
         coin = 2
         card = hand[x-1]

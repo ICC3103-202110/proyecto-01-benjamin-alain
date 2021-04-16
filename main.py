@@ -32,7 +32,6 @@ def remplazo(CardName):
 def CreatePlayer1(n, hand):
     x = 1
     while (x<=n):
-        print("\n")
         name = input("your name: ")
         coin = 2
         card = hand[x-1]
@@ -84,16 +83,17 @@ def Game(n):
         ListPlayer.append(List[i].name)
         CoinList.append(List[i].coins)
     unknow = []
-    print(PersonalDeck)
+    #print(PersonalDeck)
     for i in range(len(PersonalDeck)):
         unknow.append(incognita)
-    print(unknow)
+    #print(unknow)
     LOG = []
     log = []
     while(True):
         NAMES = ListPlayer[0]
         SuperHand = PersonalDeck[0]
         personalCoin = CoinList[0]
+        print("\n")
         print("le toca a:  ", NAMES)
         part1 = PlayerMenu(1)
         obj = PlayerMenu(8)
@@ -208,7 +208,6 @@ def Game(n):
                     personalCoin = CoinList[0]
                     break
                 elif(option2 == 5):
-
                     print("se a seleccionado la Extorsión")
                     Captain = Steal("Capitan")
                     extor = True
@@ -223,7 +222,6 @@ def Game(n):
                         print("no puede robar a esta persona")
                     else:
                         victimCoins = CoinList[elecction]-2
-                    CoinList.insert(elecction,victimCoins)
                     ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
                     log.append(ingresolog)
                     ListPlayer.pop(0)
@@ -231,12 +229,16 @@ def Game(n):
                     PersonalDeck.pop(0)
                     PersonalDeck.append(SuperHand)
                     personalCoin += 2 
-                    print(personalCoin)
-                    CoinList.append(personalCoin)
+                    #print(victimCoins)
+                    #print(CoinList)
+                    CoinList.insert(elecction,victimCoins)
+                    #print(CoinList)
                     CoinList.pop(0)
-                    print(CoinList)
-                    CoinList.pop(n-1)
-                    print(CoinList)
+                    #print(CoinList)
+                    CoinList.append(personalCoin)
+                    #print(CoinList)
+                    CoinList.pop(elecction)
+                    #print(CoinList)
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]

@@ -37,10 +37,11 @@ class Steal(IEspecialAtack):
         return ""
     
     def counter(self, extortion):
+        Extortion = False
         if(extortion == False):
-            extortion = True
+            Extortion = True
             print("se bloquea la extorsion")
-            return extortion
+        return Extortion
     
     def action(self):
         return "steal"

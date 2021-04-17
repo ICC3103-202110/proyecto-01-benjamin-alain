@@ -26,7 +26,7 @@ class PlayerMenu:
             return x
         elif (self.options == 2):
             Headers = ["numero", "Acciones"]
-            playermenu = [["ingreso"],["ayuda externa"],["golpe"],
+            playermenu = [["ingreso"],["ayuda extranjera"],["golpe"],
                             ["Impuestos (duke)"],["Asesinato (asesino)"],
                             ["Extorsión (Capitán)"],["Cambio (Embajador)"],
                             ["volver"]]

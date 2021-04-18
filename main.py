@@ -99,9 +99,10 @@ def Game(n):
     GlobalList3.append(ListPlayer)
     GlobalList3.append(PersonalDeck)
     GlobalList3.append(CoinList)
-    log.append("turno numero: "+str(turns))
-    #TheGame = Ex("princiapl").principalGame(GlobalList3,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list)
-    #print(TheGame)
+    #log.append("turno numero: "+str(turns))
+    TheGame = Ex("princiapl").PrincipalGame(GlobalList3,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list)
+    print(TheGame)
+    '''
     while(True):
         GlobalList = []
         GlobalList.append(ListPlayer)
@@ -125,6 +126,7 @@ def Game(n):
             while(True):
                 if(option2 == 0):#listo
                     print("se a seleccionado el ingreso")
+                    print("\n")
                     personalCoin += 1
                     ingresolog = [NAMES+" obtiene una moneda por ingreso"]
                     log.append(ingresolog)
@@ -140,7 +142,6 @@ def Game(n):
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
-                    print()
                     break
                 elif(option2 == 1):#falta desfio del contraataque
                     print("se a seleccionado la ayuda extranjera")
@@ -152,13 +153,15 @@ def Game(n):
                         print(2,ListPlayer[2])
                         if(n == 4):
                             print(3,ListPlayer[3])
-                            print(4,"nadie quiere contraatacar: ")
-                            count = int(input("que jugador desea contratacar: "))
+                            print(4,"nadie quiere contraatacar ")
+                            print("\n")
+                            count = int(input("que jugador desea contratacar? "))
                             if(count == 4):
                                 break
                         else:
-                            print(3,"nadie quiere contraatacar: ")
-                            count = int(input("que jugador desea contratacar: "))
+                            print(3,"nadie quiere contraatacar ")
+                            print("\n")
+                            count = int(input("que jugador desea contratacar? "))
                             if(count == 3):
                                 break
                         print("el jugador "+ListPlayer[count]+" quiere contratacar")
@@ -250,19 +253,21 @@ def Game(n):
                     ingresolog = [NAMES +" utiliza la accion "+ duke.action() +" ganado 3 monedas"]
                     log.append(ingresolog)
                     #desafio
-                    print("quien quiere desafiar? ")
+                    print("quien quiere desafiar? :")
                     while(True):
-                        print(1,ListPlayer[1])
-                        print(2,ListPlayer[2])
+                        print(1,":",ListPlayer[1])
+                        print(2,":",ListPlayer[2])
                         if(n == 4):
-                            print(3,ListPlayer[3])
-                            print(4,"nadie quiere desafiar: ")
-                            count = int(input("que jugador desea desafiar: "))
+                            print(3,":",ListPlayer[3])
+                            print(4,":","nadie quiere desafiar ")
+                            print("\n")
+                            count = int(input("que jugador desea desafiar? : "))
                             if(count == 4):
                                 break
                         else:
-                            print(3,"nadie quiere desafiar: ")
-                            count = int(input("que jugador desea desafiar: "))
+                            print(3,":","nadie quiere desafiar ")
+                            print("\n")
+                            count = int(input("que jugador desea desafiar? : "))
                             if(count == 3):
                                 break
                         print("el jugador "+ListPlayer[count]+" quiere desafiar")
@@ -350,29 +355,33 @@ def Game(n):
                     CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)
                     print(CAPTAIN)
                     elecction = int(input("escoja la victima del robo: "))
-                    print("pero antes quien desea contraatacar?: ")
+                    print("pero antes quien desea contraatacar? : ")
                     while(True):
                         #contraataque
-                        print(1,ListPlayer[1])
-                        print(2,ListPlayer[2])
+                        print(1,":",ListPlayer[1])
+                        print(2,":",ListPlayer[2])
                         duelcount = 1
                         if(n == 4):
-                            print(3,ListPlayer[3])
-                            print(4,"nadie quiere contraatacar: ")
-                            count = int(input("que jugador desea contratacar: "))
+                            print(3,":",ListPlayer[3])
+                            print(4,": Nadie quiere contraatacar ")
+                            print("\n")
+                            count = int(input("que jugador desea contratacar? : "))
+                            print("\n")
                             if(count == 4): # nadie contraataca se pocede al desafio!!!!!!!!!!!!!!!
                                 while(True):
                                     print("quien desea desafiar ?")
-                                    print(1,ListPlayer[1])
-                                    print(2,ListPlayer[2])
-                                    print(3,ListPlayer[3])
-                                    print(4,"nadie quiere desafiar")
-                                    Challenge = int(input("que jugador desea desafiar?: "))  
+                                    print(1,":",ListPlayer[1])
+                                    print(2,":",ListPlayer[2])
+                                    print(3,":",ListPlayer[3])
+                                    print(4,":","nadie quiere desafiar")
+                                    print("\n")
+                                    Challenge = int(input("que jugador desea desafiar? : ")) 
+                                    print("\n") 
                                     #nadie de los 4 jugadores quiere desafiar
                                     if(Challenge == 4):
                                         duelcount = 5  
                                         break 
-                                    print("el jugador quiere desafiar")
+                                    print("el jugador " + ListPlayer[Challenge] + " quiere desafiar")
                                     #ingresolog = ["el jugador " + ListPlayer[Challenge] + "desafia al jugador: "+ NAMES+" manteniendo sus monedas"]
                                     #print(ingresolog)
                                     #log.append(ingresolog)
@@ -382,15 +391,19 @@ def Game(n):
                                     break
                                 
                         else:
-                            print(3,"nadie quiere contraatacar: ")
-                            count = int(input("que jugador desea contratacar: "))
+                            print(3,":","nadie quiere contraatacar ")
+                            print("\n")
+                            count = int(input("Que jugador desea contratacar? :"))
+                            print("\n")
                             if(count == 3):
                                 while(True):  #Nadie Contraataca, se procede a DESAFIAR !!!!!!!!!!!!!!!!
                                     print("quien desea desafiar ?")
-                                    print(1,ListPlayer[1])
-                                    print(2,ListPlayer[2])
-                                    print(3,"nadie quiere desafiar")
+                                    print(1,":",ListPlayer[1])
+                                    print(2,":",ListPlayer[2])
+                                    print(3,":","nadie quiere desafiar")
+                                    print("\n")
                                     Challenge = int(input("que jugador desea desafiar?: "))
+                                    print("\n")
                                     if (Challenge == 3):             #nadie de los 3 jugadores quiere desafiar
                                         duelcount = 5             
                                         break
@@ -409,7 +422,6 @@ def Game(n):
                             print("el jugador " + ListPlayer[elecction] + " quiere contratacar")
                             ingresolog = ["el jugador " + ListPlayer[elecction] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
                             print(ingresolog)
-                            print("SI HAY UN CONTRAATAQUE, se ejecuta aca")
                             print("quien desea desafiar ?")
                             print(ListPlayer[elecction])
                             print(1,ListPlayer[0])
@@ -448,7 +460,6 @@ def Game(n):
                                 counters = True
                             #print("el jugador " + ListPlayer[Challenge] + " quiere desafiar")
                             #print(ingresolog)
-                            print("SI HAY UN DESAFIO, se ejecuta aca")
                             PersonalDeck.pop(0)
                             PersonalDeck.append(SuperHand)
                             personalCoin += 0 
@@ -614,8 +625,10 @@ def Game(n):
                     print("seleccione un numero valido")
         elif(option1 == 2):#listo
                 print("historial\n")
-                for history in range(len(log)):
-                    print(log[history])
+                HISTORIAL = PlayerMenu(9).MiniMenu(log)
+                print(HISTORIAL)
+                #for history in range(len(log)):
+                    #print(log[history])
                 while(True):
                     print("presione cualquier tecla para volver")
                     x = input()
@@ -644,7 +657,7 @@ def Game(n):
         else:
             print("ingrese un numero valido")
 
-
+'''
 
 def main():
     #pruebas

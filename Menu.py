@@ -33,16 +33,6 @@ class PlayerMenu:
             print(tabulate(playermenu,headers=Headers,showindex=True,tablefmt='grid'))
             y = int(input("seleccione el numero: "))
             return y
-        elif(self.options == 3):
-            print("contrataques")
-            Headers = ["numero", "CONTRATAQUES"]
-            countermenu = [["Bloquear ayuda extranjera (Duque)"],
-                            ["Bloquear asesinato (Condesa)"],
-                            ["Bloquear extorsión (Embajador/Capitán)"]]
-
-            print((tabulate(countermenu,headers=Headers,showindex=True,tablefmt='grid')))
-            z = int(input("seleccione el numero del contraataque: "))
-            return z
         elif(self.options == 5):
             HEADERS = ["numero", "opcion"]
             counteroptions = [["desafio"],["CONTRATAQUES"]]

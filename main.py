@@ -123,7 +123,7 @@ def Game(n):
             part2 = PlayerMenu(2)
             option2 = part2.menusplayers()
             while(True):
-                if(option2 == 0):
+                if(option2 == 0):#listo
                     print("se a seleccionado el ingreso")
                     personalCoin += 1
                     ingresolog = [NAMES+" obtiene una moneda por ingreso"]
@@ -142,7 +142,7 @@ def Game(n):
                     personalCoin = CoinList[0]
                     print()
                     break
-                elif(option2 == 1):
+                elif(option2 == 1):#falta desfio del contraataque
                     print("se a seleccionado la ayuda extranjera")
                     ingresolog = [NAMES+" obtiene 2 moneda por ayuda extranjera"]
                     log.append(ingresolog)
@@ -241,7 +241,7 @@ def Game(n):
                     PersonalDeck.append(SuperHand)
                     print(PersonalDeck)
                     break
-                elif(option2 == 3):
+                elif(option2 == 3):#listo falta consecuencia
                     #seleccion
                     print("se a seleccionado el Impuestos")
                     duke = Tax("Duke")
@@ -338,7 +338,7 @@ def Game(n):
                     PersonalDeck.append(SuperHand)
                     print(PersonalDeck)
                     break
-                elif(option2 == 5):
+                elif(option2 == 5):#falta desafio del contraataque
                     #inicio
                     counters = False
                     duelcards = 0
@@ -410,6 +410,11 @@ def Game(n):
                             ingresolog = ["el jugador " + ListPlayer[elecction] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
                             print(ingresolog)
                             print("SI HAY UN CONTRAATAQUE, se ejecuta aca")
+                            print("quien desea desafiar ?")
+                            print(ListPlayer[elecction])
+                            print(1,ListPlayer[0])
+                            print(2,ListPlayer[2])
+                            print(3,"nadie quiere desafiar")
                             log.append(ingresolog)
                             PersonalDeck.pop(0)
                             PersonalDeck.append(SuperHand)
@@ -502,7 +507,7 @@ def Game(n):
                     personalCoin = CoinList[0]
                     shuffle(deck_list)
                     break
-                elif(option2 == 6):
+                elif(option2 == 6):#listo falta consecuencia
                     print("se a seleccionado el Cambio")
                     Ambassador = Exchange("Ambassador")
                     ingresolog = [NAMES + " utiliza la accion "+Ambassador.action()+" cambiando cartas"]
@@ -607,7 +612,7 @@ def Game(n):
                     break
                 else:
                     print("seleccione un numero valido")
-        elif(option1 == 2):
+        elif(option1 == 2):#listo
                 print("historial\n")
                 for history in range(len(log)):
                     print(log[history])
@@ -615,7 +620,7 @@ def Game(n):
                     print("presione cualquier tecla para volver")
                     x = input()
                     break
-        elif(option1 == 3):
+        elif(option1 == 3):#listo
             q = PlayerMenu(7)
             print(NAMES)
             if(ListPlayer[0] == NAMES):

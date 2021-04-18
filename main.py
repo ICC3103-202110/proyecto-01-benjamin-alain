@@ -368,20 +368,14 @@ def Game(n):
                                     print(3,ListPlayer[3])
                                     print(4,"nadie quiere desafiar")
                                     Challenge = int(input("que jugador desea desafiar?: "))  
-                                    '''
-                                    if (Challenge != 4):    #nadie de los 4 jugadores quiere desafiar
-                                        for i in range(len(SuperHand)):
-                                            if(superHand[i] == Captain.name):
-                                                duelcards += 1
-                                        if(duelcards >= 1):
-                                    '''
+                                    #nadie de los 4 jugadores quiere desafiar
                                     if(Challenge == 4):
                                         duelcount = 5  
                                         break 
                                     print("el jugador quiere desafiar")
-                                    ingresolog = ["el jugador " + ListPlayer[Challenge] + "desafia al jugador: "+ NAMES+" manteniendo sus monedas"]
-                                    print(ingresolog)
-                                    log.append(ingresolog)
+                                    #ingresolog = ["el jugador " + ListPlayer[Challenge] + "desafia al jugador: "+ NAMES+" manteniendo sus monedas"]
+                                    #print(ingresolog)
+                                    #log.append(ingresolog)
                                     duelcount = 0
                                     break
                                 if (duelcount == 5):
@@ -430,12 +424,26 @@ def Game(n):
                             personalCoin = CoinList[0]
                             break
                         if (duelcount == 0):  #SI HAY UN DESAFIO, se ejecuta aca
-                            counters = True
-                            #print("el jugador " + ListPlayer[Challenge] + " quiere desafiar")
+                            duelAmericanCap = 0
                             ingresolog = ["el jugador " + ListPlayer[Challenge] + " desafia al jugador: "+ NAMES+" manteniendo sus monedas"]
+                            log.append(ingresolog)
+                            for i in range(len(SuperHand)): # aqui se verifica la carta
+                                if (SuperHand[i] == Captain.name):
+                                    duelAmericanCap += 1
+                            if(duelAmericanCap >= 1):
+                                ingresolog = ["El jugador: "+NAMES+" Gano el desafio"]
+                                log.append(ingresolog)
+                                print(ingresolog)
+                                counters = False
+                            else:
+                                ingresolog = ["El jugador: "+NAMES+" Pierde el desafio, perdiendo una carta"]
+                                #si es que falla aqui se pierde la carta
+                                log.append(ingresolog)
+                                print(ingresolog)
+                                counters = True
+                            #print("el jugador " + ListPlayer[Challenge] + " quiere desafiar")
                             #print(ingresolog)
                             print("SI HAY UN DESAFIO, se ejecuta aca")
-                            log.append(ingresolog)
                             PersonalDeck.pop(0)
                             PersonalDeck.append(SuperHand)
                             personalCoin += 0 

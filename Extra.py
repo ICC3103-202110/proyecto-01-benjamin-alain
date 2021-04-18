@@ -8,6 +8,7 @@ from Ambassador import Exchange
 from Menu import PlayerMenu
 from random import shuffle
 from Deck import Deck_cards
+from Loser import CardLost
 class Ex:
 
     def __init__(self,algo):
@@ -27,6 +28,7 @@ class Ex:
         pt = 0
         FirstPlayer = ListPlayer[0]
         while(True):
+            
             GlobalList = []
             GlobalList.append(ListPlayer)
             GlobalList.append(PersonalDeck)
@@ -211,8 +213,13 @@ class Ex:
                             else:
                                 ingresolog = [NAMES + " pierde el desafio y pierde una carta"]
                                 print(ingresolog)
-                                log.append(ingresolog)          
-                                personalCoin -= 3                  
+                                log.append(ingresolog)
+                                print(unknow)
+                                lost = CardLost("lost")
+                                unknow = lost.DropCard(SuperHand,PersonalDeck,ListPlayer,unknow)
+                                print(unknow)          
+                                personalCoin -= 3   
+                                break               
                             break
                         #cambio
                         ListPlayer.pop(0)

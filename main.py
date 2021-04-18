@@ -9,6 +9,7 @@ from Menu import PlayerMenu
 from random import shuffle
 from Deck import Deck_cards
 from Extra import Ex
+from Loser import CardLost
 
 playerlist = []
 deck = []
@@ -87,8 +88,11 @@ def Game(n):
         CoinList.append(List[i].coins)
     unknow = []
     #print(PersonalDeck)
-    for i in range(len(PersonalDeck)):
-        unknow.append(incognita)
+    unknow.append(incognita)
+    unknow.append(incognita)
+    unknow.append(incognita) 
+    if(n == 4):
+        unknow.append(incognita)   
     #print(unknow)
     LOG = []
     log = []
@@ -102,6 +106,7 @@ def Game(n):
     #log.append("turno numero: "+str(turns))
     TheGame = Ex("princiapl").PrincipalGame(GlobalList3,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list)
     print(TheGame)
+
     '''
     while(True):
         GlobalList = []
@@ -663,6 +668,20 @@ def main():
     #pruebas
     print("Welcome to COUP!")
     print("\n")
+    
+    porsiaca = CardLost("hola")
+    L = ['condesa','capitan']
+    PD = [['condesa','capitan'],['asesino','duke'],['embajador','embajador']]
+    LP = ['a','b','c']
+    U = ['??','??']
+    U1 = [['??','??'],['??','??'],['??','??']]
+    u = []
+    u.append(U)
+    u.append(U)
+    u.append(U)
+    print(u)
+    print(porsiaca.DropCard(L,PD,LP,u))
+    
     Players_num = int(input("how many players are going to play?  "))
     while(True):
         if (Players_num < 3 or Players_num > 4):

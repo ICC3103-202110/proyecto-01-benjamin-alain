@@ -16,7 +16,7 @@ class Deck_cards:
         while(y<=3):
             starting_deck.append(Tax("Duke"))
             starting_deck.append(murder("Asesino"))
-            starting_deck.append(Steal("capitan"))
+            starting_deck.append(Steal("Capitan"))
             starting_deck.append(Block("Contessa"))
             starting_deck.append(Exchange("Ambassador"))
             y += 1

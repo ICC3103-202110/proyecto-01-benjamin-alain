@@ -9,6 +9,7 @@ from Menu import PlayerMenu
 from random import shuffle
 from Deck import Deck_cards
 from Loser import CardLost
+
 class Ex:
 
     def __init__(self,algo):
@@ -39,7 +40,7 @@ class Ex:
             #print(PersonalDeck)
             personalCoin = CoinList[0] # monedas del jugador
             #print(CoinList)
-            playerpoints = point[0]
+            playerpoints = point[0] # puntos del jugador
             print("\n")
             print("le toca a:  ", NAMES, '\nlas influencias que tiene son: ',playerpoints)
             part1 = PlayerMenu(1)
@@ -48,12 +49,15 @@ class Ex:
             if(option1 == 1):
                 part2 = PlayerMenu(2)
                 option2 = part2.menusplayers()
+                if(personalCoin >= 10):
+                    option2 = 2
+                    print('hagas lo que hagas tienes que elegir el golpe (COUP), por tener 10 monedas ')
                 while(True):
                     if(option2 == 0):#listo
                         print("se a seleccionado el ingreso")
                         PrincipalTurns += 1
                         print("\n")
-                        personalCoin += 1
+                        personalCoin += 10
                         ingresolog = [NAMES+" obtiene una moneda por ingreso"]
                         log.append(ingresolog)
                         ListPlayer.pop(0)
@@ -618,7 +622,7 @@ class Ex:
                     else:
                         print("seleccione un numero valido")
             elif(option1 == 2):#listo
-                    print("historial\n")
+                    print("log general\n")
                     HISTORIAL = PlayerMenu(9).MiniMenu(log)
                     print(HISTORIAL)
                     #for history in range(len(log)):

@@ -22,26 +22,26 @@ class Ex:
         self.__algo = value
     
         
-    def PrincipalGame(self,GlobalList,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list):
+    def PrincipalGame(self,GlobalList,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list,point):
         PrincipalTurns = 0
         PRINCIPALTIMES = []
         pt = 0
         FirstPlayer = ListPlayer[0]
         while(True):
-            
             GlobalList = []
             GlobalList.append(ListPlayer)
             GlobalList.append(PersonalDeck)
             GlobalList.append(CoinList)
             print(GlobalList[0][0])
-            NAMES = ListPlayer[0]
+            NAMES = ListPlayer[0] # nombre del jugador
             #print(ListPlayer)
-            SuperHand = PersonalDeck[0]
+            SuperHand = PersonalDeck[0] # mano del jugador(cartas que tiene)
             #print(PersonalDeck)
-            personalCoin = CoinList[0]
+            personalCoin = CoinList[0] # monedas del jugador
             #print(CoinList)
+            playerpoints = point[0]
             print("\n")
-            print("le toca a:  ", NAMES)
+            print("le toca a:  ", NAMES, '\nlas influencias que tiene son: ',playerpoints)
             part1 = PlayerMenu(1)
             obj = PlayerMenu(8)
             option1 = part1.menusplayers()
@@ -69,12 +69,13 @@ class Ex:
                         SuperHand = PersonalDeck[0]
                         personalCoin = CoinList[0]
                         break
-                    elif(option2 == 1):#falta desfio del contraataque
+                    elif(option2 == 1):#falta CONSECUENCIAS
                         print("se a seleccionado la ayuda extranjera")
                         PrincipalTurns += 1
                         ingresolog = [NAMES+" obtiene 2 moneda por ayuda extranjera"]
                         log.append(ingresolog)
                         personalCoin += 2
+                        print("QUIEN QUIERE CONTRAATACAR?: ")
                         while(True):
                             print(1,ListPlayer[1])
                             print(2,ListPlayer[2])
@@ -93,19 +94,47 @@ class Ex:
                                     break
                             print("el jugador "+ListPlayer[count]+" quiere contratacar")
                             ingresolog = ["el jugador "+ListPlayer[count]+" contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
+                            print('quien quiere desafiar?: ')
                             log.append(ingresolog)
+                            # desafio
+                            DuelList = []
+                            for duel in range(len(ListPlayer)):
+                                if(ListPlayer[duel] != ListPlayer[count]):
+                                    DuelList.append(ListPlayer[duel])
+                            for LIST in range(len(DuelList)):
+                                print(LIST,DuelList[LIST])
+                            print(LIST+1,'nadie quiere desafiar')
+                            CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
+                            if(CounterChallenge != LIST+1):
+                                DUKKE = Tax("Duke")
+                                ChallengeCounter = 0
+                                ingresolog = ['El jugador: '+DuelList[CounterChallenge]+' Desafio el contraataque de: '+ListPlayer[count]]
+                                print(ingresolog)
+                                log.append(ingresolog)
+                                for i in range(len(PersonalDeck[count])):
+                                    if(PersonalDeck[count][i] == DUKKE.name):
+                                        ChallengeCounter += 1
+                                if(ChallengeCounter >= 1):
+                                    ingresolog = ["El jugador: "+ListPlayer[count]+" Gano el desafio"]
+                                    log.append(ingresolog)
+                                    print(ingresolog)
+                                else:
+                                    ingresolog = ["El jugador: "+ListPlayer[count]+" Pierde el desafio, perdiendo una carta"]
+                                    #si es que falla aqui se pierde la carta
+                                    log.append(ingresolog)
+                                    print(ingresolog)
                             #ListPlayer.pop(0)
                             #ListPlayer.append(NAMES)
                             PersonalDeck.pop(0)
-                            print("personalCoin",personalCoin)
+                            #print("personalCoin",personalCoin)
                             PersonalDeck.append(SuperHand)
-                            print(PersonalDeck)
+                            #print(PersonalDeck)
                             personalCoin = personalCoin-2 
-                            print("personalCoin",personalCoin)
+                            #print("personalCoin",personalCoin)
                             CoinList.pop(0)
-                            print("Coinlist",CoinList)
+                            #print("Coinlist",CoinList)
                             CoinList.insert(0,personalCoin)
-                            print("Coinlist",CoinList)
+                            #print("Coinlist",CoinList)
                             git = unknow[0]
                             unknow.pop(0)
                             unknow.append(git)
@@ -126,7 +155,7 @@ class Ex:
                         SuperHand = PersonalDeck[0]
                         personalCoin = CoinList[0]
                         break
-                    elif(option2 == 2 or personalCoin >= 10):
+                    elif(option2 == 2 or personalCoin >= 10): #falta terminar esta parte
                         #terminar esto
                         print("se a seleccionado el golpe\n")
                         if(personalCoin < 7):
@@ -235,7 +264,7 @@ class Ex:
                         SuperHand = PersonalDeck[0]
                         personalCoin = CoinList[0]
                         break
-                    elif(option2 == 4):
+                    elif(option2 == 4):#falta terminar esta parte
                         respaldo = []
                         print("se a seleccionado el Asesinato")
                         if(personalCoin < 3):
@@ -278,7 +307,7 @@ class Ex:
                         PersonalDeck.append(SuperHand)
                         print(PersonalDeck)
                         break
-                    elif(option2 == 5):#falta desafio del contraataque
+                    elif(option2 == 5):#listo falta consecuencia 
                         #inicio
                         counters = False
                         duelcards = 0
@@ -356,31 +385,41 @@ class Ex:
                                 
                             if (duelcount == 1): #SI HAY UN CONTRAATAQUE, se ejecuta aca
                                 counters = True
-                                if(n == 3):
-                                    Reelection = ListPlayer[count]
-                                    print("el jugador " + ListPlayer[count] + " quiere contratacar")
-                                    ingresolog = ["el jugador " + ListPlayer[count] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
-                                    print(ingresolog)
-                                    log.append(ingresolog)
-                                if(n == 4):
-                                    Reelection = ListPlayer[count]
-                                    #print("el jugador " + ListPlayer[elecction] + " quiere contratacar")
-                                    ingresolog = ["el jugador " + ListPlayer[count] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
-                                    print(ingresolog)       
-                                    log.append(ingresolog)
+                                Reelection = ListPlayer[count]
+                                print("el jugador " + ListPlayer[count] + " quiere contratacar")
+                                ingresolog = ["el jugador " + ListPlayer[count] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
+                                print(ingresolog)
+                                log.append(ingresolog)
+                                # desafio del contraataque
                                 print("quien desea desafiar ?")
                                 countChallenge = []
                                 for contra in range(len(ListPlayer)):
-                                    if(ListPlayer[contra] != NAMES and ListPlayer[contra] != Reelection):
+                                    #no cuenta el jugador que uso la accion ojo
+                                    if(ListPlayer[contra] != Reelection):
                                         countChallenge.append(ListPlayer[contra]) 
                                 for i in range(len(countChallenge)):
                                     print(i,countChallenge[i])
                                 print(i+1,'nadie quiere desafiar')
                                 CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
                                 if(CounterChallenge != i+1):
+                                    Ambassator = Exchange("Ambassador")
+                                    ChallengeCounter = 0
                                     ingresolog = ['El jugador: '+countChallenge[CounterChallenge]+' Desafio el contraataque de: '+Reelection]
                                     print(ingresolog)
                                     log.append(ingresolog)
+                                    for i in range(len(PersonalDeck[count])):
+                                        if(PersonalDeck[count][i] == Captain.name or PersonalDeck[count][i] == Ambassator.name):
+                                            ChallengeCounter += 1
+                                    if(ChallengeCounter >= 1):
+                                        ingresolog = ["El jugador: "+Reelection+" Gano el desafio"]
+                                        log.append(ingresolog)
+                                        print(ingresolog)
+                                    else:
+                                        ingresolog = ["El jugador: "+Reelection+" Pierde el desafio, perdiendo una carta"]
+                                        #si es que falla aqui se pierde la carta
+                                        log.append(ingresolog)
+                                        print(ingresolog)
+                                ############################
                                 PersonalDeck.pop(0)
                                 PersonalDeck.append(SuperHand)
                                 personalCoin += 0 

@@ -44,13 +44,15 @@ def CreatePlayer1(n, hand):
         name = input("your name: ")
         coin = 2
         card = hand[x-1]
-        playerlist.append(gambler(name,coin,card))
+        point = 2
+        playerlist.append(gambler(name,coin,card,point))
         x += 1
     return playerlist
 
 
 def Game(n):
-    l=[]
+    l = []
+    pointplayer = []
     ListPlayer = []
     deck_list=[]
     PersonalDeck = []
@@ -82,6 +84,9 @@ def Game(n):
     if(n == 4):
         ALLDeck.append(JAND4)
     List = CreatePlayer1(n,ALLDeck)  
+    
+    for i in range(len(List)):
+        pointplayer.append(List[i].points)
     PersonalDeck = ALLDeck
     for i in range(len(List)):
         ListPlayer.append(List[i].name)
@@ -104,7 +109,7 @@ def Game(n):
     GlobalList3.append(PersonalDeck)
     GlobalList3.append(CoinList)
     #log.append("turno numero: "+str(turns))
-    TheGame = Ex("princiapl").PrincipalGame(GlobalList3,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list)
+    TheGame = Ex("princiapl").PrincipalGame(GlobalList3,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list,pointplayer)
     print(TheGame)
 
     '''

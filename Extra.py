@@ -156,13 +156,13 @@ class Ex:
                         respaldo2 = respaldo[victimelection]    
                         var = (remplazo(respaldo2))
                         unknow.pop(elecction)
-                        print(unknow)
+                        #print(unknow)
                         unknow.insert(elecction,var)
-                        print(unknow)
+                        #print(unknow)
                         unknow.pop(0)
-                        print(unknow)
-                        unknow.append(remplazo("??"))
-                        print(unknow)
+                        #print(unknow)
+                        #unknow.append(remplazo("??"))
+                        #print(unknow)
                         ListPlayer.pop(0)
                         print(ListPlayer)
                         ListPlayer.append(NAMES)
@@ -294,6 +294,7 @@ class Ex:
                         print("pero antes quien desea contraatacar? : ")
                         while(True):
                             #contraataque
+                            print(ListPlayer)
                             print(1,":",ListPlayer[1])
                             print(2,":",ListPlayer[2])
                             duelcount = 1
@@ -355,15 +356,31 @@ class Ex:
                                 
                             if (duelcount == 1): #SI HAY UN CONTRAATAQUE, se ejecuta aca
                                 counters = True
-                                print("el jugador " + ListPlayer[elecction] + " quiere contratacar")
-                                ingresolog = ["el jugador " + ListPlayer[elecction] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
-                                print(ingresolog)
+                                if(n == 3):
+                                    Reelection = ListPlayer[count]
+                                    print("el jugador " + ListPlayer[count] + " quiere contratacar")
+                                    ingresolog = ["el jugador " + ListPlayer[count] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
+                                    print(ingresolog)
+                                    log.append(ingresolog)
+                                if(n == 4):
+                                    Reelection = ListPlayer[count]
+                                    #print("el jugador " + ListPlayer[elecction] + " quiere contratacar")
+                                    ingresolog = ["el jugador " + ListPlayer[count] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
+                                    print(ingresolog)       
+                                    log.append(ingresolog)
                                 print("quien desea desafiar ?")
-                                print(ListPlayer[elecction])
-                                print(1,ListPlayer[0])
-                                print(2,ListPlayer[2])
-                                print(3,"nadie quiere desafiar")
-                                log.append(ingresolog)
+                                countChallenge = []
+                                for contra in range(len(ListPlayer)):
+                                    if(ListPlayer[contra] != NAMES and ListPlayer[contra] != Reelection):
+                                        countChallenge.append(ListPlayer[contra]) 
+                                for i in range(len(countChallenge)):
+                                    print(i,countChallenge[i])
+                                print(i+1,'nadie quiere desafiar')
+                                CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
+                                if(CounterChallenge != i+1):
+                                    ingresolog = ['El jugador: '+countChallenge[CounterChallenge]+' Desafio el contraataque de: '+Reelection]
+                                    print(ingresolog)
+                                    log.append(ingresolog)
                                 PersonalDeck.pop(0)
                                 PersonalDeck.append(SuperHand)
                                 personalCoin += 0 
@@ -376,6 +393,7 @@ class Ex:
                                 SuperHand = PersonalDeck[0]
                                 personalCoin = CoinList[0]
                                 break
+
                             if (duelcount == 0):  #SI HAY UN DESAFIO, se ejecuta aca
                                 duelAmericanCap = 0
                                 ingresolog = ["el jugador " + ListPlayer[Challenge] + " desafia al jugador: "+ NAMES+" manteniendo sus monedas"]

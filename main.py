@@ -668,7 +668,7 @@ def main():
     #pruebas
     print("Welcome to COUP!")
     print("\n")
-    
+    '''
     porsiaca = CardLost("hola")
     L = ['condesa','capitan']
     PD = [['condesa','capitan'],['asesino','duke'],['embajador','embajador']]
@@ -681,7 +681,7 @@ def main():
     u.append(U)
     print(u)
     print(porsiaca.DropCard(L,PD,LP,u))
-    
+    '''
     Players_num = int(input("how many players are going to play?  "))
     while(True):
         if (Players_num < 3 or Players_num > 4):

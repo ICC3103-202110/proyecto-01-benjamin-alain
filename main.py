@@ -44,6 +44,10 @@ def CreatePlayer1(n, hand):
         x += 1
     return playerlist
 
+def remplazo(CardName,NameCard): # seria poner el NameCard como ?? y cuanto 
+    unknow2 = [NameCard,CardName]
+    return unknow2
+
 
 def Game(n):
     l = []

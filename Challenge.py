@@ -19,7 +19,6 @@ class duel:
         self.__name = value
     
     def dare(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list):
-        ASSASIN = murder("Asesino")
         DUKE = Tax("Duke")
         CAPTAIN = Steal("Capitan")
         AMBASSADOR = Exchange("Ambassador")
@@ -160,7 +159,7 @@ class duel:
                     return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
                 break   
             return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
-    
+
     def dareFA(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point):
         print("quien quiere desafiar? ")
         if(self.name == 'foreign_aid'):
@@ -200,4 +199,54 @@ class duel:
                     point.pop()
                     print(point)
                 return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
-                    
+    def dareAC(self,ListPlayer,ingresolog,NAMES,log,SuperHand,point,x,PersonalDeck,unknow,personalCoin,CoinList,n):
+        ASSASIN = murder("Asesino")
+        print("quien quiere desafiar?: ")
+        while(x < n):
+            print(x,ListPlayer[x])
+            x += 1
+        print(n,"nadie quiere desafiar")
+        MurderDuel = int(input("quien quiere desafiar?: "))
+        if (MurderDuel != n):
+            murderr = True
+            CountAssasin = 0
+            ingresolog = ['el jugador: '+ListPlayer[MurderDuel]+' quire desafiar al jugador: '+NAMES]
+            log.append(ingresolog)
+            print(ingresolog)
+            for i in range(len(SuperHand)):
+                if(SuperHand[i] == ASSASIN.name):
+                    CountAssasin += 1
+            if(CountAssasin >= 1):
+                ingresolog = ['El jugador: '+NAMES + ' gana el desafio']
+                log.append(ingresolog)
+                print(ingresolog)
+                dueler = point[MurderDuel]
+                dueler -= 1
+                point.insert(MurderDuel,dueler)
+                #point.pop(MurderDuel)
+                
+            else:
+                ingresolog = ['El jugador: '+NAMES+' pierde el desafio']
+                log.append(ingresolog)
+                print(ingresolog)
+                dueler = point[0]
+                dueler -= 1
+                point.append(dueler)
+                print(point)
+                #point.pop(0)
+            if(murderr == True):
+                ListPlayer.pop(0)
+                ListPlayer.append(NAMES)
+                PersonalDeck.pop(0)
+                PersonalDeck.append(SuperHand)
+                point.pop(0)
+                git = unknow[0]
+                unknow.pop(0)
+                unknow.append(git)
+                NAMES = ListPlayer[0]
+                SuperHand = PersonalDeck[0]
+                personalCoin = CoinList[0]
+                return ListPlayer,MurderDuel,ingresolog,NAMES,log,SuperHand,point,x,PersonalDeck,unknow,personalCoin,murderr
+        else:
+            murderr = False 
+        return ListPlayer,MurderDuel,ingresolog,NAMES,log,SuperHand,point,x,PersonalDeck,unknow,personalCoin,murderr          

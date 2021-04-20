@@ -89,11 +89,11 @@ def Game(n):
         CoinList.append(List[i].coins)
         pointplayer.append(List[i].points)
     unknow = []
-    unknow.append(incognita)
-    unknow.append(incognita)
-    unknow.append(incognita) 
+    unknow.append(["??","??"])
+    unknow.append(["??","??"])
+    unknow.append(["??","??"]) 
     if(n == 4):
-        unknow.append(incognita)   
+        unknow.append(["??","??"])   
     LOG = []
     log = []
     GlobalList3 = []

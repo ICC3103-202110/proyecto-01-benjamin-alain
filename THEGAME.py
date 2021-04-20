@@ -33,6 +33,16 @@ class Ex:
         pt = 0
         FirstPlayer = ListPlayer[0]
         while(True):
+            if(point[0] == 0):
+                ingresolog = ["El jugador: "+ListPlayer[0]+" a perdido todas sus influencia"]
+                log.append(ingresolog)
+                print(ingresolog)
+                ListPlayer.pop(0)
+                PersonalDeck.pop(0)
+                CoinList.pop(0)
+                point.pop(0)
+                unknow.pop(0)
+            n = len(ListPlayer)
             GlobalList = []
             GlobalList.append(ListPlayer)
             GlobalList.append(PersonalDeck)
@@ -44,7 +54,8 @@ class Ex:
             #print(PersonalDeck)
             personalCoin = CoinList[0] # monedas del jugador
             #print(CoinList)
-            playerpoints = point[0] # puntos del jugador
+            playerpoints = point[0] # puntos del jugador(influencia)
+            
             print(point)
             print("\n")
             print("le toca a:  ", NAMES, '\nlas influencias que tiene son: ',playerpoints)
@@ -69,6 +80,8 @@ class Ex:
                         NAMES = enter[6]
                         SuperHand = enter[7]
                         CoinList = enter[8]
+                        point.pop(0)
+                        point.append(playerpoints)
                         break
                     elif(option2 == 1):#falta CONSECUENCIAS
                         Foreign = Foreing_aid("ayuda extranjera").efect(PrincipalTurns, log, personalCoin, NAMES)
@@ -122,7 +135,6 @@ class Ex:
                         CoinList.pop(0)
                         CoinList.append(personalCoin)
                         ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n)  
-                        elecction = int(input("escoja la victima del asesinato: "))
                         #print(elecction)    
                         MurderVictim = ListPlayer[elecction]
                         ingresolog = [NAMES+"utilizo la accion Golpe contra "+MurderVictim]
@@ -201,64 +213,38 @@ class Ex:
                         log.append(ingresolog)
                         #print(MurderVictim)
                         # desafiar
-                        print("quien quiere desafiar?: ")
-                        while(x < n):
-                            print(x,ListPlayer[x])
-                            x += 1
-                        print(n,"nadie quiere desafiar")
-                        MurderDuel = int(input("quien quiere desafiar?: "))
-                        #desafio
-                        if (MurderDuel != n):
-                            CountAssasin = 0
-                            ingresolog = ['el jugador: '+ListPlayer[MurderDuel]+' quire desafiar al jugador: '+NAMES]
-                            log.append(ingresolog)
-                            print(ingresolog)
-                            for i in range(len(SuperHand)):
-                                if(SuperHand[i] == Assassin.name):
-                                    CountAssasin += 1
-                            if(CountAssasin >= 1):
-                                ingresolog = ['El jugador: '+NAMES + ' gana el desafio']
-                                log.append(ingresolog)
-                                print(ingresolog)
-                            else:
-                                ingresolog = ['El jugador: '+NAMES+' pierde el desafio']
-                                log.append(ingresolog)
-                                print(ingresolog)
-
+                        slayer = duel("asesino").dareAC(ListPlayer, ingresolog, NAMES, log, SuperHand, point, x, PersonalDeck, unknow, personalCoin, CoinList,n)
                         #contraataque
-                        y = 1
-                        print("quien quiere contraatacar?: ")
-                        while(y < n):
-                            print(y,ListPlayer[y])
-                            y += 1
-                        print(n,"nadie quiere contraatacar")
-                        MurderDuel = int(input("quien quiere contraatacar?: "))
-                        print("solo puede mirar "+MurderVictim)
-                        for i in range(len(PersonalDeck[elecction])):
-                            print(i,PersonalDeck[elecction][i])
-                            respaldo.append(PersonalDeck[elecction][i])
-                        victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar "))
-                        '''
-                        respaldo2 = respaldo[victimelection]    
-                        var = (remplazo(respaldo2))
-                        unknow.pop(elecction)
-                        print(unknow)
-                        unknow.insert(elecction,var)
-                        print(unknow)
-                        unknow.pop(0)
-                        print(unknow)
-                        unknow.append(remplazo("??"))
-                        print(unknow)
-                        '''
-                        ListPlayer.pop(0)
-                        print(ListPlayer)
-                        ListPlayer.append(NAMES)
-                        print(ListPlayer)
-                        PersonalDeck.pop(0)
-                        print(PersonalDeck)
-                        PersonalDeck.append(SuperHand)
-                        print(PersonalDeck)
-                        break
+                        murderr = slayer[11]
+                        if(murderr == False):
+                            y = 1
+                            print("quien quiere contraatacar?: ")
+                            while(y < len(ListPlayer)):
+                                print(y,ListPlayer[y])
+                                y += 1
+                            print(len(ListPlayer),"nadie quiere contraatacar")
+                            MurderDuel = int(input("quien quiere contraatacar?: "))
+                            if(MurderDuel != len(ListPlayer)):
+                                ingresolog = ["El jugador: "+ListPlayer[MurderDuel]+" Contraataco a: "+NAMES]
+                                print(ingresolog)
+                                log.append(ingresolog)
+                                print("Quien quiere desafiar el contraataque?: ")
+                                y = 1
+                                KillerList = []
+                                for i in range(len(ListPlayer)):
+                                    if(ListPlayer[i] != ListPlayer[MurderDuel] ):
+                                        KillerList.append(ListPlayer[i])
+                                for kill in range(len(KillerList)):
+                                    print(kill,KillerList[kill])
+                                print(kill+1,"nadie quiere desafiar el contraataque")
+                                CounterKiller = int(input("quien quiere desafiar el contraataque?: "))
+
+                            print("solo puede mirar "+MurderVictim)
+                            for i in range(len(PersonalDeck[elecction])):
+                                print(i,PersonalDeck[elecction][i])
+                                respaldo.append(PersonalDeck[elecction][i])
+                            victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar "))
+                            break
                     elif(option2 == 5):#listo falta consecuencia 
                         #inicio
                         counters = False
@@ -489,7 +475,7 @@ class Ex:
                 print(NAMES)
                 if(ListPlayer[0] == NAMES):
                     print(q.secondMiniMenu(SuperHand,NAMES,personalCoin))
-                    while(x < n):
+                    while(x < len(ListPlayer)):
                         print(q.secondMiniMenu(unknow[x],ListPlayer[x],CoinList[x]))
                         x += 1
                     print("cantidad de cartas en el mazo ",len(deck_list))

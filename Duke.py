@@ -21,23 +21,14 @@ class Tax(IEspecialAtack):
     
     def counter(self,ListPlayer,n):
         print("QUIEN QUIERE CONTRAATACAR?: ")
-        print(1,ListPlayer[1])
-        print(2,ListPlayer[2])
-        if(n == 4):
-            print(3,ListPlayer[3])
-            print(4,"nadie quiere contraatacar ")
-            print("\n")
-            count = int(input("que jugador desea contratacar? "))
-            if(count == 4):
-                return ListPlayer,n,count
+        x = 1
+        while(x < n):
+            print(x,ListPlayer[x])
+            x += 1
+        print(n,"nadie quiere contraatacar")
+        count = int(input("que jugador desea contratacar? "))
+        if(count == n+1):
             return ListPlayer,n,count
-        else:
-            print(3,"nadie quiere contraatacar ")
-            print("\n")
-            count = int(input("que jugador desea contratacar? "))
-            if(count == 3):
-                return ListPlayer,n,count
-            return ListPlayer,n,count                
-
+        return ListPlayer,n,count
     def action(self):
         return "taxes"

@@ -18,7 +18,7 @@ class murder(IEspecialAtack):
     def efect(self, playerlist,CoinList, cards,n):
         L = []
         x = 0
-        while(x<n):
+        while(x<len(playerlist)):
             fila = [str(x)+". Jugador: "+playerlist[x]+"| monedas: "+str(CoinList[x])+"| cartas"+str(cards[x])]
             L.append(fila)
             x += 1
@@ -32,4 +32,3 @@ class murder(IEspecialAtack):
     
     def action(self):
         return "assassinate"
-    

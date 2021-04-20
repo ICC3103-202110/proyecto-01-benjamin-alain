@@ -3,7 +3,7 @@ from IEespecial import IEspecialAtack
 class Tax(IEspecialAtack):
 
     def __init__(self,name):
-        self.__name = name
+        super().__init__(name)
     
     @property
     def name(self):
@@ -19,12 +19,25 @@ class Tax(IEspecialAtack):
         x = coins + 3
         return x
     
-    def counter(self,foreign_aid):
-        #el counter es bloquear ayuda extranjera
-        if(foreign_aid == True):
-            foreign_aid = False
-        print("se bloquea la ayuda externa")
-        return foreign_aid
-    
+    def counter(self,ListPlayer,n):
+        print("QUIEN QUIERE CONTRAATACAR?: ")
+        print(1,ListPlayer[1])
+        print(2,ListPlayer[2])
+        if(n == 4):
+            print(3,ListPlayer[3])
+            print(4,"nadie quiere contraatacar ")
+            print("\n")
+            count = int(input("que jugador desea contratacar? "))
+            if(count == 4):
+                return ListPlayer,n,count
+            return ListPlayer,n,count
+        else:
+            print(3,"nadie quiere contraatacar ")
+            print("\n")
+            count = int(input("que jugador desea contratacar? "))
+            if(count == 3):
+                return ListPlayer,n,count
+            return ListPlayer,n,count                
+
     def action(self):
         return "taxes"

@@ -8,8 +8,9 @@ from Ambassador import Exchange
 from Menu import PlayerMenu
 from random import shuffle
 from Deck import Deck_cards
-from Extra import Ex
+from THEGAME import Ex
 from Loser import CardLost
+
 
 playerlist = []
 deck = []
@@ -31,12 +32,6 @@ def remplazo(CardName):
     unknow2 = ["??",CardName]
     return unknow2
 
-'''
-def remplazo(CardName,NameCard): # seria poner el NameCard como ?? y cuanto 
-    unknow2 = [NameCard,CardName]
-    return unknow2
-
-'''
 
 def CreatePlayer1(n, hand):
     x = 1
@@ -90,13 +85,11 @@ def Game(n):
         CoinList.append(List[i].coins)
         pointplayer.append(List[i].points)
     unknow = []
-    #print(PersonalDeck)
     unknow.append(incognita)
     unknow.append(incognita)
     unknow.append(incognita) 
     if(n == 4):
         unknow.append(incognita)   
-    #print(unknow)
     LOG = []
     log = []
     GlobalList3 = []
@@ -106,10 +99,7 @@ def Game(n):
     GlobalList3.append(ListPlayer)
     GlobalList3.append(PersonalDeck)
     GlobalList3.append(CoinList)
-    #log.append("turno numero: "+str(turns))
-    #print(deck_list)
-    #print(pointplayer)
-    TheGame = Ex("princiapl").PrincipalGame(GlobalList3,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list,pointplayer)
+    TheGame = Ex("princiPAL").PrincipalGame(GlobalList3,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list,pointplayer)
     print(TheGame)
 
 
@@ -117,20 +107,7 @@ def main():
     #pruebas
     print("Welcome to COUP!")
     print("\n")
-    '''
-    porsiaca = CardLost("hola")
-    L = ['condesa','capitan']
-    PD = [['condesa','capitan'],['asesino','duke'],['embajador','embajador']]
-    LP = ['a','b','c']
-    U = ['??','??']
-    U1 = [['??','??'],['??','??'],['??','??']]
-    u = []
-    u.append(U)
-    u.append(U)
-    u.append(U)
-    print(u)
-    print(porsiaca.DropCard(L,PD,LP,u))
-    '''
+    
     Players_num = int(input("how many players are going to play?  "))
     while(True):
         if (Players_num < 3 or Players_num > 4):

@@ -47,3 +47,18 @@ class gambler:
     @points.setter
     def points(self, value):
         self.__points = value
+    
+    def AskMoney(self,option):
+        if(option == 1):
+            print("deberia dar 1")
+        if(option == 2):
+            print("deberia dar 2")
+        if(option == 3):
+            coin = self.coins + 3
+            return coin
+        if(option == 4):
+            print("deberia dar -2")
+        if(option == 5):
+            print("deberia dar -3")
+        if(option == 6):
+            print("deberia dar -7")

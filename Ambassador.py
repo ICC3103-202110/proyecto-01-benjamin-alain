@@ -4,7 +4,7 @@ from random import shuffle,random
 class Exchange(IEspecialAtack):
 
     def __init__(self,name):
-        self.__name = name
+        super().__init__(name)
     
     @property
     def name(self):
@@ -14,7 +14,7 @@ class Exchange(IEspecialAtack):
         if value == "":
             self.__name = "AMBASSADOR"
         else:
-            self.__name = value
+            self.__name = "AMBASSADOR"
  
     
     def efect(self,Deck,Card):       #card es una lista de las carats que tiene el jugador #Descke s el mazo
@@ -26,7 +26,6 @@ class Exchange(IEspecialAtack):
             for i in range (len(l)):
                 print(i,l[i])  
             t=int(input("Choose the number of the card yo wanna pick: "))  
-
             if t == 0:
                 Card[0]=l[0]
             elif t == 1:
@@ -107,3 +106,5 @@ class Exchange(IEspecialAtack):
 
     def action(self):
         return "Exchange"
+    
+    #def MenuOption(self)

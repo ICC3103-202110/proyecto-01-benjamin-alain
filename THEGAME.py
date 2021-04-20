@@ -434,7 +434,7 @@ class Ex:
                         ingresolog = [NAMES + " utiliza la accion "+Ambassador.action()+" cambiando cartas"]
                         log.append(ingresolog)
                         #desafio
-                        Embajator = duel("Ambassador").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n,deck_list)
+                        Embajator = duel("AMBASSADOR").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n,deck_list)
                         break
                         #cambio                           
                     elif(option2 == 7):
@@ -449,18 +449,15 @@ class Ex:
                     x = input("presione cualquier tecla para volver")
             elif(option1 == 3):#listo
                 q = PlayerMenu(7)
+                x = 1
                 print(NAMES)
                 if(ListPlayer[0] == NAMES):
                     print(q.secondMiniMenu(SuperHand,NAMES,personalCoin))
-                    print(q.secondMiniMenu(unknow[1],ListPlayer[1],CoinList[1]))
-                    print(q.secondMiniMenu(unknow[2],ListPlayer[2],CoinList[2]))
-                    if(n == 4):
-                        print(q.secondMiniMenu(unknow[3],ListPlayer[3],CoinList[3]))
+                    while(x < n):
+                        print(q.secondMiniMenu(unknow[x],ListPlayer[x],CoinList[x]))
+                        x += 1
                     print("cantidad de cartas en el mazo ",len(deck_list))
-                    while(True):
-                        print("presione cualquier tecla para volver")
-                        x = input()
-                        break
+                    x = input("presione cualquier tecla para volver")
             elif(option1 == 4):
                 descripcion = PlayerMenu(6).menusplayers()
                 print(descripcion)

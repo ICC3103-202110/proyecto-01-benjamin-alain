@@ -1,4 +1,5 @@
 from IEespecial import IEspecialAtack
+from random import shuffle
 
 class Steal(IEspecialAtack):
 
@@ -45,3 +46,4 @@ class Steal(IEspecialAtack):
     
     def action(self):
         return "steal"
+    

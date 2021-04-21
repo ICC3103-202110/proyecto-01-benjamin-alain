@@ -23,7 +23,7 @@ class COUP:
         Assassin = murder("Asesino")
         CoinList.pop(0)
         CoinList.append(personalCoin)
-        ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n)  
+        ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n,point)  
         elecction = int(input("escoja la victima del asesinato: "))
         #print(elecction)    
         MurderVictim = ListPlayer[elecction]
@@ -46,6 +46,8 @@ class COUP:
         ListPlayer.append(NAMES)
         PersonalDeck.pop(0)
         PersonalDeck.append(SuperHand)
+        point.pop(0)
+        point.append(playerpoints)
         return PrincipalTurns,log,personalCoin,CoinList,NAMES,ListPlayer,PersonalDeck,unknow,SuperHand,point,playerpoints
                         
                         

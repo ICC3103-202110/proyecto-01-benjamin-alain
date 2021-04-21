@@ -12,6 +12,8 @@ from foreing_aid import Foreing_aid
 from coup import COUP
 from entry import Entry
 from Challenge import duel
+import os
+
 
 class Ex:
 
@@ -27,6 +29,12 @@ class Ex:
     
         
     def PrincipalGame(self,GlobalList,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list,point):
+        def clear():
+            if os.name == "nt":
+                os.system("cls")
+            else:
+                os.system("clear")
+
         PrincipalTurns = 0
         PRINCIPALTIMES = []
         pt = 0
@@ -116,11 +124,10 @@ class Ex:
                         NAMES = ListPlayer[0]
                         SuperHand = PersonalDeck[0]
                         personalCoin = CoinList[0]
-                        p = point[0]
                         point.pop(0)
-                        point.append(p)
+                        point.append(playerpoints)
                         break
-                    elif(option2 == 2 or personalCoin >= 10): #creo que esta listo
+                    elif(option2 == 2 or personalCoin >= 10): # listo
                         print("se a seleccionado el golpe\n")
                         if(personalCoin < 7):
                             print("no tienes las monedas suficientes para hacer esta accion")
@@ -130,7 +137,7 @@ class Ex:
                         SuperCoup = COUP("Golpe")
                         MegaCoup = SuperCoup.efect(PrincipalTurns, log, personalCoin, CoinList, NAMES, ListPlayer, PersonalDeck, unknow, SuperHand,point, playerpoints,n)
                         break
-                    elif(option2 == 3):# creo que esta listo
+                    elif(option2 == 3):#  listo
                         print("se a seleccionado el Impuestos")
                         PrincipalTurns += 1
                         duke = Tax("Duke")
@@ -251,6 +258,8 @@ class Ex:
                                 NAMES = ListPlayer[0]
                                 SuperHand = PersonalDeck[0]
                                 personalCoin = CoinList[0]
+                                point.pop(0)
+                                point.append(playerpoints)
                             print("solo puede mirar "+MurderVictim)
                             for i in range(len(PersonalDeck[elecction])):
                                 print(i,PersonalDeck[elecction][i])
@@ -260,6 +269,8 @@ class Ex:
                             SadPointss -= 1
                             point.insert(elecction,SadPointss)
                             point.pop(elecction+1)
+                            point.pop(0)
+                            point.append(playerpoints)
                             break
                     elif(option2 == 5):#listo falta consecuencia 
                         #inicio
@@ -343,17 +354,18 @@ class Ex:
                             if (duelcount == 1): #SI HAY UN CONTRAATAQUE, se ejecuta aca
                                 counters = True
                                 Reelection = ListPlayer[count]
-                                print("el jugador " + ListPlayer[count] + " quiere contratacar")
                                 ingresolog = ["el jugador " + ListPlayer[count] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
                                 print(ingresolog)
                                 log.append(ingresolog)
                                 # desafio del contraataque
                                 print("quien desea desafiar ?")
                                 countChallenge = []
+                                pointChallenger = []
                                 for contra in range(len(ListPlayer)):
                                     #no cuenta el jugador que uso la accion ojo
                                     if(ListPlayer[contra] != Reelection):
                                         countChallenge.append(ListPlayer[contra]) 
+                                        pointChallenger.append(point[contra])
                                 for i in range(len(countChallenge)):
                                     print(i,countChallenge[i])
                                 print(i+1,'nadie quiere desafiar')
@@ -375,7 +387,10 @@ class Ex:
                                         ingresolog = ["El jugador: "+Reelection+" Pierde el desafio, perdiendo una carta"]
                                         #si es que falla aqui se pierde la carta
                                         log.append(ingresolog)
-
+                                        pointReelec = point[count]
+                                        pointReelec -= 1
+                                        point.insert(count,pointReelec)
+                                        point.pop(count+1)
                                         print(ingresolog)
                                 ############################
                                 PersonalDeck.pop(0)
@@ -402,6 +417,10 @@ class Ex:
                                     ingresolog = ["El jugador: "+NAMES+" Gano el desafio"]
                                     log.append(ingresolog)
                                     print(ingresolog)
+                                    CPoint = point[Challenge]
+                                    CPoint -= 1
+                                    point.insert(Challenge,CPoint)
+                                    point.pop(Challenge+1)
                                     counters = False
                                 else:
                                     ingresolog = ["El jugador: "+NAMES+" Pierde el desafio, perdiendo una carta"]

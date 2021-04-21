@@ -27,52 +27,34 @@ class duel:
         print(AMBASSADOR.name)
         if(self.name == AMBASSADOR.name):
             Ambassador = Exchange("Ambassador")
+            x = 1
+            while(x < n):
+                print(x,ListPlayer[x])
+                x += 1
+            print(n,"nadie quiere desafiar")
+            MurderDuel = int(input("quien quiere desafiar?: "))
             while(True):
-                print(1,ListPlayer[1])
-                print(2,ListPlayer[2])
-                if(n == 4):
-                    print(3,ListPlayer[3])
-                    print(4,"nadie quiere desafiar: ")
-                    count = int(input("que jugador desea desafiar: "))
-                    if(count == 4):
-                        AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
-                        ListPlayer.pop(0)
-                        ListPlayer.append(NAMES)
-                        PersonalDeck.pop(0)
-                        PersonalDeck.append(SuperHand)
-                        CoinList.pop(0)
-                        CoinList.append(personalCoin)
-                        git = unknow[0]
-                        unknow.pop(0)
-                        unknow.append(git)
-                        NAMES = ListPlayer[0]
-                        SuperHand = PersonalDeck[0]
-                        personalCoin = CoinList[0]
-                        shuffle(deck_list)
-                        shuffle(deck_list)
-                        break
-                else:
-                    print(3,"nadie quiere desafiar: ")
-                    count = int(input("que jugador desea desafiar: "))
-                    if(count == 3):
-                        AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
-                        ListPlayer.pop(0)
-                        ListPlayer.append(NAMES)
-                        PersonalDeck.pop(0)
-                        PersonalDeck.append(SuperHand)
-                        CoinList.pop(0)
-                        CoinList.append(personalCoin)
-                        git = unknow[0]
-                        unknow.pop(0)
-                        unknow.append(git)
-                        NAMES = ListPlayer[0]
-                        SuperHand = PersonalDeck[0]
-                        personalCoin = CoinList[0]
-                        shuffle(deck_list)
-                        shuffle(deck_list)
-                        break
-                print("el jugador "+ListPlayer[count]+" quiere desafiar")
-                ingresolog = ["el jugador "+ListPlayer[count]+" desafiar al jugador: "+ NAMES+" evitando cambiar sus cartas"]
+                if(MurderDuel == n):
+                    AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
+                    ListPlayer.pop(0)
+                    ListPlayer.append(NAMES)
+                    PersonalDeck.pop(0)
+                    PersonalDeck.append(SuperHand)
+                    CoinList.pop(0)
+                    CoinList.append(personalCoin)
+                    git = unknow[0]
+                    unknow.pop(0)
+                    unknow.append(git)
+                    NAMES = ListPlayer[0]
+                    SuperHand = PersonalDeck[0]
+                    personalCoin = CoinList[0]
+                    point.pop(0)
+                    point.append(playerpoints)
+                    shuffle(deck_list)
+                    shuffle(deck_list)
+                    break
+                print("el jugador "+ListPlayer[MurderDuel]+" quiere desafiar")
+                ingresolog = ["el jugador "+ListPlayer[MurderDuel]+" desafiar al jugador: "+ NAMES+" evitando cambiar sus cartas"]
                 log.append(ingresolog)
                 duelcount = 0
                 for duel in range(len(SuperHand)):
@@ -81,12 +63,12 @@ class duel:
                 if (duelcount >= 1):
                     ingresolog = [NAMES + " Gana el desafio y utiliza la carta " + Ambassador.name +" "]
                     print(ingresolog)
-                    SadResult = point[count]
+                    SadResult = point[MurderDuel]
                     SadResult -= 1
-                    point.insert(count,SadResult)
-                    print(point)
-                    point.pop(count+1)
-                    print(point)
+                    point.insert(MurderDuel,SadResult)
+                    #print(point)
+                    point.pop(MurderDuel+1)
+                    #print(point)
                     log.append(ingresolog)
                     AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
                     ListPlayer.pop(0)
@@ -101,6 +83,8 @@ class duel:
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
+                    point.pop(0)
+                    point.append(playerpoints)
                     shuffle(deck_list)
                     shuffle(deck_list)
                     break
@@ -110,9 +94,9 @@ class duel:
                     duelerPoints = point[0]
                     duelerPoints -= 1
                     point.append(duelerPoints)
-                    print(point)
+                    #print(point)
                     point.pop(0)
-                    print(point)
+                    #print(point)
                     log.append(ingresolog)
                     ListPlayer.pop(0)
                     ListPlayer.append(NAMES)
@@ -126,11 +110,13 @@ class duel:
                     NAMES = ListPlayer[0]
                     SuperHand = PersonalDeck[0]
                     personalCoin = CoinList[0]
+                    point.pop(0)
+                    point.append(playerpoints)
                     shuffle(deck_list)
                     shuffle(deck_list) 
                     break                      
                 break
-            return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log
+            return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point
         if(self.name == DUKE.name):
             print(DUKE.name)
             while(True):

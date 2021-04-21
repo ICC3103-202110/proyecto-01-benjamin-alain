@@ -15,11 +15,11 @@ class murder(IEspecialAtack):
         else:
             self.__name = "ASSASIN"
     
-    def efect(self, playerlist,CoinList, cards,n):
+    def efect(self, playerlist,CoinList, cards,n,point):
         L = []
         x = 0
         while(x<len(playerlist)):
-            fila = [str(x)+". Jugador: "+playerlist[x]+"| monedas: "+str(CoinList[x])+"| cartas"+str(cards[x])]
+            fila = [str(x)+". Jugador: "+playerlist[x]+"| influencias: "+str(point[x])]
             L.append(fila)
             x += 1
         L.pop(0)

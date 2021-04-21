@@ -43,6 +43,9 @@ class Ex:
                 point.pop(0)
                 unknow.pop(0)
             n = len(ListPlayer)
+            if(len(ListPlayer) == 1):
+                print("el Ganador es: "+ListPlayer+" ( ͡~ ͜ʖ ͡°)")
+                break
             GlobalList = []
             GlobalList.append(ListPlayer)
             GlobalList.append(PersonalDeck)
@@ -192,7 +195,7 @@ class Ex:
                         SuperHand = PersonalDeck[0]
                         personalCoin = CoinList[0]
                         break
-                    elif(option2 == 4):#falta terminar esta parte
+                    elif(option2 == 4):#lista
                         respaldo = []
                         print("se a seleccionado el Asesinato")
                         x = 1
@@ -228,22 +231,63 @@ class Ex:
                                 ingresolog = ["El jugador: "+ListPlayer[MurderDuel]+" Contraataco a: "+NAMES]
                                 print(ingresolog)
                                 log.append(ingresolog)
+                                PointsCounter = point[MurderDuel]
                                 print("Quien quiere desafiar el contraataque?: ")
                                 y = 1
                                 KillerList = []
+                                pointkill = []
                                 for i in range(len(ListPlayer)):
                                     if(ListPlayer[i] != ListPlayer[MurderDuel] ):
                                         KillerList.append(ListPlayer[i])
+                                        pointkill.append(point[i])
                                 for kill in range(len(KillerList)):
                                     print(kill,KillerList[kill])
                                 print(kill+1,"nadie quiere desafiar el contraataque")
                                 CounterKiller = int(input("quien quiere desafiar el contraataque?: "))
-
+                                if (CounterKiller != kill+1):
+                                    CounterMurder = True
+                                    CounterCount = 0
+                                    ingresolog = ["El jugador: "+KillerList[CounterKiller]+" desafio el contraataque de: "+ListPlayer[MurderDuel]]
+                                    log.append(ingresolog)
+                                    print(ingresolog)
+                                    for i in range(len(PersonalDeck[MurderDuel])):
+                                        if(PersonalDeck[MurderDuel][i] == Block.name):
+                                            CounterCount += 1
+                                    if(CounterCount >= 1):
+                                        ingresolog = ["El Jugador: "+ListPlayer[MurderDuel]+" Gana el desafio"]
+                                        log.append(ingresolog)
+                                        print(ingresolog)
+                                        PointsCounter -= 1
+                                        point.insert(MurderDuel,PointsCounter)
+                                    else:
+                                        ingresolog = ["El Jugador: "+ListPlayer[MurderDuel]+" pierde el desafio"]
+                                        log.append(ingresolog)
+                                        print(ingresolog)
+                                        murderpoint = pointkill[CounterKiller]
+                                        murderpoint -= 1
+                                        point.insert(CounterKiller,murderpoint)
+                                #print(point)
+                                point.pop(n)
+                                #print(point)
+                                point.append(playerpoints)
+                                ListPlayer.pop(0)
+                                ListPlayer.append(NAMES)
+                                PersonalDeck.pop(0)
+                                PersonalDeck.append(SuperHand)
+                                CoinList.pop(0)
+                                CoinList.append(personalCoin)
+                                git = unknow[0]
+                                unknow.pop(0)
+                                unknow.append(git)
+                                NAMES = ListPlayer[0]
+                                SuperHand = PersonalDeck[0]
+                                personalCoin = CoinList[0]
                             print("solo puede mirar "+MurderVictim)
                             for i in range(len(PersonalDeck[elecction])):
                                 print(i,PersonalDeck[elecction][i])
                                 respaldo.append(PersonalDeck[elecction][i])
                             victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar "))
+                            point.pop(n)
                             break
                     elif(option2 == 5):#listo falta consecuencia 
                         #inicio
@@ -449,14 +493,14 @@ class Ex:
                         personalCoin = CoinList[0]
                         shuffle(deck_list)
                         break
-                    elif(option2 == 6):#listo falta consecuencia
+                    elif(option2 == 6):#listo falta consecuencia hay que hacerle cambios en la clase challenger
                         print("se a seleccionado el Cambio")
                         PrincipalTurns += 1
                         Ambassador = Exchange("Ambassador")
                         ingresolog = [NAMES + " utiliza la accion "+Ambassador.action()+" cambiando cartas"]
                         log.append(ingresolog)
                         #desafio
-                        Embajator = duel("AMBASSADOR").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n,deck_list)
+                        Embajator = duel("AMBASSADOR").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n,deck_list,point)
                         break
                         #cambio                           
                     elif(option2 == 7):

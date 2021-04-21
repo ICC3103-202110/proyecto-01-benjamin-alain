@@ -18,7 +18,7 @@ class duel:
     def name(self,value):
         self.__name = value
     
-    def dare(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list):
+    def dare(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point):
         DUKE = Tax("Duke")
         CAPTAIN = Steal("Capitan")
         AMBASSADOR = Exchange("Ambassador")
@@ -101,6 +101,9 @@ class duel:
                 else:
                     ingresolog = [NAMES + " pierde el desafio y pierde una carta"]
                     print(ingresolog)
+                    duelerPoints = point[0]
+                    duelerPoints -= 1
+                    point.append(duelerPoints)
                     log.append(ingresolog)
                     ListPlayer.pop(0)
                     ListPlayer.append(NAMES)

@@ -256,7 +256,10 @@ class Ex:
                                 print(i,PersonalDeck[elecction][i])
                                 respaldo.append(PersonalDeck[elecction][i])
                             victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar "))
-                            point.pop(n)
+                            SadPointss = point[elecction]
+                            SadPointss -= 1
+                            point.insert(elecction,SadPointss)
+                            point.pop(elecction+1)
                             break
                     elif(option2 == 5):#listo falta consecuencia 
                         #inicio
@@ -404,6 +407,9 @@ class Ex:
                                     ingresolog = ["El jugador: "+NAMES+" Pierde el desafio, perdiendo una carta"]
                                     #si es que falla aqui se pierde la carta
                                     log.append(ingresolog)
+                                    playerpoints -= 1
+                                    point.pop(0)
+                                    point.append(playerpoints)
                                     print(ingresolog)
                                     counters = True
                                 #print("el jugador " + ListPlayer[Challenge] + " quiere desafiar")

@@ -15,12 +15,7 @@ class COUP:
         else:
             self.__name = "coup"
 
-    def efect(self,PrincipalTurns,log,personalCoin,CoinList,NAMES,ListPlayer,PersonalDeck,unknow,SuperHand):
-        print("se a seleccionado el golpe\n")
-        if(personalCoin < 7):
-            print("no tienes las monedas suficientes para hacer esta accion")
-        if(personalCoin >= 10):
-            print("se ha seleccionado el golpe por obligacion")
+    def efect(self,PrincipalTurns,log,personalCoin,CoinList,NAMES,ListPlayer,PersonalDeck,unknow,SuperHand,point,playerpoints,n):
         PrincipalTurns += 1
         respaldo = []
         personalCoin -= 7
@@ -32,7 +27,7 @@ class COUP:
         elecction = int(input("escoja la victima del asesinato: "))
         #print(elecction)    
         MurderVictim = ListPlayer[elecction]
-        ingresolog = [NAMES+"utilizo la accion Golpe contra "+MurderVictim]
+        ingresolog = [NAMES+" utilizo la accion Golpe contra "+MurderVictim]
         log.append(ingresolog)
         #print(MurderVictim)
         print("solo puede mirar "+MurderVictim)
@@ -40,25 +35,18 @@ class COUP:
             print(i,PersonalDeck[elecction][i])
             respaldo.append(PersonalDeck[elecction][i])
         victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar ")) 
-        respaldo2 = respaldo[victimelection]    
-        var = (remplazo(respaldo2))
-        unknow.pop(elecction)
-        #print(unknow)
-        unknow.insert(elecction,var)
-        #print(unknow)
+        SadPoint = point[elecction]
+        SadPoint -= 1
+        point.insert(elecction,SadPoint)
+        point.pop(elecction+1)
+        u = unknow[0]
         unknow.pop(0)
-        #print(unknow)
-        #unknow.append(remplazo("??"))
-        #print(unknow)
+        unknow.append(u)
         ListPlayer.pop(0)
-        print(ListPlayer)
         ListPlayer.append(NAMES)
-        print(ListPlayer)
         PersonalDeck.pop(0)
-        print(PersonalDeck)
         PersonalDeck.append(SuperHand)
-        print(PersonalDeck)
-        return PrincipalTurns,log,personalCoin,CoinList,NAMES,ListPlayer,PersonalDeck,unknow,SuperHand
+        return PrincipalTurns,log,personalCoin,CoinList,NAMES,ListPlayer,PersonalDeck,unknow,SuperHand,point,playerpoints
                         
                         
         

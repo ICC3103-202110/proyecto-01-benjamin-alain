@@ -222,8 +222,8 @@ class duel:
             x += 1
         print(n,"nadie quiere desafiar")
         MurderDuel = int(input("quien quiere desafiar?: "))
-        DuelOfMurder = ListPlayer[MurderDuel]
         if (MurderDuel != n):
+            DuelOfMurder = ListPlayer[MurderDuel]
             murderr = True
             CountAssasin = 0
             ingresolog = ['el jugador: '+ListPlayer[MurderDuel]+' quire desafiar al jugador: '+NAMES]

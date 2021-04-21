@@ -112,6 +112,10 @@ class Ex:
                             Challenger = duel("foreign_aid",)
                             DUEL = Challenger.dareFA(ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point)
                             break
+                        try:
+                            personalCoin = DUEL[6]
+                        except:
+                            personalCoin += 0
                         CoinList.pop(0)
                         CoinList.append(personalCoin)
                         ListPlayer.pop(0)
@@ -140,32 +144,46 @@ class Ex:
                     elif(option2 == 3):#listo
                         print("se a seleccionado el Impuestos")
                         PrincipalTurns += 1
-                        duke = Tax("Duke")
-                        DUKE = duke.efect(personalCoin)
                         Gamer = gambler(NAMES,personalCoin,SuperHand,playerpoints).AskMoney(3)
                         personalCoin = Gamer
+                        duke = Tax("Duke")
                         ingresolog = [NAMES +" utiliza la accion "+ duke.action() +" ganado 3 monedas"]
                         log.append(ingresolog)
                         #desafio
                         TaxDuel = duel("DUKE").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log,n,deck_list,point)
                         personalCoin = TaxDuel[6]
-                        print(personalCoin) #algo raro pasa aqui
+                         #algo raro pasa aqui
                         #cambio
-                        point.pop()
                         #print(point)
-                        point.append(playerpoints)
-                        ListPlayer.pop(0)
-                        ListPlayer.append(NAMES)
-                        PersonalDeck.pop(0)
-                        PersonalDeck.append(SuperHand)
-                        CoinList.pop(0)
-                        CoinList.append(personalCoin)
-                        git = unknow[0]
-                        unknow.pop(0)
-                        unknow.append(git)
-                        NAMES = ListPlayer[0]
-                        SuperHand = PersonalDeck[0]
-                        personalCoin = CoinList[0]
+                        Validate = TaxDuel[11]
+                        if(Validate == True):
+                            ListPlayer.pop(0)
+                            ListPlayer.append(NAMES)
+                            PersonalDeck.pop(0)
+                            PersonalDeck.append(SuperHand)
+                            CoinList.pop(0)
+                            CoinList.append(personalCoin)
+                            git = unknow[0]
+                            unknow.pop(0)
+                            unknow.append(git)
+                            NAMES = ListPlayer[0]
+                            SuperHand = PersonalDeck[0]
+                            personalCoin = CoinList[0]
+                        else:
+                            point.append(playerpoints)
+                            point.pop(0)
+                            ListPlayer.pop(0)
+                            ListPlayer.append(NAMES)
+                            PersonalDeck.pop(0)
+                            PersonalDeck.append(SuperHand)
+                            CoinList.pop(0)
+                            CoinList.append(personalCoin)
+                            git = unknow[0]
+                            unknow.pop(0)
+                            unknow.append(git)
+                            NAMES = ListPlayer[0]
+                            SuperHand = PersonalDeck[0]
+                            personalCoin = CoinList[0]
                         break
                     elif(option2 == 4):#lista
                         respaldo = []
@@ -272,8 +290,20 @@ class Ex:
                             point.pop(elecction+1)
                             point.pop(0)
                             point.append(playerpoints)
+                            ListPlayer.pop(0)
+                            ListPlayer.append(NAMES)
+                            PersonalDeck.pop(0)
+                            PersonalDeck.append(SuperHand)
+                            CoinList.pop(0)
+                            CoinList.append(personalCoin)
+                            git = unknow[0]
+                            unknow.pop(0)
+                            unknow.append(git)
+                            NAMES = ListPlayer[0]
+                            SuperHand = PersonalDeck[0]
+                            personalCoin = CoinList[0]
                             break
-                    elif(option2 == 5):#listo falta consecuencia un poco
+                    elif(option2 == 5):#listo falta poco
                         #inicio
                         counters = False
                         duelcards = 0
@@ -317,7 +347,7 @@ class Ex:
                             if (duelcount == 1): #SI HAY UN CONTRAATAQUE, se ejecuta aca
                                 counters = True
                                 Reelection = ListPlayer[Challenge]
-                                ingresolog = ["el jugador " + ListPlayer[Challenge] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
+                                ingresolog = ["el jugador " + ListPlayer[Challenge] + " contraataco al jugador: "+ NAMES]
                                 print(ingresolog)
                                 log.append(ingresolog)
                                 # desafio del contraataque

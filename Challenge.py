@@ -151,17 +151,22 @@ class duel:
                     ingresolog = [NAMES + " Gana el desafio y utiliza la carta " + DUKE.name +" ganando 3 monedas"]
                     print(ingresolog)
                     log.append(ingresolog)
-                    return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
+                    Dueler = point[count]
+                    Dueler -= 1
+                    point.insert(count, Dueler)
+                    point.pop(count+1)
+                    return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point
                 else:
                     ingresolog = [NAMES + " pierde el desafio y pierde una carta"]
                     print(ingresolog)
-                    log.append(ingresolog)
-                    print(unknow)          
+                    log.append(ingresolog)         
                     personalCoin -= 3   
-                    print(personalCoin)
-                    return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
+                    playerpoints -= 1
+                    point.pop(0)
+                    point.append(playerpoints)
+                    return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point 
                 break   
-            return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
+            return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point
 
     def dareFA(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point):
         print("quien quiere desafiar? ")
@@ -189,8 +194,7 @@ class duel:
                     point[CounterChallenge] -= 1
                     print(ingresolog)
                     point.insert(count,point[CounterChallenge])
-                    point.pop()
-                    print(point)                        
+                    point.pop()                       
                 else:
                     ingresolog = ["El jugador: "+ListPlayer[count]+" Pierde el desafio, perdiendo una carta"]
                     #si es que falla aqui se pierde la carta
@@ -200,9 +204,8 @@ class duel:
                     print("influencia de ", ListPlayer[count],": ",point[count])
                     point.insert(count,point[count])
                     point.pop()
-                    print(point)
                 return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
-    def dareAC(self,ListPlayer,ingresolog,NAMES,log,SuperHand,point,x,PersonalDeck,unknow,personalCoin,CoinList,n):
+    def dareAC(self,ListPlayer,ingresolog,NAMES,log,SuperHand,point,x,PersonalDeck,unknow,personalCoin,CoinList,n,MurderVictim):
         ASSASIN = murder("Asesino")
         print("quien quiere desafiar?: ")
         while(x < n):
@@ -210,6 +213,7 @@ class duel:
             x += 1
         print(n,"nadie quiere desafiar")
         MurderDuel = int(input("quien quiere desafiar?: "))
+        DuelOfMurder = ListPlayer[MurderDuel]
         if (MurderDuel != n):
             murderr = True
             CountAssasin = 0
@@ -224,7 +228,10 @@ class duel:
                 log.append(ingresolog)
                 print(ingresolog)
                 dueler = point[MurderDuel]
-                dueler -= 1
+                if(DuelOfMurder == MurderVictim):
+                    dueler -= 2
+                else:
+                    dueler -= 1
                 point.insert(MurderDuel,dueler)
                 #point.pop(MurderDuel)
                 

@@ -33,7 +33,7 @@ class Ex:
         pt = 0
         FirstPlayer = ListPlayer[0]
         while(True):
-            if(point[0] == 0):
+            if(point[0] <= 0):
                 ingresolog = ["El jugador: "+ListPlayer[0]+" a perdido todas sus influencia"]
                 log.append(ingresolog)
                 print(ingresolog)
@@ -44,7 +44,7 @@ class Ex:
                 unknow.pop(0)
             n = len(ListPlayer)
             if(len(ListPlayer) == 1):
-                print("el Ganador es: "+ListPlayer+" ( ͡~ ͜ʖ ͡°)")
+                print("el Ganador es: "+ListPlayer[0]+" ( ͡~ ͜ʖ ͡°)")
                 break
             GlobalList = []
             GlobalList.append(ListPlayer)
@@ -59,7 +59,6 @@ class Ex:
             #print(CoinList)
             playerpoints = point[0] # puntos del jugador(influencia)
             
-            print(point)
             print("\n")
             print("le toca a:  ", NAMES, '\nlas influencias que tiene son: ',playerpoints)
             part1 = PlayerMenu(1)
@@ -86,7 +85,7 @@ class Ex:
                         point.pop(0)
                         point.append(playerpoints)
                         break
-                    elif(option2 == 1):#falta CONSECUENCIAS
+                    elif(option2 == 1):#listo
                         Foreign = Foreing_aid("ayuda extranjera").efect(PrincipalTurns, log, personalCoin, NAMES)
                         PrincipalTurns = Foreign[0]
                         log = Foreign[1]
@@ -167,8 +166,7 @@ class Ex:
                         PersonalDeck.append(SuperHand)
                         print(PersonalDeck)
                         break
-                    elif(option2 == 3):#listo falta consecuencia
-                        #seleccion
+                    elif(option2 == 3):# creo que esta listo
                         print("se a seleccionado el Impuestos")
                         PrincipalTurns += 1
                         duke = Tax("Duke")
@@ -178,10 +176,13 @@ class Ex:
                         ingresolog = [NAMES +" utiliza la accion "+ duke.action() +" ganado 3 monedas"]
                         log.append(ingresolog)
                         #desafio
-                        TaxDuel = duel("DUKE").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log,n,deck_list)
+                        TaxDuel = duel("DUKE").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log,n,deck_list,point)
                         personalCoin = TaxDuel[6]
                         print(personalCoin) #algo raro pasa aqui
                         #cambio
+                        point.pop()
+                        #print(point)
+                        point.append(playerpoints)
                         ListPlayer.pop(0)
                         ListPlayer.append(NAMES)
                         PersonalDeck.pop(0)
@@ -216,7 +217,7 @@ class Ex:
                         log.append(ingresolog)
                         #print(MurderVictim)
                         # desafiar
-                        slayer = duel("asesino").dareAC(ListPlayer, ingresolog, NAMES, log, SuperHand, point, x, PersonalDeck, unknow, personalCoin, CoinList,n)
+                        slayer = duel("asesino").dareAC(ListPlayer, ingresolog, NAMES, log, SuperHand, point, x, PersonalDeck, unknow, personalCoin, CoinList,n,MurderVictim)
                         #contraataque
                         murderr = slayer[11]
                         if(murderr == False):
@@ -244,6 +245,7 @@ class Ex:
                                     print(kill,KillerList[kill])
                                 print(kill+1,"nadie quiere desafiar el contraataque")
                                 CounterKiller = int(input("quien quiere desafiar el contraataque?: "))
+                                NameOfDead = KillerList[CounterKiller]
                                 if (CounterKiller != kill+1):
                                     CounterMurder = True
                                     CounterCount = 0
@@ -257,14 +259,17 @@ class Ex:
                                         ingresolog = ["El Jugador: "+ListPlayer[MurderDuel]+" Gana el desafio"]
                                         log.append(ingresolog)
                                         print(ingresolog)
-                                        PointsCounter -= 1
+                                        if(MurderVictim == NameOfDead ):
+                                            PointsCounter -= 2
+                                        else:
+                                            PointsCounter -= 1
                                         point.insert(MurderDuel,PointsCounter)
                                     else:
                                         ingresolog = ["El Jugador: "+ListPlayer[MurderDuel]+" pierde el desafio"]
                                         log.append(ingresolog)
                                         print(ingresolog)
                                         murderpoint = pointkill[CounterKiller]
-                                        murderpoint -= 1
+                                        murderpoint -= 2
                                         point.insert(CounterKiller,murderpoint)
                                 #print(point)
                                 point.pop(n)

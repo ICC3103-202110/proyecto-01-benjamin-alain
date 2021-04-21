@@ -1,4 +1,3 @@
-from Winner import Won
 from player import gambler
 from Assasin import murder
 from Duke import Tax

@@ -81,6 +81,12 @@ class duel:
                 if (duelcount >= 1):
                     ingresolog = [NAMES + " Gana el desafio y utiliza la carta " + Ambassador.name +" "]
                     print(ingresolog)
+                    SadResult = point[count]
+                    SadResult -= 1
+                    point.insert(count,SadResult)
+                    print(point)
+                    point.pop(count+1)
+                    print(point)
                     log.append(ingresolog)
                     AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
                     ListPlayer.pop(0)
@@ -104,6 +110,9 @@ class duel:
                     duelerPoints = point[0]
                     duelerPoints -= 1
                     point.append(duelerPoints)
+                    print(point)
+                    point.pop(0)
+                    print(point)
                     log.append(ingresolog)
                     ListPlayer.pop(0)
                     ListPlayer.append(NAMES)

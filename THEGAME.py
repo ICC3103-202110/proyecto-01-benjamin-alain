@@ -1,4 +1,3 @@
-from Winner import Won
 from player import gambler
 from Assasin import murder
 from Duke import Tax
@@ -307,6 +306,10 @@ class Ex:
                         CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)
                         print(CAPTAIN)
                         elecction = int(input("escoja la victima del robo: "))
+                        victimPlayer = ListPlayer[elecction]
+                        ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
+                        print(ingresolog)
+                        log.append(ingresolog)  
                         print("pero antes quien desea contraatacar? : ")
                         while(True):
                             #contraataque
@@ -368,8 +371,7 @@ class Ex:
                                         counters = False
                                         break
                                     if (duelcount == 5):
-                                        break
-                                
+                                        break  
                             if (duelcount == 1): #SI HAY UN CONTRAATAQUE, se ejecuta aca
                                 counters = True
                                 Reelection = ListPlayer[count]
@@ -405,6 +407,7 @@ class Ex:
                                         ingresolog = ["El jugador: "+Reelection+" Pierde el desafio, perdiendo una carta"]
                                         #si es que falla aqui se pierde la carta
                                         log.append(ingresolog)
+
                                         print(ingresolog)
                                 ############################
                                 PersonalDeck.pop(0)
@@ -468,8 +471,7 @@ class Ex:
                             SuperHand = PersonalDeck[0]
                             personalCoin = CoinList[0]
                             break
-                            
-                        victimPlayer = ListPlayer[elecction]
+                        
                         victimCoinss = CoinList[elecction]
                         if (victimCoinss < 2):
                             victimCoins = CoinList[elecction]-1
@@ -478,9 +480,6 @@ class Ex:
                             break
                         else:
                             victimCoins = CoinList[elecction]-2
-                        ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
-                        print(ingresolog)
-                        log.append(ingresolog)
                         ListPlayer.pop(0)
                         ListPlayer.append(NAMES)
                         PersonalDeck.pop(0)
@@ -498,7 +497,7 @@ class Ex:
                         personalCoin = CoinList[0]
                         shuffle(deck_list)
                         break
-                    elif(option2 == 6):#listo falta consecuencia hay que hacerle cambios en la clase challenger
+                    elif(option2 == 6):#listo 
                         print("se a seleccionado el Cambio")
                         PrincipalTurns += 1
                         Ambassador = Exchange("Ambassador")

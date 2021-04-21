@@ -137,7 +137,7 @@ class Ex:
                         SuperCoup = COUP("Golpe")
                         MegaCoup = SuperCoup.efect(PrincipalTurns, log, personalCoin, CoinList, NAMES, ListPlayer, PersonalDeck, unknow, SuperHand,point, playerpoints,n)
                         break
-                    elif(option2 == 3):#  listo
+                    elif(option2 == 3):#listo
                         print("se a seleccionado el Impuestos")
                         PrincipalTurns += 1
                         duke = Tax("Duke")
@@ -244,7 +244,7 @@ class Ex:
                                         point.insert(CounterKiller,murderpoint)
                                         point.pop(CounterKiller+1)
                                 #print(point)
-                                point.pop(n)
+                                point.pop()
                                 #print(point)
                                 point.append(playerpoints)
                                 ListPlayer.pop(0)
@@ -299,30 +299,25 @@ class Ex:
                                 z += 1
                             print(n,"nadie quiere contraatacar")
                             duelcount = 1
-                            count = int(input("que jugador desea contratacar? : "))
+                            Challenge = int(input("que jugador desea contratacar? : "))
                             print("\n")
-                            if(count != n): # nadie contraataca se pocede al desafio!!!!!!!!!!!!!!!
-                                ExtortionCounter = []
-                                for i in range(len(ListPlayer)):
-                                    if(ListPlayer[i] != ListPlayer[count]):
-                                        ExtortionCounter.append(ListPlayer[i])
-                                print("quien quiere desafiar el contraataque")
-                                for k in range(len(ExtortionCounter)):
-                                    print(k,":",ExtortionCounter[k])
-                                print(k+1, "nadie quiere desafiar")
-                                Challenge = int(input("que jugador desea desafiar? : ")) 
-                                print("\n") 
-                                #nadie de los 4 jugadores quiere desafiar
-                                if(Challenge != k+1):
-                                    duelcount = 5  
-                                else:
-                                    duelcount = 0
-                                if (duelcount == 5):
+                            if(Challenge != n): # nadie contraataca se pocede al desafio!!!!!!!!!!!!!!!
+                                duelcount = 1
+                            else:
+                                z = 1
+                                print("los jugadores que pueden desafiar?: ")
+                                while(z<n):
+                                    print(z,":",ListPlayer[z])
+                                    z += 1
+                                print(n,"nadie quiere desafiar")
+                                Challenge = int(input("que jugador desea desafiar? : "))
+                                if(Challenge == n):
                                     break
+                                duelcount = 0    
                             if (duelcount == 1): #SI HAY UN CONTRAATAQUE, se ejecuta aca
                                 counters = True
-                                Reelection = ListPlayer[count]
-                                ingresolog = ["el jugador " + ListPlayer[count] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
+                                Reelection = ListPlayer[Challenge]
+                                ingresolog = ["el jugador " + ListPlayer[Challenge] + " contraataco al jugador: "+ NAMES+" manteniendo sus monedas"]
                                 print(ingresolog)
                                 log.append(ingresolog)
                                 # desafio del contraataque
@@ -344,8 +339,8 @@ class Ex:
                                     ingresolog = ['El jugador: '+countChallenge[CounterChallenge]+' Desafio el contraataque de: '+Reelection]
                                     print(ingresolog)
                                     log.append(ingresolog)
-                                    for i in range(len(PersonalDeck[count])):
-                                        if(PersonalDeck[count][i] == Captain.name or PersonalDeck[count][i] == Ambassator.name):
+                                    for i in range(len(PersonalDeck[Challenge])):
+                                        if(PersonalDeck[Challenge][i] == Captain.name or PersonalDeck[Challenge][i] == Ambassator.name):
                                             ChallengeCounter += 1
                                     if(ChallengeCounter >= 1):
                                         ingresolog = ["El jugador: "+Reelection+" Gano el desafio"]
@@ -355,10 +350,10 @@ class Ex:
                                         ingresolog = ["El jugador: "+Reelection+" Pierde el desafio, perdiendo una carta"]
                                         #si es que falla aqui se pierde la carta
                                         log.append(ingresolog)
-                                        pointReelec = point[count]
+                                        pointReelec = point[Challenge]
                                         pointReelec -= 1
-                                        point.insert(count,pointReelec)
-                                        point.pop(count+1)
+                                        point.insert(Challenge,pointReelec)
+                                        point.pop(Challenge+1)
                                         print(ingresolog)
                                 ############################
                                 PersonalDeck.pop(0)
@@ -378,6 +373,7 @@ class Ex:
                                 duelAmericanCap = 0
                                 ingresolog = ["el jugador " + ListPlayer[Challenge] + " desafia al jugador: "+ NAMES+" manteniendo sus monedas"]
                                 log.append(ingresolog)
+                                print(ingresolog)
                                 for i in range(len(SuperHand)): # aqui se verifica la carta
                                     if (SuperHand[i] == Captain.name):
                                         duelAmericanCap += 1

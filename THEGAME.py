@@ -178,7 +178,7 @@ class Ex:
                         #print(personalCoin)
                         PrincipalTurns += 1
                         Assassin = murder("Asesino")
-                        ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n)  
+                        ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n,point)  
                         CoinList.pop(0)
                         CoinList.append(personalCoin)
                         elecction = int(input("escoja la victima del asesinato: "))
@@ -242,6 +242,7 @@ class Ex:
                                         murderpoint = pointkill[CounterKiller]
                                         murderpoint -= 2
                                         point.insert(CounterKiller,murderpoint)
+                                        point.pop(CounterKiller+1)
                                 #print(point)
                                 point.pop(n)
                                 #print(point)
@@ -272,7 +273,7 @@ class Ex:
                             point.pop(0)
                             point.append(playerpoints)
                             break
-                    elif(option2 == 5):#listo falta consecuencia 
+                    elif(option2 == 5):#listo falta consecuencia un poco
                         #inicio
                         counters = False
                         duelcards = 0
@@ -292,65 +293,32 @@ class Ex:
                         print("pero antes quien desea contraatacar? : ")
                         while(True):
                             #contraataque
-                            print(ListPlayer)
-                            print(1,":",ListPlayer[1])
-                            print(2,":",ListPlayer[2])
+                            z = 1
+                            while(z<n):
+                                print(z,":",ListPlayer[z])
+                                z += 1
+                            print(n,"nadie quiere contraatacar")
                             duelcount = 1
-                            if(n == 4):
-                                print(3,":",ListPlayer[3])
-                                print(4,": Nadie quiere contraatacar ")
-                                print("\n")
-                                count = int(input("que jugador desea contratacar? : "))
-                                print("\n")
-                                if(count == 4): # nadie contraataca se pocede al desafio!!!!!!!!!!!!!!!
-                                    while(True):
-                                        print("quien desea desafiar ?")
-                                        print(1,":",ListPlayer[1])
-                                        print(2,":",ListPlayer[2])
-                                        print(3,":",ListPlayer[3])
-                                        print(4,":","nadie quiere desafiar")
-                                        print("\n")
-                                        Challenge = int(input("que jugador desea desafiar? : ")) 
-                                        print("\n") 
-                                        #nadie de los 4 jugadores quiere desafiar
-                                        if(Challenge == 4):
-                                            duelcount = 5  
-                                            break 
-                                        print("el jugador " + ListPlayer[Challenge] + " quiere desafiar")
-                                        #ingresolog = ["el jugador " + ListPlayer[Challenge] + "desafia al jugador: "+ NAMES+" manteniendo sus monedas"]
-                                        #print(ingresolog)
-                                        #log.append(ingresolog)
-                                        duelcount = 0
-                                        break
-                                    if (duelcount == 5):
-                                        break
-                                    
-                            else:
-                                print(3,":","nadie quiere contraatacar ")
-                                print("\n")
-                                count = int(input("Que jugador desea contratacar? :"))
-                                print("\n")
-                                if(count == 3):
-                                    while(True):  #Nadie Contraataca, se procede a DESAFIAR !!!!!!!!!!!!!!!!
-                                        print("quien desea desafiar ?")
-                                        print(1,":",ListPlayer[1])
-                                        print(2,":",ListPlayer[2])
-                                        print(3,":","nadie quiere desafiar")
-                                        print("\n")
-                                        Challenge = int(input("que jugador desea desafiar?: "))
-                                        print("\n")
-                                        if (Challenge == 3):             #nadie de los 3 jugadores quiere desafiar
-                                            duelcount = 5             
-                                            break
-                                        print("el jugador " + ListPlayer[Challenge] + " quiere desafiar")
-                                        ingresolog = ["el jugador " + ListPlayer[Challenge] + " desafia al jugador: "+ NAMES+" manteniendo sus monedas"]
-                                        print(ingresolog)
-                                        #log.append(ingresolog)
-                                        duelcount = 0
-                                        counters = False
-                                        break
-                                    if (duelcount == 5):
-                                        break  
+                            count = int(input("que jugador desea contratacar? : "))
+                            print("\n")
+                            if(count != n): # nadie contraataca se pocede al desafio!!!!!!!!!!!!!!!
+                                ExtortionCounter = []
+                                for i in range(len(ListPlayer)):
+                                    if(ListPlayer[i] != ListPlayer[count]):
+                                        ExtortionCounter.append(ListPlayer[i])
+                                print("quien quiere desafiar el contraataque")
+                                for k in range(len(ExtortionCounter)):
+                                    print(k,":",ExtortionCounter[k])
+                                print(k+1, "nadie quiere desafiar")
+                                Challenge = int(input("que jugador desea desafiar? : ")) 
+                                print("\n") 
+                                #nadie de los 4 jugadores quiere desafiar
+                                if(Challenge != k+1):
+                                    duelcount = 5  
+                                else:
+                                    duelcount = 0
+                                if (duelcount == 5):
+                                    break
                             if (duelcount == 1): #SI HAY UN CONTRAATAQUE, se ejecuta aca
                                 counters = True
                                 Reelection = ListPlayer[count]

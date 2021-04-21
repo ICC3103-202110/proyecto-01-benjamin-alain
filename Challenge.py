@@ -228,6 +228,7 @@ class duel:
                 else:
                     dueler -= 1
                 point.insert(MurderDuel,dueler)
+                print("aaquii")
                 #point.pop(MurderDuel)
                 
             else:
@@ -240,6 +241,7 @@ class duel:
                 print(point)
                 #point.pop(0)
             if(murderr == True):
+                print("error aqui")
                 ListPlayer.pop(0)
                 ListPlayer.append(NAMES)
                 PersonalDeck.pop(0)

@@ -25,8 +25,13 @@ class COUP:
         CoinList.append(personalCoin)
         ASSASIN = Assassin.efect(ListPlayer,CoinList,unknow,n,point)  
         elecction = int(input("escoja la victima del asesinato: "))
-        #print(elecction)    
-        MurderVictim = ListPlayer[elecction]
+        #print(elecction)
+        while(True):
+            try:    
+                MurderVictim = ListPlayer[elecction]
+                break
+            except:
+                elecction = int(input("escoja la victima del asesinato: "))
         ingresolog = [NAMES+" utilizo la accion Golpe contra "+MurderVictim]
         log.append(ingresolog)
         #print(MurderVictim)
@@ -34,7 +39,7 @@ class COUP:
         for i in range(len(PersonalDeck[elecction])):
             print(i,PersonalDeck[elecction][i])
             respaldo.append(PersonalDeck[elecction][i])
-        victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar ")) 
+        victimelection = int(input("jugador, "+MurderVictim+ " elija su carta a eliminar "))
         SadPoint = point[elecction]
         SadPoint -= 1
         point.insert(elecction,SadPoint)

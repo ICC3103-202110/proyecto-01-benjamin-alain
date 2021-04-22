@@ -27,6 +27,8 @@ class Tax(IEspecialAtack):
             x += 1
         print(n,"nadie quiere contraatacar")
         count = int(input("que jugador desea contratacar? "))
+        if(count >= n):
+            count = n
         if(count == n+1):
             return ListPlayer,n,count
         return ListPlayer,n,count

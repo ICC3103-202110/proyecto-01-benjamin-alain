@@ -9,7 +9,8 @@ class CardLost:
     def name(self,value):
         self.__name = value
     
-    def DropCard(L,U1,player_point,PD):               #para el jugador actual
+    # 
+    def DropCard(self,L,U1,player_point,PD):              #para el jugador actual
         if player_point[0] == 2:                             #le queda una vida  Jugador turno actual
             count=0
             for i in L:
@@ -36,7 +37,7 @@ class CardLost:
 
 
         return U1
-    def DropCard_2_n_3(L,U1,player_point,PD,n):       #para el jugador no actual n=3
+    def DropCard_2_n_3(self,L,U1,player_point,PD,n):       #para el jugador no actual n=3
         if player_point[1] ==  1:              #Jugador 2 pierde una vida.
             count=0
             for y in PD[1]:
@@ -81,7 +82,7 @@ class CardLost:
             U1.insert(2,PD[2])
         return U1
     
-    def DropCard_2_n_4(L,U1,player_point,PD,n):       #Para el jugador no actual n=4
+    def DropCard_2_n_4(self,L,U1,player_point,PD,n):       #Para el jugador no actual n=4
         if player_point[1] ==  1:              #Jugador 2 pierde una vida.
             count=0
             for y in PD[1]:
@@ -150,7 +151,7 @@ class CardLost:
             
         
         return U1
-    def DropCard_2_n_2(L,U1,player_point,PD,n):       #para el jugador no actual n=2
+    def DropCard_2_n_2(self,L,U1,player_point,PD,n):       #para el jugador no actual n=2
         if player_point[1] ==  1:                     #Jugador no actual pierde una vida.
             count=0
             for y in PD[1]:

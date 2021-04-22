@@ -4,7 +4,7 @@ from Captain import Steal
 from Contessa import Block
 from Ambassador import Exchange
 from random import shuffle
-
+from Loser import CardLost
 class duel:
 
     def __init__(self, name):
@@ -32,6 +32,8 @@ class duel:
                 x += 1
             print(n,"nadie quiere desafiar")
             MurderDuel = int(input("quien quiere desafiar?: "))
+            if(MurderDuel >= n):
+                MurderDuel = n
             while(True):
                 if(MurderDuel == n):
                     AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
@@ -111,6 +113,12 @@ class duel:
                     personalCoin = CoinList[0]
                     point.pop(0)
                     point.append(playerpoints)
+                    if (n == 4):
+                        test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+                    elif(n == 3):
+                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+                    elif(n == 2):
+                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
                     shuffle(deck_list)
                     shuffle(deck_list) 
                     break                      
@@ -124,6 +132,8 @@ class duel:
                     x += 1
                 print(x," : ", "nadie quiere desafiar")
                 count = int(input("quien desea desafiar?: "))
+                if(count >=  x):
+                    count = x
                 if(count == x):
                     break
                 print("el jugador "+ListPlayer[count]+" quiere desafiar")
@@ -159,7 +169,7 @@ class duel:
                 break   
             return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
 
-    def dareFA(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point):
+    def dareFA(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point,n):
         print("quien quiere desafiar? ")
         if(self.name == 'foreign_aid'):
             DuelList = []
@@ -170,6 +180,8 @@ class duel:
                 print(LIST,DuelList[LIST])
             print(LIST+1,'nadie quiere desafiar')
             CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
+            if(CounterChallenge >= LIST+1):
+                CounterChallenge = LIST+1
             if(CounterChallenge != LIST+1):
                 DUKKE = Tax("Duke")
                 ChallengeCounter = 0
@@ -195,6 +207,12 @@ class duel:
                     print("influencia de ", ListPlayer[count],": ",point[count])
                     point.insert(count,point[count])
                     point.pop()
+                    if (n == 4):
+                        test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+                    elif(n == 3):
+                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+                    elif(n == 2):
+                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
                 return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
             else:
                 personalCoin -= 2
@@ -207,6 +225,8 @@ class duel:
             x += 1
         print(n,"nadie quiere desafiar")
         MurderDuel = int(input("quien quiere desafiar?: "))
+        if(MurderDuel >= n):
+            MurderDuel = n
         if (MurderDuel != n):
             DuelOfMurder = ListPlayer[MurderDuel]
             murderr = True

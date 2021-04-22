@@ -15,6 +15,7 @@ from Challenge import duel
 from ExtendExtortion import Extend
 
 
+
 class Ex:
 
     def __init__(self,algo):
@@ -104,7 +105,7 @@ class Ex:
                             # desafio
                             DuelList = []
                             Challenger = duel("foreign_aid",)
-                            DUEL = Challenger.dareFA(ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point)
+                            DUEL = Challenger.dareFA(ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point,n)
                             break
                         try:
                             personalCoin = DUEL[6]
@@ -196,7 +197,12 @@ class Ex:
                         CoinList.append(personalCoin)
                         elecction = int(input("escoja la victima del asesinato: "))
                         #print(elecction)    
-                        MurderVictim = ListPlayer[elecction]
+                        while(True):
+                            try:
+                                MurderVictim = ListPlayer[elecction]
+                                break
+                            except:
+                                elecction = int(input("escoja la victima del asesinato: "))
                         ingresolog = [NAMES+" utilizo la accion "+Assassin.action()+" contra "+MurderVictim]
                         log.append(ingresolog)
                         #print(MurderVictim)
@@ -212,6 +218,8 @@ class Ex:
                                 y += 1
                             print(len(ListPlayer),"nadie quiere contraatacar")
                             MurderDuel = int(input("quien quiere contraatacar?: "))
+                            if(MurderDuel >=  len(ListPlayer) ):
+                                MurderDuel = len(ListPlayer)
                             if(MurderDuel != len(ListPlayer)):
                                 ingresolog = ["El jugador: "+ListPlayer[MurderDuel]+" Contraataco a: "+NAMES]
                                 print(ingresolog)
@@ -229,6 +237,8 @@ class Ex:
                                     print(kill,KillerList[kill])
                                 print(kill+1,"nadie quiere desafiar el contraataque")
                                 CounterKiller = int(input("quien quiere desafiar el contraataque?: "))
+                                if(CounterKiller >= kill+1):
+                                    CounterKiller =  kill+1
                                 if (CounterKiller != kill+1):
                                     NameOfDead = KillerList[CounterKiller]
                                     CounterMurder = True
@@ -333,7 +343,12 @@ class Ex:
                         CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)
                         print(CAPTAIN)
                         elecction = int(input("escoja la victima del robo: "))
-                        victimPlayer = ListPlayer[elecction]
+                        while(True):
+                            try:
+                                victimPlayer = ListPlayer[elecction]
+                                break
+                            except:
+                                elecction = int(input("escoja la victima del robo: "))
                         ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
                         print(ingresolog)
                         log.append(ingresolog)  
@@ -348,6 +363,8 @@ class Ex:
                             print(n,"nadie quiere contraatacar")
                             duelcount = 1
                             Challenge = int(input("que jugador desea contratacar? : "))
+                            if(Challenge >= n):
+                                Challenge = n
                             print("\n")
                             if(Challenge != n): # nadie contraataca se pocede al desafio!!!!!!!!!!!!!!!
                                 duelcount = 1
@@ -359,6 +376,8 @@ class Ex:
                                     z += 1
                                 print(n,"nadie quiere desafiar")
                                 Challenge = int(input("que jugador desea desafiar? : "))
+                                if(Challenge >= n):
+                                    Challenge = n 
                                 if(Challenge == n):
                                     break
                                 duelcount = 0    
@@ -381,6 +400,8 @@ class Ex:
                                     print(i,countChallenge[i])
                                 print(i+1,'nadie quiere desafiar')
                                 CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
+                                if(CounterChallenge >= i+1):
+                                    CounterChallenge = i+1
                                 if(CounterChallenge != i+1):
                                     Ambassator = Exchange("Ambassador")
                                     ChallengeCounter = 0

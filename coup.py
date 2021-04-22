@@ -1,5 +1,5 @@
 from assasin import murder
-
+from Loser import CardLost
 class COUP:
 
     def __init__(self,name):
@@ -53,6 +53,12 @@ class COUP:
         PersonalDeck.append(SuperHand)
         point.pop(0)
         point.append(playerpoints)
+        if (n == 4):
+            test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+        elif(n == 3):
+            test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+        elif(n == 2):
+            test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
         return PrincipalTurns,log,personalCoin,CoinList,NAMES,ListPlayer,PersonalDeck,unknow,SuperHand,point,playerpoints
                         
                         

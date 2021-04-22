@@ -60,7 +60,7 @@ class Ex:
             personalCoin = CoinList[0] # monedas del jugador
             #print(CoinList)
             playerpoints = point[0] # puntos del jugador(influencia)
-            print(point)
+            print("puntos de todos los jugadores actuales: ",point)
             print("\n")
             print("le toca a:  ", NAMES, '\nlas influencias que tiene son: ',playerpoints)
             part1 = PlayerMenu(1)
@@ -267,6 +267,12 @@ class Ex:
                                         point.insert(CounterKiller,murderpoint)
                                         point.pop(CounterKiller+1)
                                         print(ListPlayer)
+                                        if (n == 4):
+                                            test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+                                        elif(n == 3):
+                                            test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+                                        elif(n == 2):
+                                            test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
                                         break
                                 else:
                                     point.pop()
@@ -329,6 +335,12 @@ class Ex:
                             NAMES = ListPlayer[0]
                             SuperHand = PersonalDeck[0]
                             personalCoin = CoinList[0]
+                            if (n == 4):
+                                test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+                            elif(n == 3):
+                                test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+                            elif(n == 2):
+                                test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
                             break
                     elif(option2 == 5):#listo
                         #inicio
@@ -467,6 +479,12 @@ class Ex:
                                     point.append(playerpoints)
                                     print(ingresolog)
                                     counters = True
+                                    if (n == 4):
+                                        test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+                                    elif(n == 3):
+                                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+                                    elif(n == 2):
+                                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
                                 #print("el jugador " + ListPlayer[Challenge] + " quiere desafiar")
                                 #print(ingresolog)
                                 PersonalDeck.pop(0)

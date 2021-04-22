@@ -165,6 +165,12 @@ class duel:
                     point.append(playerpoints)
                     point.pop(0)
                     #print(point)
+                    if (n == 4):
+                            test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+                    elif(n == 3):
+                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+                    elif(n == 2):
+                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
                     return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
                 break   
             return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
@@ -247,7 +253,6 @@ class duel:
                 else:
                     dueler -= 1
                 point.insert(MurderDuel,dueler)
-                print("aaquii")
                 #point.pop(MurderDuel)
                 
             else:
@@ -260,7 +265,6 @@ class duel:
                 print(point)
                 #point.pop(0)
             if(murderr == True):
-                print("error aqui")
                 ListPlayer.pop(0)
                 ListPlayer.append(NAMES)
                 PersonalDeck.pop(0)

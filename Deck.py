@@ -1,5 +1,5 @@
 from Duke import Tax
-from Assasin import murder
+from assasin import murder
 from Captain import Steal
 from Contessa import Block
 from Ambassador import Exchange

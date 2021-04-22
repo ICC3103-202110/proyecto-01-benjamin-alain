@@ -1,5 +1,5 @@
 from player import gambler
-from Assasin import murder
+from assasin import murder
 from Duke import Tax
 from Captain import Steal
 from Contessa import Block
@@ -517,6 +517,6 @@ class Ex:
             elif(option1 == 4):
                 descripcion = PlayerMenu(6).menusplayers()
                 print(descripcion)
-                x == (input("presione cualquier tecla para volver"))             
+                x = (input("presione cualquier tecla para volver"))             
             else:
                 print("ingrese un numero valido")

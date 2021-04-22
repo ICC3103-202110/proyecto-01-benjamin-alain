@@ -1,5 +1,5 @@
 from player import gambler
-from Assasin import murder
+from assasin import murder
 from Duke import Tax
 from Captain import Steal
 from Contessa import Block

@@ -1,4 +1,4 @@
-from Assasin import murder
+from assasin import murder
 
 class COUP:
 

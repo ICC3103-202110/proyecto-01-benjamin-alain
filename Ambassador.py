@@ -25,7 +25,7 @@ class Exchange(IEspecialAtack):
             l.append(Deck[1])
             for i in range (len(l)):
                 print(i,l[i])  
-            t=int(input("Choose the number of the card yo wanna pick: "))  
+            t=int(input("Elige el numero de la carta que quieras tomar: "))  
             if t == 0:
                 Card[0]=l[0]
             elif t == 1:
@@ -33,10 +33,10 @@ class Exchange(IEspecialAtack):
             elif t == 2:
                 Card[0]=l[2]      
             else:
-                print("This number is not allowed")
+                print("Esto no esta permito")
                 for i in range (len(l)):
                     print(i,l[i])  
-                t=int(input("Choose the number of the card yo wanna pick: "))  
+                t=int(input("Elige el numero de la carta que quieras tomar: "))  
                 
             shuffle(Deck)
         
@@ -48,7 +48,7 @@ class Exchange(IEspecialAtack):
             l.append(Deck[1])
             for i in range (len(l)):
                 print(i,l[i])  
-            t=int(input("Choose the number of the first card yo wanna pick: "))  
+            t=int(input("Elige el numero de la primera carta que quieras tomar: "))  
 
             if t == 0:
                 Card[0]=l[0]
@@ -63,16 +63,16 @@ class Exchange(IEspecialAtack):
                 Card[0]=l[3]
                 l.remove(Deck[t-2])
             else:
-                print("This number is not allowed, TRY AGAIN")
+                print("Esto no esta permito,Intentelo denuevo")
                 print("\n")
                 for i in range (len(l)):
                     print(i,l[i])  
-                t=int(input("Choose the number of the first card yo wanna pick: ")) 
+                t=int(input("Elige el numero de la primera carta que quieras tomar: ")) 
     
     
             for u in range(len(l)):
                 print(u,l[u])       
-            r=int(input("Choose the number of the second card yo wanna pick: "))
+            r=int(input("Elige el numero de la segunda carta que quieras tomar: "))
 
             if r == 0:
                 Card[1]=l[0]
@@ -85,17 +85,17 @@ class Exchange(IEspecialAtack):
         
 
             else:
-                print("This number is not allowed, TRY AGAIN")
+                print("Esto no esta permito,Intentelo denuevo")
                 print("\n")
                 print(u)
                 for u in range(len(l)):
                     print(u,l[u])        
-                r=int(input("Choose the number of the second card yo wanna pick: "))
+                r=int(input("Elige el numero de la segunda carta que quieras tomar: "))
         
             
             shuffle(Deck)   
                  
-        print("Your new card(s) are: ", Card)
+        print("Tus nuevas cartas son: ", Card)
         return Card
     
     def counter(self, extorsion):

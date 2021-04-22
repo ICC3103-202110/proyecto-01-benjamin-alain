@@ -141,7 +141,7 @@ class duel:
                     log.append(ingresolog)
                     Dueler = point[count]
                     Dueler -= 1
-                    print(point)
+                    #print(point)
                     point.insert(count, Dueler)
                     point.pop(count+1)
                     return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
@@ -154,7 +154,7 @@ class duel:
                     playerpoints -= 1
                     point.append(playerpoints)
                     point.pop(0)
-                    print(point)
+                    #print(point)
                     return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
                 break   
             return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver

@@ -82,6 +82,7 @@ class Exchange(IEspecialAtack):
                 
             elif r == 2:
                 Card[1]=l[2]
+                
         
 
             else:

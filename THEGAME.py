@@ -229,8 +229,8 @@ class Ex:
                                     print(kill,KillerList[kill])
                                 print(kill+1,"nadie quiere desafiar el contraataque")
                                 CounterKiller = int(input("quien quiere desafiar el contraataque?: "))
-                                NameOfDead = KillerList[CounterKiller]
                                 if (CounterKiller != kill+1):
+                                    NameOfDead = KillerList[CounterKiller]
                                     CounterMurder = True
                                     CounterCount = 0
                                     ingresolog = ["El jugador: "+KillerList[CounterKiller]+" desafio el contraataque de: "+ListPlayer[MurderDuel]]
@@ -256,6 +256,27 @@ class Ex:
                                         murderpoint -= 2
                                         point.insert(CounterKiller,murderpoint)
                                         point.pop(CounterKiller+1)
+                                        print(ListPlayer)
+                                        break
+                                else:
+                                    point.pop()
+                                    #print(point)
+                                    point.append(playerpoints)
+                                    ListPlayer.pop(0)
+                                    ListPlayer.append(NAMES)
+                                    PersonalDeck.pop(0)
+                                    PersonalDeck.append(SuperHand)
+                                    CoinList.pop(0)
+                                    CoinList.append(personalCoin)
+                                    git = unknow[0]
+                                    unknow.pop(0)
+                                    unknow.append(git)
+                                    NAMES = ListPlayer[0]
+                                    SuperHand = PersonalDeck[0]
+                                    personalCoin = CoinList[0]
+                                    point.pop(0)
+                                    point.append(playerpoints)
+                                    break
                                 #print(point)
                                 point.pop()
                                 #print(point)
@@ -274,6 +295,7 @@ class Ex:
                                 personalCoin = CoinList[0]
                                 point.pop(0)
                                 point.append(playerpoints)
+                                break
                             print("solo puede mirar "+MurderVictim)
                             for i in range(len(PersonalDeck[elecction])):
                                 print(i,PersonalDeck[elecction][i])

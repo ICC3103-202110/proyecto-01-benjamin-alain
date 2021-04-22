@@ -18,7 +18,7 @@ class duel:
     def name(self,value):
         self.__name = value
     
-    def dare(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point):
+    def dare(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver):
         DUKE = Tax("Duke")
         CAPTAIN = Steal("Capitan")
         AMBASSADOR = Exchange("Ambassador")

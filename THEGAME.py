@@ -12,7 +12,7 @@ from foreing_aid import Foreing_aid
 from coup import COUP
 from entry import Entry
 from Challenge import duel
-import os
+from ExtendExtortion import Extend
 
 
 class Ex:
@@ -29,12 +29,6 @@ class Ex:
     
         
     def PrincipalGame(self,GlobalList,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list,point):
-        def clear():
-            if os.name == "nt":
-                os.system("cls")
-            else:
-                os.system("clear")
-
         PrincipalTurns = 0
         PRINCIPALTIMES = []
         pt = 0
@@ -143,6 +137,7 @@ class Ex:
                         break
                     elif(option2 == 3):#listo
                         print("se a seleccionado el Impuestos")
+                        ver = True
                         PrincipalTurns += 1
                         Gamer = gambler(NAMES,personalCoin,SuperHand,playerpoints).AskMoney(3)
                         personalCoin = Gamer
@@ -150,7 +145,7 @@ class Ex:
                         ingresolog = [NAMES +" utiliza la accion "+ duke.action() +" ganado 3 monedas"]
                         log.append(ingresolog)
                         #desafio
-                        TaxDuel = duel("DUKE").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log,n,deck_list,point)
+                        TaxDuel = duel("DUKE").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log,n,deck_list,point, ver)
                         personalCoin = TaxDuel[6]
                          #algo raro pasa aqui
                         #cambio
@@ -303,7 +298,7 @@ class Ex:
                             SuperHand = PersonalDeck[0]
                             personalCoin = CoinList[0]
                             break
-                    elif(option2 == 5):#listo falta poco
+                    elif(option2 == 5):#listo
                         #inicio
                         counters = False
                         duelcards = 0
@@ -322,6 +317,7 @@ class Ex:
                         log.append(ingresolog)  
                         print("pero antes quien desea contraatacar? : ")
                         while(True):
+                        
                             #contraataque
                             z = 1
                             while(z<n):
@@ -376,6 +372,9 @@ class Ex:
                                         ingresolog = ["El jugador: "+Reelection+" Gano el desafio"]
                                         log.append(ingresolog)
                                         print(ingresolog)
+                                        pointChallenger[CounterChallenge] -= 1
+                                        point.insert(CounterChallenge,pointChallenger[CounterChallenge])
+                                        point.pop(Challenge+1)
                                     else:
                                         ingresolog = ["El jugador: "+Reelection+" Pierde el desafio, perdiendo una carta"]
                                         #si es que falla aqui se pierde la carta
@@ -483,12 +482,13 @@ class Ex:
                         break
                     elif(option2 == 6):#listo 
                         print("se a seleccionado el Cambio")
+                        ver = True
                         PrincipalTurns += 1
                         Ambassador = Exchange("Ambassador")
                         ingresolog = [NAMES + " utiliza la accion "+Ambassador.action()+" cambiando cartas"]
                         log.append(ingresolog)
                         #desafio
-                        Embajator = duel("AMBASSADOR").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n,deck_list,point)
+                        Embajator = duel("AMBASSADOR").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n,deck_list,point,ver)
                         break
                         #cambio                           
                     elif(option2 == 7):
@@ -496,6 +496,8 @@ class Ex:
                         break
                     else:
                         print("seleccione un numero valido")
+                        print("se volvera al menu anterior")
+                        break
             elif(option1 == 2):#listo
                     print("log general\n")
                     HISTORIAL = PlayerMenu(9).MiniMenu(log)

@@ -76,14 +76,6 @@ class Ex:
                     if(option2 == 0):#listo
                         ENTRY = Entry("INGRESO")
                         enter = ENTRY.efect(PrincipalTurns, personalCoin, log, ListPlayer, PersonalDeck, unknow, NAMES, SuperHand, CoinList)
-                        PrincipalTurns = enter[0]
-                        log = enter[2]
-                        ListPlayer = enter[3]
-                        PersonalDeck = enter[4]
-                        unknow = enter[5]
-                        NAMES = enter[6]
-                        SuperHand = enter[7]
-                        CoinList = enter[8]
                         point.pop(0)
                         point.append(playerpoints)
                         break
@@ -153,33 +145,22 @@ class Ex:
                         #print(point)
                         Validate = TaxDuel[11]
                         if(Validate == True):
-                            ListPlayer.pop(0)
-                            ListPlayer.append(NAMES)
-                            PersonalDeck.pop(0)
-                            PersonalDeck.append(SuperHand)
-                            CoinList.pop(0)
-                            CoinList.append(personalCoin)
-                            git = unknow[0]
-                            unknow.pop(0)
-                            unknow.append(git)
-                            NAMES = ListPlayer[0]
-                            SuperHand = PersonalDeck[0]
-                            personalCoin = CoinList[0]
+                            pass
                         else:
                             point.append(playerpoints)
                             point.pop(0)
-                            ListPlayer.pop(0)
-                            ListPlayer.append(NAMES)
-                            PersonalDeck.pop(0)
-                            PersonalDeck.append(SuperHand)
-                            CoinList.pop(0)
-                            CoinList.append(personalCoin)
-                            git = unknow[0]
-                            unknow.pop(0)
-                            unknow.append(git)
-                            NAMES = ListPlayer[0]
-                            SuperHand = PersonalDeck[0]
-                            personalCoin = CoinList[0]
+                        ListPlayer.pop(0)
+                        ListPlayer.append(NAMES)
+                        PersonalDeck.pop(0)
+                        PersonalDeck.append(SuperHand)
+                        CoinList.pop(0)
+                        CoinList.append(personalCoin)
+                        git = unknow[0]
+                        unknow.pop(0)
+                        unknow.append(git)
+                        NAMES = ListPlayer[0]
+                        SuperHand = PersonalDeck[0]
+                        personalCoin = CoinList[0]
                         break
                     elif(option2 == 4):#lista
                         respaldo = []

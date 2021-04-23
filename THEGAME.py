@@ -60,7 +60,7 @@ class Ex:
             personalCoin = CoinList[0] # monedas del jugador
             #print(CoinList)
             playerpoints = point[0] # puntos del jugador(influencia)
-            print("puntos de todos los jugadores actuales: ",point)
+            print("puntos(influencia) de todos los jugadores actuales: ",point)
             print("\n")
             print("le toca a:  ", NAMES, '\nlas influencias que tiene son: ',playerpoints)
             part1 = PlayerMenu(1)

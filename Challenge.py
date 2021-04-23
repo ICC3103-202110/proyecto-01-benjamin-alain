@@ -250,6 +250,8 @@ class duel:
                 dueler = point[MurderDuel]
                 if(DuelOfMurder == MurderVictim):
                     dueler -= 2
+                    ingresolog = ["al jugador "+DuelOfMurder+" A perdido todas sus influencias de golpe"]
+                    log.append(ingresolog)
                 else:
                     dueler -= 1
                 point.insert(MurderDuel,dueler)

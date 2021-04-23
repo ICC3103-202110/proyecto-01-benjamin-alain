@@ -63,6 +63,8 @@ class Ex:
             print("puntos(influencia) de todos los jugadores actuales: ",point)
             print("\n")
             print("le toca a:  ", NAMES, '\nlas influencias que tiene son: ',playerpoints)
+            for i in range(len(ListPlayer)):
+                print("--> Jugador: "+ListPlayer[i]+" Monedas: "+str(CoinList[i]))
             part1 = PlayerMenu(1)
             obj = PlayerMenu(8)
             option1 = part1.menusplayers()

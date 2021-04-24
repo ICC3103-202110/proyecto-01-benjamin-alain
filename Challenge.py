@@ -7,8 +7,11 @@ from random import shuffle
 from Loser import CardLost
 class duel:
 
-    def __init__(self, name):
+    def __init__(self, name,ListPlayer,CoinList,PersonalDeck):
         self.__name = name
+        self.__ListPlayer = ListPlayer
+        self.__CoinList = CoinList
+        self.__PersonalDeck = PersonalDeck
     
     @property
     def name(self):
@@ -18,7 +21,31 @@ class duel:
     def name(self,value):
         self.__name = value
     
-    def dare(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver):
+    @property
+    def ListPlayer(self):
+        return self.__ListPlayer
+
+    @ListPlayer.setter
+    def ListPlayer(self,value):
+        self.__ListPlayer = value
+    
+    @property
+    def CoinList(self):
+        return self.__CoinList
+
+    @CoinList.setter
+    def CoinList(self,value):
+        self.__CoinList = value
+    
+    @property
+    def PersonalDeck(self):
+        return self.__PersonalDeck
+
+    @PersonalDeck.setter
+    def PersonalDeck(self,value):
+        self.__PersonalDeck = value
+
+    def dareAM(self,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver):
         DUKE = Tax("Duke")
         CAPTAIN = Steal("Capitan")
         AMBASSADOR = Exchange("Ambassador")
@@ -28,7 +55,7 @@ class duel:
             Ambassador = Exchange("Ambassador")
             x = 1
             while(x < n):
-                print(x,ListPlayer[x])
+                print(x,self.ListPlayer[x])
                 x += 1
             print(n,"nadie quiere desafiar")
             MurderDuel = int(input("quien quiere desafiar?: "))
@@ -37,25 +64,25 @@ class duel:
             while(True):
                 if(MurderDuel == n):
                     AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
-                    ListPlayer.pop(0)
-                    ListPlayer.append(NAMES)
-                    PersonalDeck.pop(0)
-                    PersonalDeck.append(SuperHand)
-                    CoinList.pop(0)
-                    CoinList.append(personalCoin)
+                    self.ListPlayer.pop(0)
+                    self.ListPlayer.append(NAMES)
+                    self.PersonalDeck.pop(0)
+                    self.PersonalDeck.append(SuperHand)
+                    self.CoinList.pop(0)
+                    self.CoinList.append(personalCoin)
                     git = unknow[0]
                     unknow.pop(0)
                     unknow.append(git)
-                    NAMES = ListPlayer[0]
-                    SuperHand = PersonalDeck[0]
-                    personalCoin = CoinList[0]
+                    NAMES = self.ListPlayer[0]
+                    SuperHand = self.PersonalDeck[0]
+                    personalCoin = self.CoinList[0]
                     point.pop(0)
                     point.append(playerpoints)
                     shuffle(deck_list)
                     shuffle(deck_list)
                     break
-                print("el jugador "+ListPlayer[MurderDuel]+" quiere desafiar")
-                ingresolog = ["el jugador "+ListPlayer[MurderDuel]+" desafiar al jugador: "+ NAMES+" evitando cambiar sus cartas"]
+                print("el jugador "+self.ListPlayer[MurderDuel]+" quiere desafiar")
+                ingresolog = ["el jugador "+self.ListPlayer[MurderDuel]+" desafiar al jugador: "+ NAMES+" evitando cambiar sus cartas"]
                 log.append(ingresolog)
                 duelcount = 0
                 for duel in range(len(SuperHand)):
@@ -72,18 +99,18 @@ class duel:
                     #print(point)
                     log.append(ingresolog)
                     AMBASSADOR = Ambassador.efect(deck_list,SuperHand)
-                    ListPlayer.pop(0)
-                    ListPlayer.append(NAMES)
-                    PersonalDeck.pop(0)
-                    PersonalDeck.append(SuperHand)
-                    CoinList.pop(0)
-                    CoinList.append(personalCoin)
+                    self.ListPlayer.pop(0)
+                    self.ListPlayer.append(NAMES)
+                    self.PersonalDeck.pop(0)
+                    self.PersonalDeck.append(SuperHand)
+                    self.CoinList.pop(0)
+                    self.CoinList.append(personalCoin)
                     git = unknow[0]
                     unknow.pop(0)
                     unknow.append(git)
-                    NAMES = ListPlayer[0]
-                    SuperHand = PersonalDeck[0]
-                    personalCoin = CoinList[0]
+                    NAMES = self.ListPlayer[0]
+                    SuperHand = self.PersonalDeck[0]
+                    personalCoin = self.CoinList[0]
                     point.pop(0)
                     point.append(playerpoints)
                     shuffle(deck_list)
@@ -99,89 +126,39 @@ class duel:
                     point.pop(0)
                     #print(point)
                     log.append(ingresolog)
-                    ListPlayer.pop(0)
-                    ListPlayer.append(NAMES)
-                    PersonalDeck.pop(0)
-                    PersonalDeck.append(SuperHand)
-                    CoinList.pop(0)
-                    CoinList.append(personalCoin)
+                    self.ListPlayer.pop(0)
+                    self.ListPlayer.append(NAMES)
+                    self.PersonalDeck.pop(0)
+                    self.PersonalDeck.append(SuperHand)
+                    self.CoinList.pop(0)
+                    self.CoinList.append(personalCoin)
                     git = unknow[0]
                     unknow.pop(0)
                     unknow.append(git)
-                    NAMES = ListPlayer[0]
-                    SuperHand = PersonalDeck[0]
-                    personalCoin = CoinList[0]
+                    NAMES = self.ListPlayer[0]
+                    SuperHand = self.PersonalDeck[0]
+                    personalCoin = self.CoinList[0]
                     point.pop(0)
                     point.append(playerpoints)
                     if (n == 4):
-                        test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+                        test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,self.PersonalDeck,n)
                     elif(n == 3):
-                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,self.PersonalDeck,n)
                     elif(n == 2):
-                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
+                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,self.PersonalDeck,n)
                     shuffle(deck_list)
                     shuffle(deck_list) 
                     break                      
                 break
-            return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point
-        if(self.name == DUKE.name):
-            while(True):
-                x = 1
-                while(x < n):
-                    print(x," : ",ListPlayer[x])
-                    x += 1
-                print(x," : ", "nadie quiere desafiar")
-                count = int(input("quien desea desafiar?: "))
-                if(count >=  x):
-                    count = x
-                if(count == x):
-                    break
-                print("el jugador "+ListPlayer[count]+" quiere desafiar")
-                ver = False
-                ingresolog = ["el jugador "+ListPlayer[count]+" desafiar al jugador: "+ NAMES+" manteniendo sus monedas"]
-                log.append(ingresolog)
-                duelcount = 0
-                for duel in range(len(SuperHand)):
-                    if(SuperHand[duel] == DUKE.name):
-                        duelcount += 1
-                if (duelcount >= 1):
-                    ingresolog = [NAMES + " Gana el desafio y utiliza la carta " + DUKE.name +" ganando 3 monedas"]
-                    ver = True
-                    print(ingresolog)
-                    log.append(ingresolog)
-                    Dueler = point[count]
-                    Dueler -= 1
-                    #print(point)
-                    point.insert(count, Dueler)
-                    point.pop(count+1)
-                    return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
-                else:
-                    ingresolog = [NAMES + " pierde el desafio y pierde una carta"]
-                    ver = True
-                    print(ingresolog)
-                    log.append(ingresolog)         
-                    personalCoin -= 3   
-                    playerpoints -= 1
-                    point.append(playerpoints)
-                    point.pop(0)
-                    #print(point)
-                    if (n == 4):
-                            test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
-                    elif(n == 3):
-                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
-                    elif(n == 2):
-                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
-                    return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
-                break   
-            return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
-
-    def dareFA(self,ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point,n):
+            return self.ListPlayer,self.CoinList,self.PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point
+    
+    def dareFA(self,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point,n):
         print("quien quiere desafiar? ")
         if(self.name == 'foreign_aid'):
             DuelList = []
-            for duel in range(len(ListPlayer)):
-                if(ListPlayer[duel] != ListPlayer[count]):
-                    DuelList.append(ListPlayer[duel])
+            for duel in range(len(self.ListPlayer)):
+                if(self.ListPlayer[duel] != self.ListPlayer[count]):
+                    DuelList.append(self.ListPlayer[duel])
             for LIST in range(len(DuelList)):
                 print(LIST,DuelList[LIST])
             print(LIST+1,'nadie quiere desafiar')
@@ -191,53 +168,54 @@ class duel:
             if(CounterChallenge != LIST+1):
                 DUKKE = Tax("Duke")
                 ChallengeCounter = 0
-                ingresolog = ['El jugador: '+DuelList[CounterChallenge]+' Desafio el contraataque de: '+ListPlayer[count]]
+                ingresolog = ['El jugador: '+DuelList[CounterChallenge]+' Desafio el contraataque de: '+self.ListPlayer[count]]
                 print(ingresolog)
                 log.append(ingresolog)
-                for i in range(len(PersonalDeck[count])):
-                    if(PersonalDeck[count][i] == DUKKE.name):
+                for i in range(len(self.PersonalDeck[count])):
+                    if(self.PersonalDeck[count][i] == DUKKE.name):
                         ChallengeCounter += 1
                 if(ChallengeCounter >= 1):
-                    ingresolog = ["El jugador: "+ListPlayer[count]+" Gano el desafio de "+DuelList[CounterChallenge]]
+                    ingresolog = ["El jugador: "+self.ListPlayer[count]+" Gano el desafio de "+DuelList[CounterChallenge]]
                     log.append(ingresolog)
                     point[CounterChallenge] -= 1
                     print(ingresolog)
                     point.insert(count,point[CounterChallenge])
                     point.pop()                       
                 else:
-                    ingresolog = ["El jugador: "+ListPlayer[count]+" Pierde el desafio, perdiendo una carta"]
+                    ingresolog = ["El jugador: "+self.ListPlayer[count]+" Pierde el desafio, perdiendo una carta"]
                     #si es que falla aqui se pierde la carta
                     log.append(ingresolog)
                     print(ingresolog)
                     point[count] -= 1
-                    print("influencia de ", ListPlayer[count],": ",point[count])
+                    print("influencia de ", self.ListPlayer[count],": ",point[count])
                     point.insert(count,point[count])
                     point.pop()
                     if (n == 4):
-                        test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,PersonalDeck,n)
+                        test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,self.PersonalDeck,n)
                     elif(n == 3):
-                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,PersonalDeck,n)
+                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,self.PersonalDeck,n)
                     elif(n == 2):
-                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,PersonalDeck,n)
-                return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
+                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,self.PersonalDeck,n)
+                return self.ListPlayer,self.CoinList,self.PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
             else:
                 personalCoin -= 2
-                return ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
-    def dareAC(self,ListPlayer,ingresolog,NAMES,log,SuperHand,point,x,PersonalDeck,unknow,personalCoin,CoinList,n,MurderVictim):
+                return self.ListPlayer,self.CoinList,self.PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log   
+
+    def dareAC(self,ingresolog,NAMES,log,SuperHand,point,x,unknow,personalCoin,n,MurderVictim):
         ASSASIN = murder("Asesino")
         print("quien quiere desafiar?: ")
         while(x < n):
-            print(x,ListPlayer[x])
+            print(x,self.ListPlayer[x])
             x += 1
         print(n,"nadie quiere desafiar")
         MurderDuel = int(input("quien quiere desafiar?: "))
         if(MurderDuel >= n):
             MurderDuel = n
         if (MurderDuel != n):
-            DuelOfMurder = ListPlayer[MurderDuel]
+            DuelOfMurder = self.ListPlayer[MurderDuel]
             murderr = True
             CountAssasin = 0
-            ingresolog = ['el jugador: '+ListPlayer[MurderDuel]+' quire desafiar al jugador: '+NAMES]
+            ingresolog = ['el jugador: '+self.ListPlayer[MurderDuel]+' quire desafiar al jugador: '+NAMES]
             log.append(ingresolog)
             print(ingresolog)
             for i in range(len(SuperHand)):
@@ -267,18 +245,75 @@ class duel:
                 print(point)
                 #point.pop(0)
             if(murderr == True):
-                ListPlayer.pop(0)
-                ListPlayer.append(NAMES)
-                PersonalDeck.pop(0)
-                PersonalDeck.append(SuperHand)
+                self.ListPlayer.pop(0)
+                self.ListPlayer.append(NAMES)
+                self.PersonalDeck.pop(0)
+                self.PersonalDeck.append(SuperHand)
                 point.pop(0)
                 git = unknow[0]
                 unknow.pop(0)
                 unknow.append(git)
-                NAMES = ListPlayer[0]
-                SuperHand = PersonalDeck[0]
-                personalCoin = CoinList[0]
-                return ListPlayer,MurderDuel,ingresolog,NAMES,log,SuperHand,point,x,PersonalDeck,unknow,personalCoin,murderr
+                NAMES = self.ListPlayer[0]
+                SuperHand = self.PersonalDeck[0]
+                personalCoin = self.CoinList[0]
+                return self.ListPlayer,MurderDuel,ingresolog,NAMES,log,SuperHand,point,x,self.PersonalDeck,unknow,personalCoin,murderr
         else:
             murderr = False 
-        return ListPlayer,MurderDuel,ingresolog,NAMES,log,SuperHand,point,x,PersonalDeck,unknow,personalCoin,murderr          
+        return self.ListPlayer,MurderDuel,ingresolog,NAMES,log,SuperHand,point,x,self.PersonalDeck,unknow,personalCoin,murderr 
+
+    def dareDU(self,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver):
+        DUKE = Tax("Duke")
+        CAPTAIN = Steal("Capitan")
+        AMBASSADOR = Exchange("Ambassador")
+        CONTESSA = Block("Contessa")
+        if(self.name == DUKE.name):
+            while(True):
+                x = 1
+                while(x < n):
+                    print(x," : ",self.ListPlayer[x])
+                    x += 1
+                print(x," : ", "nadie quiere desafiar")
+                count = int(input("quien desea desafiar?: "))
+                if(count >=  x):
+                    count = x
+                if(count == x):
+                    break
+                print("el jugador "+self.ListPlayer[count]+" quiere desafiar")
+                ver = False
+                ingresolog = ["el jugador "+self.ListPlayer[count]+" desafiar al jugador: "+ NAMES+" manteniendo sus monedas"]
+                log.append(ingresolog)
+                duelcount = 0
+                for duel in range(len(SuperHand)):
+                    if(SuperHand[duel] == DUKE.name):
+                        duelcount += 1
+                if (duelcount >= 1):
+                    ingresolog = [NAMES + " Gana el desafio y utiliza la carta " + DUKE.name +" ganando 3 monedas"]
+                    ver = True
+                    print(ingresolog)
+                    log.append(ingresolog)
+                    Dueler = point[count]
+                    Dueler -= 1
+                    #print(point)
+                    point.insert(count, Dueler)
+                    point.pop(count+1)
+                    return self.ListPlayer,self.CoinList,self.PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
+                else:
+                    ingresolog = [NAMES + " pierde el desafio y pierde una carta"]
+                    ver = True
+                    print(ingresolog)
+                    log.append(ingresolog)         
+                    personalCoin -= 3   
+                    playerpoints -= 1
+                    point.append(playerpoints)
+                    point.pop(0)
+                    #print(point)
+                    if (n == 4):
+                        test = CardLost("r").DropCard_2_n_4(SuperHand,unknow,point,self.PersonalDeck,n)
+                    elif(n == 3):
+                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,self.PersonalDeck,n)
+                    elif(n == 2):
+                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,self.PersonalDeck,n)
+                    return self.ListPlayer,self.CoinList,self.PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
+                break   
+            return self.ListPlayer,self.CoinList,self.PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,n,deck_list,point,ver
+          

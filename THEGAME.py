@@ -60,11 +60,10 @@ class Ex:
             personalCoin = CoinList[0] # monedas del jugador
             #print(CoinList)
             playerpoints = point[0] # puntos del jugador(influencia)
-            print("puntos(influencia) de todos los jugadores actuales: ",point)
             print("\n")
             print("le toca a:  ", NAMES, '\nlas influencias que tiene son: ',playerpoints)
             for i in range(len(ListPlayer)):
-                print("--> Jugador: "+ListPlayer[i]+" Monedas: "+str(CoinList[i]))
+                print("--> Jugador: "+ListPlayer[i]+"| Monedas: "+str(CoinList[i])+"| cantidad de influencias actuales: "+str(point[i]))
             part1 = PlayerMenu(1)
             obj = PlayerMenu(8)
             option1 = part1.menusplayers()
@@ -98,8 +97,8 @@ class Ex:
                             log.append(ingresolog)
                             # desafio
                             DuelList = []
-                            Challenger = duel("foreign_aid",)
-                            DUEL = Challenger.dareFA(ListPlayer,CoinList,PersonalDeck,unknow,NAMES,SuperHand,personalCoin,playerpoints,log,count,point,n)
+                            Challenger = duel("foreign_aid",ListPlayer, CoinList, PersonalDeck)
+                            DUEL = Challenger.dareFA(unknow, NAMES, SuperHand, personalCoin, playerpoints, log, count, point, n)
                             break
                         try:
                             personalCoin = DUEL[6]
@@ -140,7 +139,10 @@ class Ex:
                         ingresolog = [NAMES +" utiliza la accion "+ duke.action() +" ganado 3 monedas"]
                         log.append(ingresolog)
                         #desafio
+                        '''
                         TaxDuel = duel("DUKE").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log,n,deck_list,point, ver)
+                        '''
+                        TaxDuel = duel("DUKE",ListPlayer, CoinList, PersonalDeck).dareDU(unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n, deck_list, point, ver)
                         personalCoin = TaxDuel[6]
                          #algo raro pasa aqui
                         #cambio
@@ -190,7 +192,7 @@ class Ex:
                         log.append(ingresolog)
                         #print(MurderVictim)
                         # desafiar
-                        slayer = duel("asesino").dareAC(ListPlayer, ingresolog, NAMES, log, SuperHand, point, x, PersonalDeck, unknow, personalCoin, CoinList,n,MurderVictim)
+                        slayer = duel("asesino",ListPlayer, CoinList, PersonalDeck).dareAC(ingresolog, NAMES, log, SuperHand, point, x, unknow, personalCoin, n, MurderVictim)
                         #contraataque
                         murderr = slayer[11]
                         if(murderr == False):
@@ -532,9 +534,8 @@ class Ex:
                         ingresolog = [NAMES + " utiliza la accion "+Ambassador.action()+" cambiando cartas"]
                         log.append(ingresolog)
                         #desafio
-                        Embajator = duel("AMBASSADOR").dare(ListPlayer, CoinList, PersonalDeck, unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n,deck_list,point,ver)
-                        break
-                        #cambio                           
+                        Embajator = duel("AMBASSADOR", ListPlayer, CoinList, PersonalDeck).dareAM(unknow, NAMES, SuperHand, personalCoin, playerpoints, log, n, deck_list, point, ver)
+                        break                        
                     elif(option2 == 7):
                         print("volviendo al menu anterior")
                         break

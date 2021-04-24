@@ -62,3 +62,6 @@ class gambler:
             print("deberia dar -3")
         if(option == 6):
             print("deberia dar -7")
+
+    def AskCards(self,option):
+        pass

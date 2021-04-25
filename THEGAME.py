@@ -53,6 +53,7 @@ class Ex:
             NAMES = ListPlayer[0] # nombre del jugador
             #print(ListPlayer)
             SuperHand = PersonalDeck[0] # mano del jugador(cartas que tiene)
+            print(PersonalDeck[1])
             #print(PersonalDeck)
             personalCoin = CoinList[0] # monedas del jugador
             #print(CoinList)

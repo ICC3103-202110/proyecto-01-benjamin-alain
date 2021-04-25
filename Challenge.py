@@ -180,7 +180,15 @@ class duel:
                     point[CounterChallenge] -= 1
                     print(ingresolog)
                     point.insert(count,point[CounterChallenge])
-                    point.pop()                       
+                    point.pop()
+                    '''
+                    if (n == 4):
+                        test = CardLost("r").DropCard_2_n_4(PersonalDeck[CounterChallenge],unknow,point,self.PersonalDeck,n)
+                    elif(n == 3):
+                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,self.PersonalDeck,n)
+                    elif(n == 2):
+                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,self.PersonalDeck,n)                       
+                    '''
                 else:
                     ingresolog = ["El jugador: "+self.ListPlayer[count]+" Pierde el desafio, perdiendo una carta"]
                     #si es que falla aqui se pierde la carta

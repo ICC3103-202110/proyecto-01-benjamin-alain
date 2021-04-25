@@ -8,10 +8,8 @@ from Menu import PlayerMenu
 from random import shuffle
 from Deck import Deck_cards
 from Loser import CardLost
-from foreing_aid import Foreing_aid
-from coup import COUP
-from entry import Entry
 from Challenge import duel
+from GeneralAction import GENERALEFECT
 
 class Extend:
     def __init__(self,name):

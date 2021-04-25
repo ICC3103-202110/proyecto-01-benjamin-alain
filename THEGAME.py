@@ -8,12 +8,9 @@ from Menu import PlayerMenu
 from random import shuffle
 from Deck import Deck_cards
 from Loser import CardLost
-from foreing_aid import Foreing_aid
-from coup import COUP
-from entry import Entry
 from Challenge import duel
 from ExtendExtortion import Extend
-
+from GeneralAction import GENERALEFECT
 
 
 class Ex:
@@ -75,13 +72,13 @@ class Ex:
                     print('hagas lo que hagas tienes que elegir el golpe (COUP), por tener 10 monedas ')
                 while(True):
                     if(option2 == 0):#listo
-                        ENTRY = Entry("INGRESO")
-                        enter = ENTRY.efect(PrincipalTurns, personalCoin, log, ListPlayer, PersonalDeck, unknow, NAMES, SuperHand, CoinList)
+                        ENTRY = GENERALEFECT("INGRESO",1,PrincipalTurns, log)
+                        entry = ENTRY.ENTRYEfect(personalCoin, ListPlayer, PersonalDeck, unknow, NAMES, SuperHand, CoinList)
                         point.pop(0)
                         point.append(playerpoints)
                         break
                     elif(option2 == 1):#listo
-                        Foreign = Foreing_aid("ayuda extranjera").efect(PrincipalTurns, log, personalCoin, NAMES)
+                        Foreign = GENERALEFECT("AYUDA EXTRANJERA",2,PrincipalTurns, log).FOREIGN_AIDEfect(personalCoin, NAMES)
                         PrincipalTurns = Foreign[0]
                         log = Foreign[1]
                         personalCoin = Foreign[2]
@@ -126,8 +123,8 @@ class Ex:
                             break
                         if(personalCoin >= 10):
                             print("se ha seleccionado el golpe por obligacion")
-                        SuperCoup = COUP("Golpe")
-                        MegaCoup = SuperCoup.efect(PrincipalTurns, log, personalCoin, CoinList, NAMES, ListPlayer, PersonalDeck, unknow, SuperHand,point, playerpoints,n)
+                        SuperCoup = GENERALEFECT("GOLPE",3,PrincipalTurns, log)
+                        MegaCoup = SuperCoup.COUPEfect(personalCoin, CoinList, NAMES, ListPlayer, PersonalDeck, unknow, SuperHand, point, playerpoints, n)
                         break
                     elif(option2 == 3):#listo
                         print("se a seleccionado el Impuestos")

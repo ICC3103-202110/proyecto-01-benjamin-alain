@@ -36,7 +36,7 @@ def CreatePlayer1(n, hand):
     x = 1
     while (x<=n):
         name = input("your name: ")
-        coin = 2
+        coin = 7
         card = hand[x-1]
         point = 2
         playerlist.append(gambler(name,coin,card,point))

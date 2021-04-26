@@ -23,30 +23,16 @@ JAND3 = []
 JAND4 = []
 ALLDeck = []
 
-def MoneyLess(coin,n):
-    newcoins = coin-n
-    return newcoins
-
-def remplazo(CardName):
-    unknow2 = ["??",CardName]
-    return unknow2
-
-
 def CreatePlayer1(n, hand):
     x = 1
     while (x<=n):
         name = input("your name: ")
-        coin = 7
+        coin = 2
         card = hand[x-1]
         point = 2
         playerlist.append(gambler(name,coin,card,point))
         x += 1
     return playerlist
-
-def remplazo(CardName,NameCard): # seria poner el NameCard como ?? y cuanto 
-    unknow2 = [NameCard,CardName]
-    return unknow2
-
 
 def Game(n):
     l = []
@@ -107,7 +93,6 @@ def Game(n):
 
 
 def main():
-    #pruebas
 
     '''
     El juego es 100% funcional, pero a veces pueden ocurrir ciertos "glitches": puede pasar que un jugador gane
@@ -121,8 +106,9 @@ def main():
     que el jugador debe poner para verlo (nos parecio mas comodo en vez de que salga a cada rato) y adicionalmente
     se puso la opcion de ver que hace cada carta (no salia en el enunciado).
     si el jugador de turno es contraatacado este puede desafiar el contraataque.
-    puede pasar que haya un erro en las influencias que se muestran y en las que tienen los jugadores
+    puede pasar que haya un error en las influencias que se muestran y en las que tienen los jugadores
     por ejemplo que al jugador a pierda el desafio y el jugador c pierda la influencia incluso si este no hecho nada
+    tambien puede pasar que un jugador gane un desafio e igual pierda independiente de si tiene 2 influencias
     '''
     print("Welcome to COUP!")
     print("\n")

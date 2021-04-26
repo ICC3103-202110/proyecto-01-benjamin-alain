@@ -82,7 +82,7 @@ class duel:
                     shuffle(deck_list)
                     break
                 print("el jugador "+self.ListPlayer[MurderDuel]+" quiere desafiar")
-                ingresolog = ["el jugador "+self.ListPlayer[MurderDuel]+" desafiar al jugador: "+ NAMES+" evitando cambiar sus cartas"]
+                ingresolog = ["el jugador "+self.ListPlayer[MurderDuel]+" desafia al jugador: "+ NAMES+" evitando cambiar sus cartas"]
                 log.append(ingresolog)
                 duelcount = 0
                 for duel in range(len(SuperHand)):
@@ -163,7 +163,7 @@ class duel:
                 print(LIST,DuelList[LIST])
             print(LIST+1,'nadie quiere desafiar')
             CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
-            if(CounterChallenge >= LIST+1 or CounterChallenge <= 0):
+            if(CounterChallenge >= LIST+1 or CounterChallenge < 0):
                 CounterChallenge = LIST+1
             if(CounterChallenge != LIST+1):
                 HandCounter = self.PersonalDeck[CounterChallenge]
@@ -280,7 +280,7 @@ class duel:
                     break
                 print("el jugador "+self.ListPlayer[count]+" quiere desafiar")
                 ver = False
-                ingresolog = ["el jugador "+self.ListPlayer[count]+" desafiar al jugador: "+ NAMES+" manteniendo sus monedas"]
+                ingresolog = ["el jugador "+self.ListPlayer[count]+" desafiar al jugador: "+ NAMES+" "]
                 log.append(ingresolog)
                 duelcount = 0
                 for duel in range(len(SuperHand)):

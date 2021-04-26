@@ -335,7 +335,6 @@ class Ex:
                         log.append(ingresolog)
                         extor = True
                         CAPTAIN = Captain.efect(ListPlayer,1,CoinList,n)
-                        print(CAPTAIN)
                         elecction = int(input("escoja la victima del robo: "))
                         while(True):
                             try:
@@ -343,6 +342,19 @@ class Ex:
                                 break
                             except:
                                 elecction = int(input("escoja la victima del robo: "))
+                        if(elecction == 0):
+                            print("no se puede robar a si mismo")
+                            break
+                        victimCoinss = CoinList[elecction]
+                        if(victimCoinss == 0):
+                            print("no puede robar a esta persona")
+                            ingresolog = ["el jugador: "+NAMES +" no pudo robar al jugador: "+ListPlayer[elecction]+ " no tiene suficientes monedas"]
+                            log.append(ingresolog)
+                            break
+                        if (victimCoinss < 2):
+                            victimCoins = CoinList[elecction]-1
+                        else:
+                            victimCoins = CoinList[elecction]-2
                         ingresolog = [NAMES+", utiliza la accion "+Captain.action()+" para robar monedas a, "+victimPlayer]
                         print(ingresolog)
                         log.append(ingresolog)  
@@ -498,14 +510,6 @@ class Ex:
                             personalCoin = CoinList[0]
                             break
                         
-                        victimCoinss = CoinList[elecction]
-                        if (victimCoinss < 2):
-                            victimCoins = CoinList[elecction]-1
-                        elif(victimCoinss == 0):
-                            print("no puede robar a esta persona")
-                            break
-                        else:
-                            victimCoins = CoinList[elecction]-2
                         ListPlayer.pop(0)
                         ListPlayer.append(NAMES)
                         PersonalDeck.pop(0)

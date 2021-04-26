@@ -163,7 +163,7 @@ class duel:
                 print(LIST,DuelList[LIST])
             print(LIST+1,'nadie quiere desafiar')
             CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
-            if(CounterChallenge >= LIST+1 or CounterChallenge < 0):
+            if(CounterChallenge >= LIST+1 or CounterChallenge <= 0):
                 CounterChallenge = LIST+1
             if(CounterChallenge != LIST+1):
                 HandCounter = self.PersonalDeck[CounterChallenge]

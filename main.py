@@ -110,10 +110,15 @@ def main():
     #pruebas
 
     '''
-    El juego es 100% funcional, pero a veces pueden ocurrir que ciertos "glitches": puede pasar que un jugador gane
+    El juego es 100% funcional, pero a veces pueden ocurrir ciertos "glitches": puede pasar que un jugador gane
     y luego pierda y es eliminado, tambien solo si el jugador de turno desafia y este pierde se le pedira seleccionar
     una carta y botarla. tambien la parte del THEGAME.py en la opcion de asesinato y extorsion hay 160 y 200 lineas de
-    codigo (se intento sacarla pero no se logro). 
+    codigo respectivamente (se intento sacarla pero no se logro, ya que producian errores). 
+    tambien se opto por usar lista (demasiadas listas) 
+    para facilitarnos a quien le toca, se uso tabulate para crear menus (se puede ver en Menu.py), el log es una opcion
+    que el jugador debe poner para verlo (nos parecio mas comodo en vez de que salga a cada rato) y adicionalmente
+    se puso la opcion de ver que hace cada carta (no salia en el enunciado).
+    si el jugador de turno es contraatacado este puede desafiar el contraataque.
     '''
     print("Welcome to COUP!")
     print("\n")

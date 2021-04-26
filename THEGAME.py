@@ -32,15 +32,19 @@ class Ex:
         pt = 0
         FirstPlayer = ListPlayer[0]
         while(True):
-            if(point[0] <= 0):
-                ingresolog = ["El jugador: "+ListPlayer[0]+" a perdido todas sus influencia"]
-                log.append(ingresolog)
-                print(ingresolog)
-                ListPlayer.pop(0)
-                PersonalDeck.pop(0)
-                CoinList.pop(0)
-                point.pop(0)
-                unknow.pop(0)
+            reset = 0
+            while(reset <len(ListPlayer)):
+                if(point[reset] <= 0):
+                    ingresolog = ["El jugador: "+ListPlayer[reset]+" a perdido todas sus influencia"]
+                    log.append(ingresolog)
+                    print(ingresolog)
+                    ListPlayer.pop(reset)
+                    PersonalDeck.pop(reset)
+                    CoinList.pop(reset)
+                    point.pop(reset)
+                    unknow.pop(reset)
+                    reset += 1
+                reset += 1
             n = len(ListPlayer)
             if(len(ListPlayer) == 1):
                 print("el Ganador es: "+ListPlayer[0]+" ( ͡~ ͜ʖ ͡°)")

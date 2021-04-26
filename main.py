@@ -36,7 +36,7 @@ def CreatePlayer1(n, hand):
     x = 1
     while (x<=n):
         name = input("your name: ")
-        coin = 2
+        coin = 7
         card = hand[x-1]
         point = 2
         playerlist.append(gambler(name,coin,card,point))
@@ -103,7 +103,7 @@ def Game(n):
     GlobalList3.append(PersonalDeck)
     GlobalList3.append(CoinList)
     TheGame = Ex("princiPAL").PrincipalGame(GlobalList3,ListPlayer,PersonalDeck,CoinList,log,unknow,n,deck_list,pointplayer)
-    print(TheGame)
+    #print(TheGame)
 
 
 def main():
@@ -113,12 +113,16 @@ def main():
     El juego es 100% funcional, pero a veces pueden ocurrir ciertos "glitches": puede pasar que un jugador gane
     y luego pierda y es eliminado, tambien solo si el jugador de turno desafia y este pierde se le pedira seleccionar
     una carta y botarla. tambien la parte del THEGAME.py en la opcion de asesinato y extorsion hay 160 y 200 lineas de
-    codigo respectivamente (se intento sacarla pero no se logro, ya que producian errores). 
-    tambien se opto por usar lista (demasiadas listas) 
-    para facilitarnos a quien le toca, se uso tabulate para crear menus (se puede ver en Menu.py), el log es una opcion
+    codigo respectivamente (se intento acortarlo pero no se logro, ya que se producian errores). 
+    tambien se opto por usar lista (demasiadas listas), el jugador de turno es lista[0] luego se aprovecho que el 
+    pop(0) te elimina el elemento en la posicion 0, el append(algo) te lo agrega al final de la lista y el
+    insert(indice, elemento) te lo pone en el indice que quier para que asi rote para facilitarnos a quien le toca,
+    se uso tabulate para crear menus (se puede ver en Menu.py), el log (es general) es una opcion
     que el jugador debe poner para verlo (nos parecio mas comodo en vez de que salga a cada rato) y adicionalmente
     se puso la opcion de ver que hace cada carta (no salia en el enunciado).
     si el jugador de turno es contraatacado este puede desafiar el contraataque.
+    puede pasar que haya un erro en las influencias que se muestran y en las que tienen los jugadores
+    por ejemplo que al jugador a pierda el desafio y el jugador c pierda la influencia incluso si este no hecho nada
     '''
     print("Welcome to COUP!")
     print("\n")

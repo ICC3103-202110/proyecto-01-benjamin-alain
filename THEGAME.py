@@ -53,7 +53,6 @@ class Ex:
             NAMES = ListPlayer[0] # nombre del jugador
             #print(ListPlayer)
             SuperHand = PersonalDeck[0] # mano del jugador(cartas que tiene)
-            print(PersonalDeck[1])
             #print(PersonalDeck)
             personalCoin = CoinList[0] # monedas del jugador
             #print(CoinList)
@@ -201,7 +200,7 @@ class Ex:
                                 y += 1
                             print(len(ListPlayer),"nadie quiere contraatacar")
                             MurderDuel = int(input("quien quiere contraatacar?: "))
-                            if(MurderDuel >=  len(ListPlayer) ):
+                            if(MurderDuel >=  len(ListPlayer) or MurderDuel <= 0 ):
                                 MurderDuel = len(ListPlayer)
                             if(MurderDuel != len(ListPlayer)):
                                 ingresolog = ["El jugador: "+ListPlayer[MurderDuel]+" Contraataco a: "+NAMES]
@@ -220,7 +219,7 @@ class Ex:
                                     print(kill,KillerList[kill])
                                 print(kill+1,"nadie quiere desafiar el contraataque")
                                 CounterKiller = int(input("quien quiere desafiar el contraataque?: "))
-                                if(CounterKiller >= kill+1):
+                                if(CounterKiller >= kill+1 or CounterKiller < 0):
                                     CounterKiller =  kill+1
                                 if (CounterKiller != kill+1):
                                     NameOfDead = KillerList[CounterKiller]
@@ -358,7 +357,7 @@ class Ex:
                             print(n,"nadie quiere contraatacar")
                             duelcount = 1
                             Challenge = int(input("que jugador desea contratacar? : "))
-                            if(Challenge >= n):
+                            if(Challenge >= n or Challenge <= 0):
                                 Challenge = n
                             print("\n")
                             if(Challenge != n): # nadie contraataca se pocede al desafio!!!!!!!!!!!!!!!
@@ -371,7 +370,7 @@ class Ex:
                                     z += 1
                                 print(n,"nadie quiere desafiar")
                                 Challenge = int(input("que jugador desea desafiar? : "))
-                                if(Challenge >= n):
+                                if(Challenge >= n or Challenge <= 0):
                                     Challenge = n 
                                 if(Challenge == n):
                                     break
@@ -395,7 +394,7 @@ class Ex:
                                     print(i,countChallenge[i])
                                 print(i+1,'nadie quiere desafiar')
                                 CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
-                                if(CounterChallenge >= i+1):
+                                if(CounterChallenge >= i+1 or CounterChallenge < 0):
                                     CounterChallenge = i+1
                                 if(CounterChallenge != i+1):
                                     Ambassator = Exchange("Ambassador")

@@ -59,7 +59,7 @@ class duel:
                 x += 1
             print(n,"nadie quiere desafiar")
             MurderDuel = int(input("quien quiere desafiar?: "))
-            if(MurderDuel >= n):
+            if(MurderDuel >= n or MurderDuel <= 0):
                 MurderDuel = n
             while(True):
                 if(MurderDuel == n):
@@ -163,9 +163,10 @@ class duel:
                 print(LIST,DuelList[LIST])
             print(LIST+1,'nadie quiere desafiar')
             CounterChallenge = int(input("que jugador quiere desafiar al contraataque?: "))
-            if(CounterChallenge >= LIST+1):
+            if(CounterChallenge >= LIST+1 or CounterChallenge < 0):
                 CounterChallenge = LIST+1
             if(CounterChallenge != LIST+1):
+                HandCounter = self.PersonalDeck[CounterChallenge]
                 DUKKE = Tax("Duke")
                 ChallengeCounter = 0
                 ingresolog = ['El jugador: '+DuelList[CounterChallenge]+' Desafio el contraataque de: '+self.ListPlayer[count]]
@@ -180,15 +181,7 @@ class duel:
                     point[CounterChallenge] -= 1
                     print(ingresolog)
                     point.insert(count,point[CounterChallenge])
-                    point.pop()
-                    '''
-                    if (n == 4):
-                        test = CardLost("r").DropCard_2_n_4(PersonalDeck[CounterChallenge],unknow,point,self.PersonalDeck,n)
-                    elif(n == 3):
-                        test = CardLost("r").DropCard_2_n_3(SuperHand,unknow,point,self.PersonalDeck,n)
-                    elif(n == 2):
-                        test = CardLost("r").DropCard_2_n_2(SuperHand,unknow,point,self.PersonalDeck,n)                       
-                    '''
+                    point.pop()                  
                 else:
                     ingresolog = ["El jugador: "+self.ListPlayer[count]+" Pierde el desafio, perdiendo una carta"]
                     #si es que falla aqui se pierde la carta
@@ -217,7 +210,7 @@ class duel:
             x += 1
         print(n,"nadie quiere desafiar")
         MurderDuel = int(input("quien quiere desafiar?: "))
-        if(MurderDuel >= n):
+        if(MurderDuel >= n or MurderDuel <= 0):
             MurderDuel = n
         if (MurderDuel != n):
             DuelOfMurder = self.ListPlayer[MurderDuel]
@@ -250,7 +243,6 @@ class duel:
                 dueler = point[0]
                 dueler -= 1
                 point.append(dueler)
-                print(point)
                 #point.pop(0)
             if(murderr == True):
                 self.ListPlayer.pop(0)
@@ -282,7 +274,7 @@ class duel:
                     x += 1
                 print(x," : ", "nadie quiere desafiar")
                 count = int(input("quien desea desafiar?: "))
-                if(count >=  x):
+                if(count >=  x or count <= 0):
                     count = x
                 if(count == x):
                     break

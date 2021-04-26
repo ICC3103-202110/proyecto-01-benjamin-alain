@@ -108,6 +108,13 @@ def Game(n):
 
 def main():
     #pruebas
+
+    '''
+    El juego es 100% funcional, pero a veces pueden ocurrir que ciertos "glitches": puede pasar que un jugador gane
+    y luego pierda y es eliminado, tambien solo si el jugador de turno desafia y este pierde se le pedira seleccionar
+    una carta y botarla. tambien la parte del THEGAME.py en la opcion de asesinato y extorsion hay 160 y 200 lineas de
+    codigo (se intento sacarla pero no se logro). 
+    '''
     print("Welcome to COUP!")
     print("\n")
     
